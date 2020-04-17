@@ -1,0 +1,399 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+*
+
+::-webkit-scrollbar{
+	background-color: transparent;
+    width: 0.9rem;
+    height: 0.9rem;
+}
+::-webkit-scrollbar-thumb{
+	background-color: #9c9792;
+    width: 0.5rem;
+    border-radius: 0.5rem;
+}
+::-webkit-scrollbar-track{
+	width: 0.9rem;
+    background-color: rgba(0,0,0,0.1);
+    border-radius: 0.9rem;
+}
+
+.blind {overflow: hidden; position: absolute; clip: rect(0 0 0 0); width: 1px; height: 1px; margin: -1px;}
+
+/*-----------------------------base setting end--*/
+
+
+.fixedWrap{width: 100%; height: 100vh; position: fixed;}
+.anyLineWrap span{position: absolute;}
+.anyLineWrap span:nth-child(1){width:0px; height: 10px; background-color: #000; top: 0;left: 0; animation:line1 0.6s forwards linear;}
+.anyLineWrap span:nth-child(2){width:10px; height: 0px; background-color: #000; top: 0; right: 0; animation:line2 0.8s 0.6s forwards linear;}
+.anyLineWrap span:nth-child(3){width:0px; height: 10px; background-color: #000; bottom: 0;right: 0; animation:line3 0.6s 1.4s forwards linear;}
+.anyLineWrap span:nth-child(4){width:10px; height: 0px; background-color: #000; bottom: 0;left: 0; animation:line4 0.8s 2s forwards linear;}
+
+@keyframes line1{
+	to{width: 100%;}
+}
+@keyframes line2{
+	to{height: 100%;}
+}
+@keyframes line3{
+	to{width: 100%;}
+}
+@keyframes line4{
+	to{height: 100%;}
+}
+body{height: 2000px;}
+
+
+.logoS span{border-radius: 50px; position: absolute; background-color: #000; width: 6px; height: 6px; transform-origin: top; top: 20px; left: 45px;}
+
+.logoS span:nth-child(1){animation:logoS1 2s forwards;}
+.logoS span:nth-child(2){animation:logoS2 2s forwards;}
+
+@keyframes logoS1{
+	50%{height: 30px;transform: rotate(0deg);}
+	to{transform: rotate(-35deg); height: 30px;}
+}
+@keyframes logoS2{
+	50%{height: 30px;transform: rotate(0deg); left: 45px;}
+	to{transform: rotate(35deg); height: 30px; left: 48px;}
+}
+
+.logoG span{border-radius: 50px; position: absolute; background-color: #000; width: 6px; height: 6px; transform-origin: right; top: 20px; left: 70px;}
+.logoG span:nth-child(1){animation:logoG1 2s forwards;}
+.logoG span:nth-child(2){animation:logoG2 2s forwards;}
+
+@keyframes logoG1{
+	50%{width:25px;}
+	to{width:25px;}
+}
+@keyframes logoG2{
+	50%{width:25px;transform: rotate(0deg); top: 20px; left: 70px;}
+	to{transform: rotate(-90deg);width:25px; top: 17px; left: 67px;}
+}
+
+.logoEon span{border-radius: 50px; position: absolute; background-color: #000;}
+.logoEon span:nth-child(1){animation:logoE1 1s forwards; width: 0px; height: 6px; top: 30px; left: 100px;}
+.logoEon span:nth-child(2){animation:logoE2 1s 1s forwards; width: 6px; height: 0; top: 30px; left: 110px;}
+.logoEon span:nth-child(3){animation:logoE3 1s forwards; width: 6px; height: 0px; top: 40px; left: 20px;}
+.logoEon span:nth-child(4){animation:logoE4 1s 1s forwards; width: 0px; height: 6px; top: 55px; left: 20px;}
+
+@keyframes logoE1{
+	to{width:15px;}
+}
+
+@keyframes logoE2{
+	to{height: 30px;}
+}
+
+@keyframes logoE3{
+	to{height: 20px;}
+}
+@keyframes logoE4{
+	to{width: 95px;}
+}
+
+/*===============menu start==============*/
+ .toggleMenu{
+    position: absolute;
+    top:20px;
+    right: -50px;    
+    width: 40px;    
+    height: 40px;   
+    z-index: 9999;
+    transition: 0.5s;
+    cursor: pointer;
+    animation:hamberger 0.4s 0.6s forwards;
+}
+
+.toggleMenu span{
+    position: absolute;
+    display: block; 
+    background-color: #000;
+    width: 50%; 
+    height: 7px;   
+    transition: 0.5s;
+}
+
+.toggleMenu span:nth-child(even){
+    left: 50%;
+}
+
+.toggleMenu span:nth-child(1),
+.toggleMenu span:nth-child(2){
+    top: 0; 
+}
+
+@keyframes hamberger{
+	to{
+		right: 20px;
+	}
+}
+
+.toggleMenu span:nth-child(3),
+.toggleMenu span:nth-child(4){
+    top: 15px;
+}
+
+.toggleMenu span:nth-child(5),
+.toggleMenu span:nth-child(6){
+    top: 30px;
+}
+
+.toggleMenu.active span{background-color: #fff;}
+.toggleMenu.active span:nth-child(3){
+    transform: translateX(-500px);
+    opacity: 0;
+}
+
+.toggleMenu.active span:nth-child(4){
+    transform: translateX(100px);
+    opacity: 0;
+}
+
+.toggleMenu span:nth-child(1){
+    transform-origin: top left;
+}
+
+.toggleMenu span:nth-child(2){
+    transform-origin: top right;
+}
+
+.toggleMenu.active span:nth-child(1){
+    transform: rotate(45deg);
+    top: 1px;
+    left: 7px;
+}
+
+.toggleMenu.active span:nth-child(2){
+    transform: rotate(-45deg);
+    top: 1px;
+    left: calc(50% - 7px);
+}
+
+.toggleMenu span:nth-child(5){
+    transform-origin: bottom left;
+}
+
+.toggleMenu span:nth-child(6){
+    transform-origin: bottom right;
+}
+
+.toggleMenu.active span:nth-child(5){
+    transform: rotate(-45deg);
+    bottom: 1px;
+    left: 7px;
+}
+
+.toggleMenu.active span:nth-child(6){
+    transform: rotate(45deg);
+    bottom: 1px;
+    left: calc(50% - 7px);
+}
+
+/*=============menu end=============*/
+
+
+
+
+
+/*=============nav start=============*/
+#toggleNav
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#toggleNav span
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 200%;
+	height: 100%;
+	display: block;
+	transform-origin: bottom left;
+	transition: 0.5s ease-in-out;
+	transform: rotate(-90deg);
+}
+#toggleNav span:nth-child(1)
+{
+	background: #ff1f6b;
+	transform: rotate(-90deg);
+	transition-delay: 0.2s;
+}
+#toggleNav span:nth-child(2)
+{
+	background: #219dff;
+	transform: rotate(-90deg);
+	transition-delay: 0.1s;
+}
+#toggleNav span:nth-child(3)
+{
+	background: #111;
+	transform: rotate(-90deg);
+	transition-delay: 0s;
+}
+#toggleNav.active span:nth-child(1)
+{
+	z-index: 1;
+	transition-delay: 0s;
+}
+#toggleNav.active span:nth-child(2)
+{
+	z-index: 2;
+	transition-delay: 0.1s;
+}
+#toggleNav.active span:nth-child(3)
+{
+	z-index: 3;
+	transition-delay: 0.2s;
+}
+#toggleNav.active span
+{
+	transform: rotate(0deg);
+}
+
+#toggleNav ul
+{
+	position: absolute;
+	z-index: 100;
+	transition: 0.5s;
+	text-align: center;
+	visibility: hidden;
+	opacity: 0;
+	transition-delay: 0s;
+}
+#toggleNav.active ul
+{
+	visibility: visible;
+	opacity: 1;
+	transition-delay: 0.7s;
+} 
+
+#toggleNav ul li a
+{
+  color: #fff;
+  font-size: 3em;
+  padding: 5px 20px;
+  display: inline-flex;
+  font-weight: 700;
+  transition: 0.5s;
+  font-family: 'Poppins', sans-serif;
+}
+#toggleNav ul:hover li a
+{
+  color: #0002;
+}
+#toggleNav ul li:hover a
+{
+  color: #000;
+  background: rgba(255,255,255,1);
+}
+#toggleNav ul li a:before
+{
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  transform: translate(-50%,-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5em;
+  color: rgba(0,0,0,.1);
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 500px;
+  transition: letter-spacing 0.5s,left 0.5s;
+}
+#toggleNav ul li a:hover:before
+{
+  content: attr(data-text);
+  opacity: 1;
+  left: 50%;
+  letter-spacing: 10px;
+  width: 1800px;
+  height: 1800px;
+}
+#toggleNav ul li:nth-child(6n+1) a:before
+{
+  background: #81ecec;
+}
+#toggleNav ul li:nth-child(6n+2) a:before
+{
+  background: #ff7675;
+}
+#toggleNav ul li:nth-child(6n+3) a:before
+{
+  background: #55efc4;
+}
+#toggleNav ul li:nth-child(6n+4) a:before
+{
+  background: #a29bfe;
+}
+#toggleNav ul li:nth-child(6n+5) a:before
+{
+  background: #fd79a8;
+}
+/*=============nav end=============*/
+
+.sliderNavWrap{animation:navSpan 0.4s 1.6s forwards; bottom:-100px; position: absolute; width: 200px; left: 50%; transform: translate(-50%, 0); }
+.sliderNav{width: 100%; display: flex; justify-content: space-around; }
+@keyframes navSpan{
+	to{bottom: 50px;}
+}
+
+.sliderNav span {width: 20px; height: 20px; border-radius: 5px; border:2px solid #000; cursor: pointer;}
+.sliderNav span:before {content: ""; display: block; position: absolute;	opacity: 0; content: attr(data-text); font-size:1.5rem; font-weight: bold; transition: 0.4s; bottom: 40px; left: 0;
+	}
+.sliderNav span:hover:before { opacity: 1; left: 50%; transform: translate(-50%, 0);}
+
+.sliderNav span.active,
+.sliderNav span:hover {background-color: #000;}
+
+.nextWrap,
+.prevWrap { position: absolute;  bottom: -50px; font-size: 1.6rem; font-weight: bold; cursor: pointer;}
+
+.prevWrap {right: 50px; animation:prev 0.4s 1.4s forwards;}
+.nextWrap {left: 50px; animation:prev 0.4s 2s forwards;s}
+@keyframes prev{
+	to {bottom: 50px;}
+}
+
+ 
+.nextBtn {position: relative;}
+.prevBtn {position: relative;}
+
+.nextBtn:after,
+.nextBtn:before { content: ""; display: block; position: absolute; width: 20px; height: 5px; left: -20px; top: 15px; background-color: #000; transform-origin: left; border-radius: 5px;
+}
+.nextBtn:after {animation:nextAfter 0.4s 2.8s forwards;}
+.nextBtn:before {animation:nextBefore 0.4s 2.8s forwards;}
+
+@keyframes nextAfter{
+	to {transform: rotate(45deg); top: 14px;}
+}
+@keyframes nextBefore{
+	to {transform: rotate(-45deg); top: 16px;}
+}
+
+.prevBtn:after,
+.prevBtn:before { content: ""; display: block; position: absolute; width: 20px; height: 5px; right: -20px; top: 15px; transform-origin: right; background-color: #000; border-radius: 5px;
+}
+.prevBtn:after {animation:prevAfter 0.4s 2.8s forwards;}
+.prevBtn:before {animation:prevBefore 0.4s 2.8s forwards;}
+@keyframes prevAfter {
+	to{transform: rotate(45deg); top: 16px;}
+}
+@keyframes prevBefore {
+	to{transform: rotate(-45deg); top: 14px;}
+}
