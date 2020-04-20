@@ -60,9 +60,10 @@
 			</ul>
    		</div>
 
+   		
    		<div class="sliderNavWrap">
    			<div class="sliderNav">
-   				<span class="active" data-text="Home"></span>
+   				<span data-text="Home" class="active"></span>
    				<span data-text="About"></span>
    				<span data-text="Work"></span>
    				<span data-text="Gallery"></span>
@@ -78,6 +79,36 @@
    		</div>
 
 	</div>
+
+
+	<div id="content" class="contentWrap">
+		<section class="home first active">
+			<div class="contentTxtWrap">
+				<h2>HOME</h2>
+			</div>
+		</section>
+		<section class="about">
+			<div class="contentTxtWrap">
+				<h2>ABOUT</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae sed laboriosam nesciunt iste vitae doloremque, voluptatibus excepturi nulla dicta alias eum incidunt, adipisci reprehenderit assumenda aut perspiciatis exercitationem, tenetur quo optio veritatis! Suscipit quia adipisci sit ipsum atque sequi at dolores error, ipsam accusamus harum velit pariatur aut iusto. Magni nulla blanditiis, quia totam temporibus unde expedita error ullam, facere assumenda eligendi, nobis possimus impedit adipisci porro facilis ad iste libero architecto ducimus nihil! Aliquam aut maxime, voluptas iste. Impedit quis ad, eos, perferendis optio velit nam minima vero tenetur deleniti labore itaque soluta blanditiis eligendi commodi incidunt, hic cumque sequi eveniet in quisquam debitis magni, voluptate non maxime. Amet expedita sed explicabo ipsam pariatur consectetur ipsa earum vero porro inventore est tenetur laudantium nostrum animi dolorem, minus fugiat aut cum velit dolores autem deleniti voluptas ut! Eos impedit aspernatur, ut atque laboriosam quia, culpa delectus accusamus a doloremque porro repellendus cum autem ipsam facilis fuga quod esse minus eveniet! Voluptatum minima earum esse reprehenderit deserunt, voluptatem minus nobis accusamus mollitia ea facilis sint commodi maiores tempore saepe neque, temporibus quod ipsa, aliquam maxime harum? Inventore, hic omnis eos voluptatem cumque quisquam sunt. Expedita natus illum laudantium deleniti iste cum.</p>
+			</div>
+		</section>
+		<section class="work">
+			<div class="contentTxtWrap">
+				<h2>WORK</h2>
+			</div>
+		</section>
+		<section class="gallery">
+			<div class="contentTxtWrap">
+				<h2>GALLERY</h2>
+			</div>
+		</section>
+		<section class="contact">
+			<div class="contentTxtWrap">
+				<h2>CONTACT</h2>
+			</div>
+		</section>
+	</div>
 	
 	
 
@@ -89,12 +120,56 @@
 		
 		$(".toggleMenu").click(function(){
 			$(this).toggleClass("active");
+			$(".anyLineWrap").toggleClass("active");
+			$(".logoWrap").toggleClass("active");
+			$(".contentWrap").toggleClass("active");
 		});
 
 		function toggleMenu(){
             var curtain = document.getElementById('toggleNav');
             curtain.classList.toggle('active')
         }
+
+
+        $(".nextWrap").click(function(){
+        	var secNum = $(".contentWrap > section.active").index();
+        	var bgNum = $(".backColorWrap > span.active").index();
+        	var spNum = $(".sliderNav > span.active").index();
+        	var secList = $(".contentWrap > section");
+        	var spList = $(".sliderNav > span");
+        	var bgList = $(".backColorWrap > span");
+
+        		
+        		secList.removeClass("active");
+        		secList.removeClass("first");
+        		spList.removeClass();
+        		bgList.removeClass();
+        	if(secNum < 4){
+        		secList.eq(secNum + 1).addClass("active");
+        		spList.eq(secNum + 1).addClass("active");
+        		bgList.eq(secNum + 1),addClass("active");
+        	} else if(secNum == 4)
+        		secList.eq(0).addClass("active");
+        		spList.eq(0).addClass("active");
+        });
+
+        $(".sliderNav > span").click(function(){
+        	var spNum = $(this).index();
+        	var secList = $(".contentWrap > section");
+        	var spList = $(".sliderNav > span");
+        	var bgList = $(".backColorWrap > span");
+
+        	secList.removeClass("active");
+        	secList.removeClass("first");
+        	spList.removeClass();
+        	bgList.removeClass();
+
+        	secList.eq(spNum).addClass("active");
+        	spList.eq(spNum).addClass("active");
+        	bgList.eq(spNum).addClass("active");
+        });
+
+
 	</script>
 </body>
 </html>

@@ -8,13 +8,13 @@
 }
 ::-webkit-scrollbar-thumb{
 	background-color: #9c9792;
-    width: 0.5rem;
-    border-radius: 0.5rem;
+  width: 0.5rem;
+  border-radius: 0.5rem;
 }
 ::-webkit-scrollbar-track{
 	width: 0.9rem;
-    background-color: rgba(0,0,0,0.1);
-    border-radius: 0.9rem;
+  background-color: rgba(0,0,0,0.1);
+  border-radius: 0.9rem;
 }
 
 .blind {overflow: hidden; position: absolute; clip: rect(0 0 0 0); width: 1px; height: 1px; margin: -1px;}
@@ -23,7 +23,8 @@
 
 
 .fixedWrap{width: 100%; height: 100vh; position: fixed;}
-.anyLineWrap span{position: absolute;}
+.fixedWrap .anyLineWrap span{position: absolute; transition: 0.4s;  z-index: 999; }
+.fixedWrap .anyLineWrap.active span{background-color: #fff; transition: 0.4s;}
 .anyLineWrap span:nth-child(1){width:0px; height: 10px; background-color: #000; top: 0;left: 0; animation:line1 0.6s forwards linear;}
 .anyLineWrap span:nth-child(2){width:10px; height: 0px; background-color: #000; top: 0; right: 0; animation:line2 0.8s 0.6s forwards linear;}
 .anyLineWrap span:nth-child(3){width:0px; height: 10px; background-color: #000; bottom: 0;right: 0; animation:line3 0.6s 1.4s forwards linear;}
@@ -41,8 +42,10 @@
 @keyframes line4{
 	to{height: 100%;}
 }
-body{height: 2000px;}
+.logoWrap{width: 130px; height: 70px; cursor: pointer;}
+.logoWrap span{z-index: 999;}
 
+.logoWrap.active span{background-color: #fff; transition: 0.4s;}
 
 .logoS span{border-radius: 50px; position: absolute; background-color: #000; width: 6px; height: 6px; transform-origin: top; top: 20px; left: 45px;}
 
@@ -109,6 +112,7 @@ body{height: 2000px;}
     position: absolute;
     display: block; 
     background-color: #000;
+    border-radius: 5px;
     width: 50%; 
     height: 7px;   
     transition: 0.5s;
@@ -189,7 +193,6 @@ body{height: 2000px;}
     bottom: 1px;
     left: calc(50% - 7px);
 }
-
 /*=============menu end=============*/
 
 
@@ -205,9 +208,13 @@ body{height: 2000px;}
 	width: 100%;
 	height: 100%;
 	overflow: hidden;
+  visibility: hidden;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+#toggleNav.active{
+  visibility: visible;
 }
 #toggleNav span
 {
@@ -363,8 +370,8 @@ body{height: 2000px;}
 .nextWrap,
 .prevWrap { position: absolute;  bottom: -50px; font-size: 1.6rem; font-weight: bold; cursor: pointer;}
 
-.prevWrap {right: 50px; animation:prev 0.4s 1.4s forwards;}
-.nextWrap {left: 50px; animation:prev 0.4s 2s forwards;s}
+.nextWrap {right: 50px; animation:prev 0.4s 1.4s forwards;}
+.prevWrap {left: 50px; animation:prev 0.4s 2s forwards;}
 @keyframes prev{
 	to {bottom: 50px;}
 }
@@ -373,11 +380,11 @@ body{height: 2000px;}
 .nextBtn {position: relative;}
 .prevBtn {position: relative;}
 
-.nextBtn:after,
-.nextBtn:before { content: ""; display: block; position: absolute; width: 20px; height: 5px; left: -20px; top: 15px; background-color: #000; transform-origin: left; border-radius: 5px;
+.prevBtn:after,
+.prevBtn:before { content: ""; display: block; position: absolute; width: 20px; height: 5px; left: -20px; top: 15px; background-color: #000; transform-origin: left; border-radius: 5px;
 }
-.nextBtn:after {animation:nextAfter 0.4s 2.8s forwards;}
-.nextBtn:before {animation:nextBefore 0.4s 2.8s forwards;}
+.prevBtn:after {animation:prevAfter 0.4s 2.8s forwards;}
+.prevBtn:before {animation:nextBefore 0.4s 2.8s forwards;}
 
 @keyframes nextAfter{
 	to {transform: rotate(45deg); top: 14px;}
@@ -386,14 +393,45 @@ body{height: 2000px;}
 	to {transform: rotate(-45deg); top: 16px;}
 }
 
-.prevBtn:after,
-.prevBtn:before { content: ""; display: block; position: absolute; width: 20px; height: 5px; right: -20px; top: 15px; transform-origin: right; background-color: #000; border-radius: 5px;
+.nextBtn:after,
+.nextBtn:before { content: ""; display: block; position: absolute; width: 20px; height: 5px; right: -20px; top: 15px; transform-origin: right; background-color: #000; border-radius: 5px;
 }
-.prevBtn:after {animation:prevAfter 0.4s 2.8s forwards;}
-.prevBtn:before {animation:prevBefore 0.4s 2.8s forwards;}
+.nextBtn:after {animation:nextAfter 0.4s 2.8s forwards;}
+.nextBtn:before {animation:nextBefore 0.4s 2.8s forwards;}
 @keyframes prevAfter {
 	to{transform: rotate(45deg); top: 16px;}
 }
 @keyframes prevBefore {
 	to{transform: rotate(-45deg); top: 14px;}
+}
+
+.contentWrap{width: 100%; height: 100%; visibility: visible; opacity: 1;  position:relative; transition: 0.2s}
+.contentWrap.active{visibility: hidden;  opacity:0; }
+
+
+.contentWrap section{width: 100%; visibility: hidden; opacity: 0; position: absolute; top: 0; left: 0;  }
+.contentWrap section.active{visibility: visible;  opacity:1; }
+
+.backColorWrap span{width: 100%; height: 100%; position: absolute; top: 0; left: 0; opacity: 0; visibility: hidden; transition: 0.4s; z-index: -1;}
+.backColorWrap span.active{visibility: visible; opacity: 1;}
+
+.backColorWrap span:nth-child(1){background-color: #81ecec;}
+.backColorWrap span:nth-child(2){background-color: #ff7675;}
+.backColorWrap span:nth-child(3){background-color: #55efc4;}
+.backColorWrap span:nth-child(4){background-color: #a29bfe;}
+.backColorWrap span:nth-child(5){background-color: #fd79a8;}
+
+.contentTxtWrap{position: absolute; top: 100px; left:-300px; transition: 0.6s ease;}
+.contentTxtWrap h2{font-size: 3rem; position: relative;}
+.contentTxtWrap h2:before{content: ""; display: block; position: absolute; bottom: 0px; left: -200px; background-color: #000; width: 150%; height: 5px; transition: 0.6s 0.3s ease; border-radius: 5px;}
+section.active .contentTxtWrap h2:before{left:-50px;}
+section.active .contentTxtWrap{left: 50px;}
+
+.home.first .contentTxtWrap{animation:conTxt 0.6s 2.6s ease forwards; left: -200px;}
+.home.first .contentTxtWrap h2:before{animation:conTxtBf 0.6s 2.8s ease forwards; left: -200px;}
+@keyframes conTxt{
+  to{left: 50px;}
+}
+@keyframes conTxtBf{
+  to{left: -50px;}
 }
