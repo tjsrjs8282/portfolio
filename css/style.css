@@ -416,7 +416,7 @@ body.audio-on .soundBtnBox span:nth-child(5){ animation: soundBar5 1s infinite l
 .action.toggle .navWrap{opacity: 0;}
 .navWrap ul {width: 100%; height: 100%; position: relative;}
 .navWrap ul li { width: 150px; height: 150px; background-color: #000; border-radius: 50%; position: absolute; transition: 1.2s ease; z-index:1;}
-.navWrap ul li a{width: 100%; height: 100%; border-radius: 50%; overflow: hidden; display: block; font-size: 1.4rem; color: #fff; font-weight: bold; transition: 0.4s ease;}
+.navWrap ul li a{width: 100%; height: 100%; border-radius: 50%; overflow: hidden; display: block; font-size: 1.2rem; color: #fff; font-weight: bold; transition: 0.4s ease;}
 .navWrap ul li a p{display: inline-block; position: absolute; top: 50%; left: 50%; transform:translate(-50%, -50%);}
 .navWrap ul li:nth-child(1){top: 80px; left: 50%; transform: translateX(-50%);}
 .navWrap ul li:nth-child(2){top: 50%; right: 70px; transform: translateY(-50%);}
@@ -454,7 +454,7 @@ body.audio-on .soundBtnBox span:nth-child(5){ animation: soundBar5 1s infinite l
 /*------------------------home--------------------------*/
 
 /*--------------about------------*/
-.aboutNav{ position: absolute; left: 50%; top: -200px; transform: translate(-50%, 0); transition: 0.4s ease; z-index: 2;}
+.aboutNav{ position: absolute; left: 50%; top: -200px; transform: translate(-50%, 0); transition: 0.4s ease; z-index: 3;}
 .action.about .aboutNav{ top:30px;}
 .aboutNav ul li{float: left; border: 3px solid #000; width: 110px; text-align: center; font-size: 1.5rem; margin:2px 25px}
 .aboutNav ul li a{display: block; font-size: 1.3rem; font-weight: bold; transition: 0.4s ease;}
@@ -468,224 +468,42 @@ body.audio-on .soundBtnBox span:nth-child(5){ animation: soundBar5 1s infinite l
 .action.career .aboutNav ul li a.active,
 .action.career .aboutNav ul li:hover a,
 .action.skill .aboutNav ul li:hover a{color: #000; background-color: #fff;}
-
 .careerWrap,
-.aboutWrap{
-    background: #cf455c;
-    background-image: url(../img/header-shadow.png);
-    background-position: center bottom;
-    background-repeat: repeat-x;
-    overflow: hidden;
-    position: absolute;
-    top: -100%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    transition: 1s ease-in-out;
-    width: 900px;
-    z-index: 2;
-    box-shadow: 0 10px 10px rgba(0,0,0,.5);
-}
-
-.careerWrap{ background: #144884; width: 730px;}
-
+.aboutWrap{ background: #cf455c; background-image: url(../img/header-shadow.png); background-position: center bottom; background-repeat: repeat-x; overflow: hidden; position: absolute; top: -100%; left: 50%; transform: translate(-50%, -50%); transition: 1s ease-in-out; width: 900px; z-index: 2; box-shadow: 0 10px 10px rgba(0,0,0,.5);}
+.careerWrap{ background: #144884; width: 740px;}
 .action.about.career .careerWrap,
-.action.about .aboutWrap{
-	top: 50%; 
-}
-
+.action.about .aboutWrap{top: 45%; }
 .action.about .careerWrap,
 .action.about.skill .careerWrap,
 .action.about.career .aboutWrap,
-.action.about.skill .aboutWrap{
-	top: -100%;
-}
-.aboutBox{
-    float: left;
-    margin-top:10px;
-    width: 490px;
-    margin-left:10px;
-}
-
-.aboutBox .photo-inner{
-    float: left;
-    background: url(../img/photo-inner.png) no-repeat;
-    width: 180px;
-    height: 214px;
-    padding: 12px 0 0 19px;
-    margin-right: 5px;
-}
+.action.about.skill .aboutWrap{top: -100%;}
+.aboutBox{ float: left; margin-top:10px; width: 490px; margin-left:10px;}
+.aboutBox .photo-inner{ float: left; background: url(../img/photo-inner.png) no-repeat; width: 180px; height: 214px; padding: 12px 0 0 19px; margin-right: 5px;}
 .aboutBox .photo-inner img{width: 154px; height: 188px;}
-
-.aboutBox h1{
-    font-weight: 900;
-    color: white;
-    line-height: 34px;
-    margin-top: 15px;
-    margin-left: -20px;
-}
-
-.aboutBox h3{
-    margin-top: 5px;
-    font-size: 18px;
-    color: white;
-    line-height: 18px;
-    letter-spacing: 1px;
-}
-
-.aboutBox p{
-    font-size:14px;
-    margin-top: 15px;
-    color: white;
-    font-weight: 400;
-    line-height: 24px;
-}
-
-.personal-info{
-    float: left;
-    width: 300px;
-    min-height: 210px;
-    margin-left: 10px;
-    margin-top: 10px;
-    background: url(../img/personal-info-sep.png) no-repeat left;
-    padding: 20px 0 19px 20px;
-}
-
+.aboutBox h1{ font-weight: 900; color: white; line-height: 34px; margin-top: 15px; margin-left: -20px;}
+.aboutBox h3{ margin-top: 5px; font-size: 18px; color: white; line-height: 18px; letter-spacing: 1px;}
+.aboutBox p{ font-size:14px; font-family: 'Poppins', sans-serif; margin-top: 15px; color: white; font-weight: 400; line-height: 24px;}
+.personal-info{ float: left; width: 300px; min-height: 210px; margin-left: 20px; margin-top: 10px; background: url(../img/personal-info-sep.png) no-repeat left; padding: 20px 0 19px 20px;}
 .careerWrap .personal-info{width: 350px; margin-top: 0;}
 .personal-info.mb15{margin-bottom: 15px;}
-
-.personal-info li{
-    line-height: 15px;
-    font-size: 14px;
-    margin-bottom: 10px;
-    list-style: none;
-    overflow: hidden;
-    float: left;
-    width: 320px;
-}
-.personal-info.pmt0{
-	padding: 0px 19px 10px;
-	min-height: 140px;
-}
-.personal-info li label{
-    color: white;
-    float: left;
-    padding: 4px 7px;
-    font-weight: 550;
-    border-radius: 3px;
-    text-transform: uppercase;
-}
-
-.careerWrap .personal-info li label{
-	color: #fff;
-}
-
-.personal-info li span{
-    float: right;
-    width: 220px;
-    padding-top: 4px;
-    font-weight: 400;
-    color:#eee;
-}
-
-.careerWrap .personal-info li span{
-	color: #eee;
-}
-
-
-
-
-.aboutSkills
-{
-	position: absolute;
-	top: 50%;
-	left: -100%;
-	transform: translate(-50%,-50%);
-	transition: 1s ease-in-out;
-	width: 85%;
-	max-width: 700px;
-	z-index: 3;
-}
-.action.skill .aboutSkills{
-	left: 50%;
-}
-
-.aboutSkills:hover .skills
-{
-	opacity: 0.2;
-}
-.aboutSkills h2
-{
-	color: #fff;
-}
-.aboutSkills .skills
-{
-	position: relative;
-	display: flex;
-	margin: 20px 0;
-	padding: 20px 10px 16px;
-	background: linear-gradient(#616161 0%,#333 10%,#222);
-	border-radius: 8px;
-	overflow: hidden;
-    border: 2px solid #000;
-    transition: 0.5s;
-}
-
-.aboutSkills .skills:hover
-{
-	opacity: 1;
-	transform: scale(1.05);
-	box-shadow: 0 10px 10px rgba(0,0,0,.5);
-}
-.aboutSkills .skills:before
-{
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 50%;
-	background: rgba(255,255,255,.1);
-	z-index: 10;
-}
-.aboutSkills .skills .name
-{
-	position: relative;
-	width: 110px;
-	text-align: right;
-	color: #fff;
-	margin-top: -2px;
-	text-transform: uppercase;
-}
-.aboutSkills .skills .value
-{
-	position: relative;
-	width: 40px;
-	text-align: left;
-	color: #fff;
-}
-.aboutSkills .skills .percent
-{
-	position: relative;
-	width: calc(100% - 150px) ;
-	height: 20px;
-	margin: 0 10px;
-	border-radius: 10px;
-	background: #151515;
-	box-shadow: inset 0 0 10px #000;
-	overflow: hidden;
-}
-.action.skill .aboutSkills .skills .percent .progress
-{
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	box-shadow: inset 0 0 2px #000;
-	border-radius: 10px;
-	animation: animate 3.5s ease-in-out forwards;
-}
-@keyframes animate 
+.personal-info li{ line-height: 15px; font-size: 14px; margin-bottom: 10px; list-style: none; overflow: hidden; float: left; width: 320px;}
+.personal-info.pmt0{ padding: 0px 19px 10px; min-height: 140px;}
+.personal-info li label{ color: white; float: left; padding: 4px 7px; font-weight: 500; border-radius: 3px; text-transform: uppercase; font-family: 'Poppins', sans-serif;}
+.careerWrap .personal-info li label{color: #fff;}
+.personal-info li span{ float: right; width: 220px; padding-top: 4px; font-weight: 400; color:#eee;}
+.careerWrap .personal-info li span{color: #eee;}
+.aboutSkills{ position: absolute; top: 45%; left: -100%; transform: translate(-50%,-50%); transition: 1s ease-in-out; width: 85%; max-width: 700px; z-index: 3;}
+.action.skill .aboutSkills{left: 50%;}
+.aboutSkills:hover .skills{opacity: 0.2;}
+.aboutSkills h2{color: #fff;}
+.aboutSkills .skills{ position: relative; display: flex; margin: 20px 0; padding: 20px 10px 16px; background: linear-gradient(#616161 0%,#333 10%,#222); border-radius: 8px; overflow: hidden; border: 2px solid #000; transition: 0.5s;}
+.aboutSkills .skills:hover{ opacity: 1; transform: scale(1.05); box-shadow: 0 10px 10px rgba(0,0,0,.5);}
+.aboutSkills .skills:before{ content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 50%; background: rgba(255,255,255,.1); z-index: 10;}
+.aboutSkills .skills .name{ position: relative; width: 110px; font-family: 'Poppins', sans-serif; text-align: right; color: #fff; margin-top: -2px; text-transform: uppercase;}
+.aboutSkills .skills .value{ position: relative; width: 40px;  text-align: left; color: #fff;}
+.aboutSkills .skills .percent{ position: relative; width: calc(100% - 150px) ; height: 20px; margin: 0 10px; border-radius: 10px; background: #151515; box-shadow: inset 0 0 10px #000; overflow: hidden;}
+.action.skill .aboutSkills .skills .percent .progress{ position: absolute; top: 0; left: 0; width: 100%; height: 100%; box-shadow: inset 0 0 2px #000; border-radius: 10px; animation: skillBar 3.5s ease-in-out forwards;}
+@keyframes skillBar 
 {
 	from 
 	{
@@ -716,7 +534,7 @@ body.audio-on .soundBtnBox span:nth-child(5){ animation: soundBar5 1s infinite l
 
 
 /*--------------work------------*/
-.workList ul li{position: absolute; width: 0px; top: 50%; right: -400px; opacity: 0; visibility: hidden; transform: translate(0, -50%) scale(0); transition: 0.6s ease-out; z-index: 2;}
+.workList ul li{position: absolute; width: 0px; top: 45%; right: -400px; opacity: 0; visibility: hidden; transform: translate(0, -50%) scale(0); transition: 0.6s ease-out; z-index: 2;}
 .action.work .workList ul li.active{visibility: visible; opacity: 1; cursor: pointer; right: 100px; width: 450px; transform: translate(0, -50%) scale(1);}
 .workList ul li a{display: block;}
 .workList ul li img{width: 100%;}
@@ -740,18 +558,29 @@ body.audio-on .soundBtnBox span:nth-child(5){ animation: soundBar5 1s infinite l
 .workTxtBox{width: 100%; position: relative;}
 
 .workToptxt h2{position: relative; font-size: 2rem;}
-.workToptxt h2:after{content: ''; display: none; position: absolute; width: 0px; bottom: 0; height: 3px; background-color: #000;}
-.workTxtBox.active .workToptxt h2:after{display: block; animation:workTopLine 1.2s 0.4s ease-in forwards;}
+.workToptxt h2:after{content: ''; display: none; position: absolute; width: 0px; bottom: -15px; left: -20px;  height: 70px; z-index: -1}
+.workTxtBox.workList1 h2:after{background-color: #aaa;}
+.workTxtBox.workList2 h2:after{background-color: #e3c72b;}
+.workTxtBox.workList3 h2:after{background-color: #ee8100;}
+.workTxtBox.workList4 h2:after{background-color:rgba(0,0,0,0.6);}
+.workTxtBox.active .workToptxt h2:after{display: block; animation:workTopLine 1s 0.6s ease-in forwards;}
 @keyframes workTopLine{
-	to{width: 100%;}
+	to{width: 150%;}
 }
 
 .workMidTxt p{position: relative;  font-size: 0.9rem; color: #222; height: 100px;}
-.workMidTxt p:after{content: ''; display: none; position: absolute; width: 0px; height: 280px; bottom: -85px; left: -20px; background-color: rgba(0,0,0,0.1); z-index: -1;}
+.workMidTxt p:after{content: ''; display: none; position: absolute; width: 0px; height: 280px; bottom: -85px;   left: -20px; z-index: -1;}
+.workTxtBox.workList1 p:after{background-color: rgba(0,0,0,0.2);}
+.workTxtBox.workList2 p:after{background-color:rgba(227,199,43,0.2);}
+.workTxtBox.workList3 p:after{background-color:rgba(238,129,0,0.2);}
+.workTxtBox.workList4 p:after{background-color:rgba(0,0,0,0.5);}
+
 .workTxtBox.active .workMidTxt p:after{display: block; animation:workMidLine 0.8s 0.6s ease-in forwards;}
 @keyframes workMidLine{
-	to{width: 500%;}
+	to{width: 400%;}
 }
+.workTxtBox.workList4 h2{color: #fff}
+.workTxtBox.workList4 p{color: #eee;}
 
 .workMoreBtn a{color: #fff; display: block; border-radius:50px; background-color: #000; transition: 0.4s ease;}
 .workMoreBtn a:hover{ background: #585858;}
@@ -767,30 +596,41 @@ body.audio-on .soundBtnBox span:nth-child(5){ animation: soundBar5 1s infinite l
 
 .workBlack{position: fixed; cursor: pointer; width: 100%; height: 100%; background-color:rgba(0,0,0,0.8); top: 0; left: 0;  opacity: 0; visibility: hidden; transition:0.4s ease;}
 .workBlack.active{visibility: visible; opacity: 1; z-index: 1111;}
-.workBox{color: #fff; border:3px solid #fff; text-align: center; width: 70%;  max-width: 650px; padding: 30px 20px 30px 20px; position: absolute; left: 50%; top: 30%; opacity: 0; transform: translate(-50%, -50%); visibility: hidden; background-color: #000; z-index: 1111; transition:0.4s ease;}
+.workBox{color: #fff; border:2px solid #eee; text-align: center; width: 70%;  max-width: 620px; padding: 30px 20px 30px 20px; position: absolute; left: 50%; top: 30%; opacity: 0; transform: translate(-50%, -50%); visibility: hidden; background-color: #111; z-index: 1111; transition:0.4s ease;}
 .workBox.active{visibility: visible; opacity:1; top: 50%; z-index: 1112;}
+
 .workBox h2{font-size: 2rem;}
 .workBox h5{color: #bbb; font-size: 0.8rem;}
 .workBox p:nth-child(3){margin-top: 20px;}
 .workBox p:nth-child(4){margin-top: 5px;}
 .workBox p:nth-child(5){margin-top: 5px;}
-.workBox p:nth-child(6){margin-top: 20px; margin-bottom: 20px;  font-size: 0.9rem; color: #ddd;}
-.workBox a:nth-child(7){color: #fff; border-bottom: 1px solid #fff;}
-.workBox a:nth-child(7):hover{color: skyblue; border-color: skyblue;}
+.galleryWrap p,
+.workBox p:nth-child(6){margin-top: 20px; margin-bottom: 20px;  font-size: 0.9rem; color: #ccc;}
+.galleryWrap a,
+.workBox a:nth-child(7){color: skyblue; border-bottom: 1px solid skyblue;}
+.psai a:hover,
+.photograbBox a:hover,
+.workBox a:nth-child(7):hover{color: #2b5df2; border-color: #2b5df2;}
 .workBox a:nth-child(8){display: block; padding: 2px; width: 105px; margin:0 auto; border:2px solid #fff; font-size: 1.5rem; color: #fff; margin-top: 30px; transition:0.3s ease;}
 .workBox a:nth-child(8):hover{background-color: #fff; color: #000;}
 .workBox span{display: block;}
 /*--------------gallery------------*/
 .pageWrap{transition: 1s 0.3s ease;}
 .action.home .pageWrap{background:none;}
-
+.action.gallery .galleryNav span{display: block;}
 .galleryNav{ position: absolute; left: 50%; bottom: -500px; transform: translate(-50%, 0); transition: 0.6s 0.2s ease; z-index: 2;}
 .action.gallery .galleryNav{ bottom:55px; width: 100%;}
 .galleryNav ul{width: 100%; display: flex; justify-content: space-around;}
-.galleryNav ul li{border: 3px solid #fff; width: 150px; text-align: center; font-size: 1.5rem; margin:0 20px}
-.galleryNav ul li a{display: block; font-size: 1.5rem; font-weight: bold; transition: 0.4s ease; background-color: #000; color: #fff;}
+.galleryNav ul li{border:2px solid #fff; width: 135px; text-align: center; font-size: 1.5rem; margin:0 20px}
+.galleryNav ul li a{display: block; font-size: 1.2rem; font-weight: bold; transition: 0.4s ease; background-color: #000; color: #fff;}
 .action.gallery .galleryNav ul li a.active,
 .galleryNav ul li:hover a{color: #000; background-color: #fff;}
+
+.psaiBox,
+.photograbBox{width: 90%; max-width:600px; visibility: hidden; opacity: 0; padding: 20px; z-index: 3; background-color: rgba(0,0,0,0.7); text-align: center; position: absolute; bottom: -300px; left: 50%; transform: translate(-50%, 50%); transition: 0.4s ease-in-out;}
+.action.psai .psaiBox,
+.action.photo .photograbBox{visibility: visible; opacity:1; bottom: 55%;}
+.galleryWrap h2{color: #fff; font-size: 1.8rem; }
 /*--------------gallery------------*/
 
 
@@ -829,9 +669,7 @@ input[type="submit"]{ border: none; padding: 10px 40px; cursor: pointer; outline
 }
 
 @media screen and (min-width: 1260px){
-	.action.work .workList ul li.active {
-    right: 220px;
-    width: 550px;}
+	.action.work .workList ul li.active { right: 210px; width: 550px;}
     .navWrap ul li{width: 170px; height: 170px;}
 	.navWrap ul li:nth-child(2){right: 200px !important;}
 	.navWrap ul li:nth-child(3){left: 200px !important;}
@@ -839,14 +677,11 @@ input[type="submit"]{ border: none; padding: 10px 40px; cursor: pointer; outline
 }
 
 @media screen and (min-width: 1600px){
-	.action.work .workList ul li.active {
-    right: 280px;
-    width: 40%;
-	}
+	.action.work .workList ul li.active { right: 280px; width: 40%;}
 	.navWrap ul li{width: 200px; height: 200px;}
 	.navWrap ul li:nth-child(2){right: 300px !important;}
 	.navWrap ul li:nth-child(3){left: 300px !important;}
-	.action.work .navWrap ul li:nth-child(2){width: 1300px; height: 1300px;}
+	.action.work .navWrap ul li:nth-child(2){width: 1200px; height: 1200px;}
 	.workMidTxt{width: 700px;}
 }
 @media screen and (min-width: 2200px){
@@ -864,7 +699,7 @@ input[type="submit"]{ border: none; padding: 10px 40px; cursor: pointer; outline
 	.aboutBox h3{margin: 12px 0;}
 	.aboutWrap{width: 560px;}
 	.aboutWrap .aboutBox{float: none; width: auto; margin-top: 10px; margin-left: 0;}
-	.aboutWrap .personal-info{float: none; margin-top: 0; padding: 0; min-height: 0;}
+	.aboutWrap .personal-info{float: none; margin-top: 0; min-height: 0;}
 	.aboutWrap .aboutBox .photo-inner{margin-right: 5px;}
 	.toggleNav ul li a:hover:before{width: 600px !important; height: 600px !important;}
 	.toggleNav ul li a:before{font-size:6.2rem !important;}
@@ -906,7 +741,7 @@ input[type="submit"]{ border: none; padding: 10px 40px; cursor: pointer; outline
 	.action.work .sliderBtnWrap{bottom: 60px;}
 	.action.gallery.psai .pageWrap{background: url(../img/gallery3.png); background-size: cover; background-position: center;}
 	.action.gallery.photo .pageWrap{background: url(../img/gallery2.jpg);  background-size: cover; background-position: center;}
-		.workBox{width: 95%; padding: 20px;}
+	.workBox{width: 95%; padding: 20px;}
 }
 
 
@@ -946,7 +781,6 @@ input[type="submit"]{ border: none; padding: 10px 40px; cursor: pointer; outline
 	.aboutBox h1{padding: 0; text-align: center;}
 	.aboutBox h3{text-align: center;}
 	.action.work .sliderBtnWrap{bottom: 80px;}
-
 }
 
 @media screen and (max-height:620px){
