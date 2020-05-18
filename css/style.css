@@ -1,437 +1,956 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
-*
-
-::-webkit-scrollbar{
-	background-color: transparent;
-    width: 0.9rem;
-    height: 0.9rem;
-}
-::-webkit-scrollbar-thumb{
-	background-color: #9c9792;
-  width: 0.5rem;
-  border-radius: 0.5rem;
-}
-::-webkit-scrollbar-track{
-	width: 0.9rem;
-  background-color: rgba(0,0,0,0.1);
-  border-radius: 0.9rem;
-}
-
+body{font-family: 'Noto Sans', sans-serif;}
+*{box-sizing: border-box;}
+#fullpage{ position: relative; width: 100%; height: 100vh;}
+section{ width: 100%; height: 100%; position: relative; overflow: hidden; scroll-snap-align:center; transition: 1s;}
 .blind {overflow: hidden; position: absolute; clip: rect(0 0 0 0); width: 1px; height: 1px; margin: -1px;}
-
+.mBlind{display: block;}
 /*-----------------------------base setting end--*/
+.w90{width: 90% !important;}
+.w100{width: 100% !important;}
 
+.action.contact .backPrx,
+.action.contact .backPrx2,
+.action.contact .backPrx3,
+.action.contact .backPrx4,
+.action.gallery .backPrx,
+.action.gallery .backPrx2,
+.action.gallery .backPrx3,
+.action.gallery .backPrx4,
+.action.work .backPrx,
+.action.work .backPrx2,
+.action.start.home .backPrx{display: block; width: 100%; height:100%; position: absolute; top: 0; left: 0; background: url(../img/home_back.svg); z-index: -1; background-repeat: no-repeat; animation:prxForward 1s 2.8s forwards; transform: scale(0); background-size: cover;}
+.action.start.home .backPrx2{background: url(../img/home_back2.svg); animation-delay: 3s;  background-size: cover;}
+.action.start.home .backPrx3{background: url(../img/home_back3.svg); animation-delay: 3.2s; background-size: cover;}
+.action.start.home .backPrx4{background: url(../img/home_back4.svg); animation-delay: 3.4s;  background-size: cover;}
 
-.fixedWrap{width: 100%; height: 100vh; position: fixed;}
-.fixedWrap .anyLineWrap span{position: absolute; transition: 0.4s;  z-index: 999; }
-.fixedWrap .anyLineWrap.active span{background-color: #fff; transition: 0.4s;}
+.action.home .backPrx,
+.action.home .backPrx2,
+.action.home .backPrx3,
+.action.home .backPrx4{display: block; width: 100%; height:100%; position: absolute; top: 0; left: 0; background: url(../img/home_back.svg); z-index: -1; background-repeat: no-repeat; transform: scale(0);background-size: cover; }
+.action.home .backPrx{animation:prxForward 1s 0.2s forwards; background: url(../img/home_back.svg); background-size: cover;}
+.action.home .backPrx2{animation:prxForward 1s 0.4s forwards; background: url(../img/home_back2.svg);  background-size: cover;}
+.action.home .backPrx3{animation:prxForward 1s 0.6s forwards; background: url(../img/home_back3.svg); background-size: cover;}
+.action.home .backPrx4{animation:prxForward 1s 0.8s forwards; background: url(../img/home_back4.svg);  background-size: cover;}
+
+.action.work .backPrx{background: url(../img/work_back1.svg); animation:prxWork 1.5s 0.2s forwards; background-size: cover;}
+.action.work .backPrx2{background: url(../img/work_back2.svg); animation:prxWork 1.5s 0.4s forwards; background-size: cover;}
+.action.contact .backPrx{animation:prxContact 1.5s 0.2s forwards; background: url(../img/work_back2.svg);  background-size: cover;}
+.action.contact .backPrx2{animation:prxContact 1.5s 0.3s forwards; background: url(../img/work_back3.svg); background-size: cover;}
+.action.contact .backPrx3{animation:prxContact 1.5s 0.4s forwards; background: url(../img/home_back4.svg); background-size: cover;}
+.action.contact .backPrx4{animation:prxContact 1.5s 0.5s forwards; background: url(../img/home_back2.svg); background-size: cover;}
+
+.action.gallery .backPrx{animation:prxGallery 4s linear infinite; background: url(../img/home_back.svg); }
+.action.gallery .backPrx2{animation:prxGallery 4s 1.8s linear infinite; background: url(../img/home_back2.svg);  background-size: cover;}
+.action.gallery .backPrx3{animation:prxGallery 4s 4.5s linear infinite; background: url(../img/work_back2.svg);  background-size: cover;}
+.action.gallery .backPrx4{animation:prxGallery 4s 7.5s linear infinite; background: url(../img/home_back4.svg);  background-size: cover;}
+
+.action.gallery.photo .backPrx,
+.action.gallery.photo .backPrx2,
+.action.gallery.photo .backPrx3,
+.action.gallery.photo .backPrx4,
+.action.gallery.psai .backPrx,
+.action.gallery.psai .backPrx2,
+.action.gallery.psai .backPrx3,
+.action.gallery.psai .backPrx4{display: none;}
+
+.action.gallery.photo .pageWrap{animation:photoAni 0.8s ease forwards; transform:scale(1); opacity: 0; background: url(../img/gallery8.jpg);  background-size: cover; background-position: center; transition: 0.5s ease;}
+.action.gallery.psai .pageWrap{animation:photoAni 0.8s ease forwards; transform:scale(1); opacity: 0;  background: url(../img/gallery4.png);  background-size: cover; background-position: center; transition: 0.5s ease;}
+
+@keyframes photoAni{
+	to{opacity: 1;}
+}
+@keyframes prxForward{
+	to{transform: scale(1);}
+}
+@keyframes prxWork{
+	20%{transform: scale(1.2);}
+	40%{transform: scale(0.5)}
+	50%{transform: scale(1) }
+	60%{transform: scale(0)}
+	to{transform: scale(1)}
+}
+@keyframes prxContact{
+	20%{transform: scale(1.2);}
+	40%{transform: scale(0) rotate(360deg);}
+	to{transform: scale(1) rotate(360deg);}
+}
+@keyframes prxGallery{
+	to{transform: scale(1.5); opacity: 0;}
+}
+/*-----------------------------line animation start--*/
+.pageWrap{width: 100%; height: 100vh; width: 100%; height: 100%; position: relative; }
+.anyLineWrap span{position: absolute; transition: 0.4s;  z-index: 999; transition: 0.4s;}
+.action.snsPlus .anyLineWrap span,
+.action.toggle .anyLineWrap span{background-color: #fff; transition: 0.4s;}
 .anyLineWrap span:nth-child(1){width:0px; height: 10px; background-color: #000; top: 0;left: 0; animation:line1 0.6s forwards linear;}
 .anyLineWrap span:nth-child(2){width:10px; height: 0px; background-color: #000; top: 0; right: 0; animation:line2 0.8s 0.6s forwards linear;}
 .anyLineWrap span:nth-child(3){width:0px; height: 10px; background-color: #000; bottom: 0;right: 0; animation:line3 0.6s 1.4s forwards linear;}
 .anyLineWrap span:nth-child(4){width:10px; height: 0px; background-color: #000; bottom: 0;left: 0; animation:line4 0.8s 2s forwards linear;}
 
-@keyframes line1{
-	to{width: 100%;}
-}
-@keyframes line2{
-	to{height: 100%;}
-}
-@keyframes line3{
-	to{width: 100%;}
-}
-@keyframes line4{
-	to{height: 100%;}
-}
-.logoWrap{width: 130px; height: 70px; cursor: pointer;}
-.logoWrap span{z-index: 999;}
+@keyframes line1{ to{width: 100%;} }
+@keyframes line2{ to{height: 100%;} }
+@keyframes line3{ to{width: 100%;} }
+@keyframes line4{ to{height: 100%;} }
+/*-----------------------------line animation end--*/
 
-.logoWrap.active span{background-color: #fff; transition: 0.4s;}
+/*--------------------------------home---------------------------*/
+.logoWrap{width:130px; height: 65px; position: absolute; top: 0; left: 0; z-index: 999;}
+.logoWrap a{display: block; width: 100%; height: 100%;}
+.logoWrap span { transition: 0.4s;}
 
-.logoS span{border-radius: 50px; position: absolute; background-color: #000; width: 6px; height: 6px; transform-origin: top; top: 20px; left: 45px;}
+.action.about .logoWrap span{background-color: #000;}
+.action.snsPlus .logoWrap span,
+.action.skill .logoWrap span,
+.action.career .logoWrap span,
+.action.toggle .logoWrap span{background-color: #fff;}
 
+.logoS span{border-radius: 50px; position: absolute; background-color: #000; width: 6px; height: 6px; transform-origin: top; top: 20px; left: 43px;}
 .logoS span:nth-child(1){animation:logoS1 2s forwards;}
 .logoS span:nth-child(2){animation:logoS2 2s forwards;}
 
 @keyframes logoS1{
-	50%{height: 30px;transform: rotate(0deg);}
-	to{transform: rotate(-35deg); height: 30px;}
+	50%{height: 26px;transform: rotate(0deg);}
+	to{transform: rotate(-35deg); height: 26px;}
 }
 @keyframes logoS2{
-	50%{height: 30px;transform: rotate(0deg); left: 45px;}
-	to{transform: rotate(35deg); height: 30px; left: 48px;}
+	50%{height: 26px;transform: rotate(0deg); left: 43px;}
+	to{transform: rotate(35deg); height: 26px; left: 46px;}
 }
 
-.logoG span{border-radius: 50px; position: absolute; background-color: #000; width: 6px; height: 6px; transform-origin: right; top: 20px; left: 70px;}
+.logoG span{border-radius: 50px; position: absolute; background-color: #000; width: 6px; height: 6px; transform-origin: right; top: 20px; left: 68px;}
 .logoG span:nth-child(1){animation:logoG1 2s forwards;}
 .logoG span:nth-child(2){animation:logoG2 2s forwards;}
 
 @keyframes logoG1{
-	50%{width:25px;}
-	to{width:25px;}
+	50%{width:21px;}
+	to{width:21px;}
 }
 @keyframes logoG2{
-	50%{width:25px;transform: rotate(0deg); top: 20px; left: 70px;}
-	to{transform: rotate(-90deg);width:25px; top: 17px; left: 67px;}
+	50%{width:21px;transform: rotate(0deg); top: 20px; left: 70px;}
+	to{transform: rotate(-90deg); width:21px; top: 17px; left: 67px;}
 }
 
 .logoEon span{border-radius: 50px; position: absolute; background-color: #000;}
-.logoEon span:nth-child(1){animation:logoE1 1s forwards; width: 0px; height: 6px; top: 30px; left: 100px;}
-.logoEon span:nth-child(2){animation:logoE2 1s 1s forwards; width: 6px; height: 0; top: 30px; left: 110px;}
-.logoEon span:nth-child(3){animation:logoE3 1s forwards; width: 6px; height: 0px; top: 40px; left: 20px;}
-.logoEon span:nth-child(4){animation:logoE4 1s 1s forwards; width: 0px; height: 6px; top: 55px; left: 20px;}
+.logoEon span:nth-child(1){animation:logoE1 1s forwards; width: 0px; height: 6px; top: 28px; left: 94px;}
+.logoEon span:nth-child(2){animation:logoE2 1s 1s forwards; width: 6px; height: 0; top: 28px; left: 103px;}
+.logoEon span:nth-child(3){animation:logoE3 1s forwards; width: 6px; height: 0px; top: 40px; left: 22px;}
+.logoEon span:nth-child(4){animation:logoE4 1s 1s forwards; width: 0px; height: 6px; top: 51px; left: 22px;}
 
 @keyframes logoE1{
-	to{width:15px;}
+	to{width:12px;}
 }
 
 @keyframes logoE2{
-	to{height: 30px;}
+	to{height: 29px;}
 }
 
 @keyframes logoE3{
-	to{height: 20px;}
+	to{height: 16px;}
 }
 @keyframes logoE4{
-	to{width: 95px;}
+	to{width: 86px;}
 }
 
 /*===============menu start==============*/
- .toggleMenu{
-    position: absolute;
-    top:20px;
-    right: -50px;    
-    width: 40px;    
-    height: 40px;   
-    z-index: 9999;
-    transition: 0.5s;
-    cursor: pointer;
-    animation:hamberger 0.4s 0.6s forwards;
-}
-
-.toggleMenu span{
-    position: absolute;
-    display: block; 
-    background-color: #000;
-    border-radius: 5px;
-    width: 50%; 
-    height: 7px;   
-    transition: 0.5s;
-}
-
-.toggleMenu span:nth-child(even){
-    left: 50%;
-}
-
+.toggleMenu {position: absolute; top:20px; right: -50px; width: 40px; height: 40px; z-index: 9999; transition: 0.5s; cursor: pointer; animation:hamberger 0.4s 0.6s forwards;}
+.toggleMenu span {position: absolute; display: block;  background-color: #000; border-radius: 5px; width: 50%;  height: 7px;    transition: 0.5s;}
+.toggleMenu span:nth-child(even) {left: 50%;}
 .toggleMenu span:nth-child(1),
-.toggleMenu span:nth-child(2){
-    top: 0; 
-}
-
-@keyframes hamberger{
-	to{
-		right: 20px;
-	}
-}
-
+.toggleMenu span:nth-child(2) {top: 0;}
+@keyframes hamberger { to{right: 20px;} }
 .toggleMenu span:nth-child(3),
-.toggleMenu span:nth-child(4){
-    top: 15px;
-}
-
+.toggleMenu span:nth-child(4) {top: 15px;}
 .toggleMenu span:nth-child(5),
-.toggleMenu span:nth-child(6){
-    top: 30px;
-}
+.toggleMenu span:nth-child(6) {top: 30px;}
+.toggleMenu:hover span:nth-child(1){transform: rotate(10deg); top: 1px;left: 1px;}
+.toggleMenu:hover span:nth-child(2){transform: rotate(-10deg); top: 1px;left: calc(50% - 1px);}
+.toggleMenu:hover span:nth-child(3){transform: translateX(-4px);}
+.toggleMenu:hover span:nth-child(4){transform: translateX(4px);}
+.toggleMenu:hover span:nth-child(5){transform: rotate(-10deg); bottom: 1px;left: 1px;}
+.toggleMenu:hover span:nth-child(6){transform: rotate(10deg); bottom: 1px;left: calc(50% - 1px);}
+.action.about .toggleMenu span{background-color: #000;}
+.action.work .toggleMenu span,
+.action.snsPlus .toggleMenu span,
+.action.skill .toggleMenu span,
+.action.career .toggleMenu span,
+.action.toggle .toggleMenu span{background-color: #fff;}
+.action.toggle .toggleMenu span:nth-child(3) {transform: translateX(-500px);opacity: 0;}
+.action.toggle .toggleMenu span:nth-child(4) {transform: translateX(100px);opacity: 0;}
+.toggleMenu span:nth-child(1) {transform-origin: top left;}
+.toggleMenu span:nth-child(2) {transform-origin: top right;}
 
-.toggleMenu.active span{background-color: #fff;}
-.toggleMenu.active span:nth-child(3){
-    transform: translateX(-500px);
-    opacity: 0;
-}
-
-.toggleMenu.active span:nth-child(4){
-    transform: translateX(100px);
-    opacity: 0;
-}
-
-.toggleMenu span:nth-child(1){
-    transform-origin: top left;
-}
-
-.toggleMenu span:nth-child(2){
-    transform-origin: top right;
-}
-
-.toggleMenu.active span:nth-child(1){
-    transform: rotate(45deg);
-    top: 1px;
-    left: 7px;
-}
-
-.toggleMenu.active span:nth-child(2){
-    transform: rotate(-45deg);
-    top: 1px;
-    left: calc(50% - 7px);
-}
-
-.toggleMenu span:nth-child(5){
-    transform-origin: bottom left;
-}
-
-.toggleMenu span:nth-child(6){
-    transform-origin: bottom right;
-}
-
-.toggleMenu.active span:nth-child(5){
-    transform: rotate(-45deg);
-    bottom: 1px;
-    left: 7px;
-}
-
-.toggleMenu.active span:nth-child(6){
-    transform: rotate(45deg);
-    bottom: 1px;
-    left: calc(50% - 7px);
-}
+.action.toggle .toggleMenu span:nth-child(1) {transform: rotate(45deg);top: 1px;left: 7px;}
+.action.toggle .toggleMenu span:nth-child(2) {transform: rotate(-45deg);top: 1px;left: calc(50% - 7px);}
+.toggleMenu span:nth-child(5) {transform-origin: bottom left;}
+.toggleMenu span:nth-child(6) {transform-origin: bottom right;}
+.action.toggle .toggleMenu span:nth-child(5) {transform: rotate(-45deg);bottom: 1px;left: 7px;}
+.action.toggle .toggleMenu span:nth-child(6) {transform: rotate(45deg);bottom: 1px;left: calc(50% - 7px);}
 /*=============menu end=============*/
 
-
-
-
-
 /*=============nav start=============*/
-#toggleNav
+.toggleNav {position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; visibility: hidden; display: flex; justify-content: center; align-items: center;}
+.action.toggle .toggleNav {visibility: visible;}
+.toggleNav span {position: absolute; top: 0; left: 0; width: 200%; height: 100%; display: block; transform-origin: bottom left; transition: 0.5s ease-in-out; transform: rotate(-90deg);}
+.toggleNav span:nth-child(1) { background: #aaa;z-index: 4; transform: rotate(-90deg); transition-delay: 0.2s;}
+.toggleNav span:nth-child(2) { background: #585858;z-index: 5; transform: rotate(-90deg); transition-delay: 0.1s;}
+.toggleNav span:nth-child(3) { background: #111;  z-index: 6; transform: rotate(-90deg); transition-delay: 0s;}
+.action.toggle .toggleNav span:nth-child(1) {transition-delay: 0s;}
+.action.toggle .toggleNav span:nth-child(2) {transition-delay: 0.1s;}
+.action.toggle .toggleNav span:nth-child(3) {transition-delay: 0.2s;}
+.action.toggle .toggleNav span { transform: rotate(0deg);}
+.toggleNav ul { position: absolute; z-index: 100; transition: 0.5s; text-align: center; visibility: hidden; opacity: 0; transition-delay: 0s;}
+.action.toggle .toggleNav ul { visibility: visible; opacity: 1; transition-delay: 0.7s;} 
+.toggleNav ul li a { color: #fff; font-size: 3em; padding: 5px 20px; display: inline-flex; font-weight: 700; transition: 0.5s; font-family: 'Poppins', sans-serif;}
+.toggleNav ul:hover li a { color: #0002;}
+.toggleNav ul li:hover a { color: #000; background: rgba(255,255,255,1);}
+.toggleNav ul li a:before { content: ""; position: absolute; top: 50%; left: 40%; transform: translate(-50%,-50%); display: flex; justify-content: center; align-items: center; font-size: 4.2em; color: rgba(0,0,0,.1); border-radius: 50%; z-index: -1; opacity: 0; font-weight: 900; text-transform: uppercase; letter-spacing: 500px; transition: letter-spacing 0.5s,left 0.5s;}
+.toggleNav ul li a:hover:before { content: attr(data-text); opacity: 1; left: 50%; letter-spacing: 10px; width: 1200px; height: 1200px;}
+.toggleNav ul li:nth-child(6n+1) a:before { background: #81ecec;}
+.toggleNav ul li:nth-child(6n+2) a:before { background: #ff7675;}
+.toggleNav ul li:nth-child(6n+3) a:before { background: #55efc4;}
+.toggleNav ul li:nth-child(6n+4) a:before { background: #a29bfe;}
+.toggleNav ul li:nth-child(6n+5) a:before { background: #fd79a8;}
+/*=============nav end=============*/
+
+/*--------------sns plus------------*/
+.snsBtnWrap {position: absolute; bottom: 20px; right: -100px; width: 45px; height: 45px; border-radius: 50%; background-color: #fff; border: 3px solid #000; cursor: pointer; z-index: 999;}
+.action.snsPlus .snsBtnWrap{animation:snsRotate 2s forwards; z-index: 999; transform-origin: right bottom;}
+@keyframes snsRotate{
+50%{right: 50%; bottom: 50%;  width: 45px; height: 45px; transform:rotate(0deg)}
+  to{transform:rotate(135deg) translate(50%, 50%);transform-origin: right bottom; right: 50%; bottom: 50%; width: 60px; height: 60px;}
+}
+
+.snsBtn{width: 100%;height: 100%; border-radius: 50%; position: relative; transition: 0.4s ease-in;}
+.action.toggle .snsBtn:after,
+.action.toggle .snsBtn:before{background-color: #fff;}
+
+.snsBtnWrap:hover .snsBtn{transform:rotate(180deg); background-color: #000; border: 3px solid #fff;}
+.snsBtnWrap:hover .snsBtn:after,
+.snsBtnWrap:hover .snsBtn:before{background-color: #fff;}
+.snsBtn:after,
+.snsBtn:before{content: ""; display: block; background-color: #000; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);}
+.snsBtn:after {width: 70%; height: 3px;}
+.snsBtn:before {width: 3px; height: 70%;}
+
+.snsListWrap{position: relative; z-index: -1; width: 100%; height: 100%;}
+.action.snsPlus .snsListWrap{z-index: 5;}
+.snsList{position: absolute; top: 50%; left: 50%; border-radius: 50%; transform: translate(-50%, -50%); visibility: hidden; opacity: 0; width: 45px; height: 45px; transition: 0.4s 1.2s ease;}
+.action.snsPlus .snsList{animation:snsListWrap 0.8s 0.8s forwards;}
+@keyframes snsListWrap{
+  to{visibility: visible; opacity: 1; z-index: 5;}
+}
+.snsList ul{width: 100%; height: 100%; border-radius: 50%; position: relative; z-index: 888;}
+.snsList ul li{width: 0%; height: 0%; border-radius: 50%; background-color: #fff; border: 3px solid #000; position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: 0;}
+.snsList ul li:hover a{color: #fff; background-color: #000; border: 3px solid #fff;}
+.snsList ul li a{width: 100%; height: 100%; border-radius: 50%; display: block; cursor: pointer; color: #000; position: relative; transition: 0.4s ease;}
+.snsList ul li a svg{position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 1.9rem;}
+.action.snsPlus .snsList ul li:nth-child(1){animation:snsList1 0.5s 1s ease forwards;}
+.action.snsPlus .snsList ul li:nth-child(2){animation:snsList2 0.5s 1.1s ease forwards;}
+.action.snsPlus .snsList ul li:nth-child(3){animation:snsList3 0.5s 1.2s ease forwards;}
+.action.snsPlus .snsList ul li:nth-child(4){animation:snsList4 0.5s 1.3s ease forwards;}
+.action.snsPlus .snsList ul li:nth-child(5){animation:snsList5 0.5s 1.4s ease forwards;}
+@keyframes snsList1{
+	to{top: -100px; left: -50px; width: 120%; height: 120%; opacity: 1;}
+}
+@keyframes snsList2{
+	to{top: -100px; left: 50px; width: 120%; height: 120%; opacity: 1;}
+}
+@keyframes snsList3{
+	to{top: 0px; left: 100px; width: 120%; height: 120%; opacity: 1;}
+}
+@keyframes snsList4{
+	to{top: 100px; left: 50px; width: 120%; height: 120%; opacity: 1;}
+}
+@keyframes snsList5{
+	to{top: 100px; left: -50px; width: 120%; height: 120%; opacity: 1;}
+}
+
+.snsBlack{position: fixed; width: 100%; height: 100%; top: 0; left: 0; visibility: hidden; opacity: 0; background-color: rgba(0,0,0,0.8);z-index: 4;}
+.action.snsPlus .snsBlack{visibility: visible; opacity: 1;}
+
+.action.toggle .snsBtnWrap{border: 3px solid #fff; background-color: rgba(0,0,0,0) !important;}
+.action.toggle .snsBtn{background-color: rgba(0,0,0,0) !important;}
+/*--------------sns plus------------*/
+
+
+/*--------------sound------------*/
+
+.soundBtnWrap{ position: absolute; width: 45px; height:45px; bottom: 20px; left: -100px; display: flex; justify-content: center; align-items: center; border:3px solid #000; cursor: pointer; z-index: 999; transition: 0.8s;}
+.soundBtnWrap:hover {background-color: #000; }
+.action.snsPlus .soundBtnWrap{ border-color: #fff; background: none;}
+.action.about .soundBtnWrap{border-color: #000; background: #fff;}
+.action.gallery .soundBtnWrap{border-color: #000; background: #fff;}
+.action.toggle .soundBtnWrap{border-color: #fff;}
+.action.gallery .soundBtnWrap:hover{ border-color: #fff; background: #000;}
+
+.soundBtnBox{width: 45px; height: 45px; position: relative; display: flex; align-items: flex-end; justify-content: space-around;}
+.soundBtnWrap:hover .soundBtnBox:after,
+.soundBtnWrap:hover .soundBtnBox:before{background:red; height: 100%;}
+.soundBtnWrap.active:hover .soundBtnBox:after{width: 29px; height: 29px; border: 3px solid #225CFF; border-radius: 50%; background-color:rgba(0,0,0,0); left: 2px; top: 5px;}
+.soundBtnWrap.active:hover .soundBtnBox:before{opacity: 0;}
+.soundBtnBox:before,
+.soundBtnBox:after{ position: absolute; top: 0px; left:19px; content: ""; display: block; width: 2.5px; height: 0px; background:#000; transform: rotate(45deg); transition: 0.5s;}
+.soundBtnBox:before{transform: rotate(-45deg);}
+
+.soundBtnWrap.active .soundBtnBox:after,
+.soundBtnWrap.active .soundBtnBox:before{ height: 100%;}
+.action.toggle .soundBtnBox:after,
+.action.toggle .soundBtnBox:before{background:red;}
+
+body.audio-off .soundBtnBox:after,
+body.audio-off .soundBtnBox:before{height: 35px;}
+.soundBtnBox span{ width: 4px; height: 6px; background-color: #000; transition: 0.4s ease;}
+
+.soundBtnWrap:hover span,
+.action.gallery .soundBtnWrap:hover span,
+.action.snsPlus .soundBtnWrap .soundBtnBox span,
+.action.toggle .soundBtnWrap .soundBtnBox span{background-color: #fff;}
+.action.about .soundBtnWrap .soundBtnBox span{background-color: #000;}
+
+body.audio-on .soundBtnBox span:nth-child(1){ animation: soundBar 1s infinite alternate linear; }
+body.audio-on .soundBtnBox span:nth-child(2){ animation: soundBar2 1.3s infinite linear; }
+body.audio-on .soundBtnBox span:nth-child(3){ animation: soundBar3 1.7s infinite linear; }
+body.audio-on .soundBtnBox span:nth-child(4){ animation: soundBar4 1.9s infinite linear; }
+body.audio-on .soundBtnBox span:nth-child(5){ animation: soundBar5 1s infinite linear; }
+@keyframes soundBar{
+    20%{height: 15px;}
+    50%{height: 5px;}
+    80%{height: 10px;}
+}
+@keyframes soundBar2{
+    20%{height: 25px;}
+    50%{height: 5px;}
+    80%{height: 15px;}
+}
+@keyframes soundBar3{
+    20%{height: 25px;}
+    40%{height: 15px;}
+    60%{height: 25px;}
+    80%{height: 35px;}
+}
+@keyframes soundBar4{
+    20%{height: 15px;}
+    50%{height: 10px;}
+    80%{height: 25px;}
+}
+@keyframes soundBar5{
+    20%{height: 15px;}
+    50%{height: 5px;}
+    80%{height: 10px;}
+}
+/*--------------sound------------*/
+
+.faceWrap{ animation:faceAni 0.8s 9.3s ease-in forwards; position: absolute; width: 200px; height: 200px; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0); opacity: 0; z-index: 3; transition: 0.5s ease-out; border-radius: 50%;}
+.action.about .faceWrap{top: 90%; left: 25%;}
+.action.skill .faceWrap{top: 90%; left: 50%;}
+.action.career .faceWrap{top: 90%; left: 75%;}
+.action.work .faceWrap{top: 90%;}
+.action.contact .faceWrap{top: 90%;}
+.action.gallery .faceWrap{top: 50%;}
+.action.gallery.photo .faceWrap{top: 90%;}
+.action.gallery.psai .faceWrap{top: 90%;}
+@keyframes faceAni{
+	to{transform: translate(-50%, -50%) scale(1); opacity: 1;}
+}
+.face{box-shadow: 0 10px 10px rgba(0,0,0,.5);  display: block; position: relative; width: 200px; height: 200px; border-radius: 50%; background: #000; display: flex; justify-content: center; align-items: center; transition: 0.5s ease-in; cursor: pointer;}
+.face:after{ content:attr(data-text); position: absolute; width: 140px; bottom: 70px; left: 50%; transform: translate(-50%, 0) scale(0); background-color: #444; color: #fff; opacity: 0; text-align: center; font-size: 1.2rem; transition: 0.4s ease;}
+.action.about .face:after,
+.action.work .face:after,
+.action.gallery .face:after,
+.action.contact .face:after{opacity: 1; transform: translate(-50%, 0) scale(1);}
+.action.about .face{background:#cf455c;}
+.action.skill .face{background:#222;}
+.action.career .face{background:#144884;}
+.action.gallery.photo .face,
+.action.gallery.psai .face{background:#111;}
+
+.face:before{ content: ''; position: absolute; top: 120px; width: 120px; height: 50px; border-bottom-left-radius: 70px; border-bottom-right-radius: 70px; background: #fff; transition: 0.5s;}
+.face:hover:before{ top: 130px; width: 120px; height: 20px; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px;}
+.eyes{ position: relative; top: -20px; display: flex; flex-wrap: wrap;}
+.eyes:after{ content:attr(data-text); position: absolute; width: 180px; bottom: -22px; left: 50%; transform: translate(-50%, 0) scale(0); background-color: #444; color: #fff; opacity: 0; text-align: center; font-size: 1.2rem; transition: 0.4s ease;}
+.action.home .face:hover .eyes:after{opacity: 1; transform: translate(-50%, 0) scale(1);}
+.eye{position: relative; width: 50px; height: 50px; display: block; margin: 0 15px; background: #fff; border-radius: 50%;}
+.eye:before{ content: ''; position: absolute; top: 50%; left: 15px; transform: translate(-50%,-50%); width: 25px; height: 25px; background: #333; border-radius: 50%;}
+.HomeTextMobile,
+.HomeText{position: absolute; opacity:0; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(35); filter:blur(2px); animation:homeTxt 7s 2.7s ease-in forwards;}
+.HomeTextMobile{ animation:homeTxtMoblie 6s 1.7s ease-in-out forwards;}
+@keyframes homeTxt{
+	25%{opacity: 1;  top: 50%; transform: translate(-50%, -50%) scale(1); filter: blur(0);}
+	50%{top: 45%;}
+	90%{opacity: 1;  top: 45%; transform: translate(-50%, -50%) scale(1); filter: blur(0);}
+	to{transform: translate(-50%, -50%) scale(0);}
+}
+@keyframes homeTxtMoblie{
+	20%{opacity: 1;  top: 50%; transform: translate(-50%, -50%) scale(1); filter: blur(0);}
+	30%{top: 50%;}
+	50%{top: 45%;}
+	to{opacity: 1;  top: 45%; transform: translate(-50%, -50%) scale(1); filter: blur(0);}
+}
+
+.action.contact .HomeTextMobile,
+.action.work .HomeTextMobile,
+.action.gallery .HomeTextMobile,
+.action.contact .HomeText,
+.action.work .HomeText,
+.action.gallery .HomeText{visibility: hidden;} 
+.HomeText h2{font-size: 3.2rem; color: #000; position: relative;}
+.HomeTextMobile h2{font-size: 2.6rem;}
+.HomeTextMobile h2:before,
+.HomeText h2:before{animation:homeTxtBefore 2s 5.7s forwards;  content:attr(data-text);  display: block; position: absolute; bottom: -40px; left: 50%; width:3000px; transform: translate(-50%, 0) rotateY(180deg); font-size: 1.6rem; text-align: center; letter-spacing: 100px; filter: blur(2px); opacity: 0;}
+.HomeTextMobile h2:before{animation-delay: 4s; font-size: 1rem;}
+@keyframes homeTxtBefore{
+	to{opacity: 1; letter-spacing: 1px; filter: blur(0px); transform: translate(-50%, 0) rotateY(0deg);}
+}
+
+.navWrap{animation:navStart 7s 3.2s forwards; transform:rotate(0deg) scale(0); opacity: 1; width: 100%; height: 100%; position:absolute; top: 0; left: 0; transition: 0.4s 0.1s ease; z-index: 1}
+.action.work .navWrap{z-index: 0;}
+@keyframes navStart{
+	25%{transform: rotate(360deg) scale(4);}
+	50%{opacity:0.1; transform: rotate(360deg) scale(2);}
+	80%{opacity:0.2; transform: rotate(360deg) scale(1.9);}
+	90%{opacity:0.5; transform: rotate(0deg) scale(1.5);}
+	to{opacity:1; transform: rotate(0deg) scale(1);}
+}
+
+.action.toggle .navWrap{opacity: 0;}
+.navWrap ul {width: 100%; height: 100%; position: relative;}
+.navWrap ul li { width: 150px; height: 150px; background-color: #000; border-radius: 50%; position: absolute; transition: 1.2s ease; z-index:1;}
+.navWrap ul li a{width: 100%; height: 100%; border-radius: 50%; overflow: hidden; display: block; font-size: 1.4rem; color: #fff; font-weight: bold; transition: 0.4s ease;}
+.navWrap ul li a p{display: inline-block; position: absolute; top: 50%; left: 50%; transform:translate(-50%, -50%);}
+.navWrap ul li:nth-child(1){top: 80px; left: 50%; transform: translateX(-50%);}
+.navWrap ul li:nth-child(2){top: 50%; right: 70px; transform: translateY(-50%);}
+.navWrap ul li:nth-child(3){top: 50%; left:  70px; transform: translateY(-50%);}
+.navWrap ul li:nth-child(4){bottom: 80px; left: 50%; transform: translateX(-50%);}
+.navWrap ul li:hover a{background: #fff; border: 5px solid #000; color: #000;}
+
+.action.home .navWrap ul li{box-shadow: 0 10px 10px rgba(0,0,0,.5);}
+.action.skill .navWrap ul li:nth-child(1),
+.action.about .navWrap ul li:nth-child(1){width: 100%; height: 100%; border-radius: 0; top: 0 !important; background: url(../img/about_Back2.svg);background-size: cover;}
+.action.about.skill .navWrap ul li:nth-child(1){background: url(../img/about_Back3.svg);background-size: cover;}
+.action.about.career .navWrap ul li:nth-child(1){background: url(../img/about_Back.svg);background-size: cover;}
+.action.work .navWrap ul li:nth-child(1),
+.action.gallery .navWrap ul li:nth-child(1),
+.action.contact .navWrap ul li:nth-child(1){top: -100% !important; }
+.action.about .navWrap ul li:nth-child(1) a{display: none;}
+
+.action.contact .navWrap ul li:nth-child(2),
+.action.gallery .navWrap ul li:nth-child(2),
+.action.about .navWrap ul li:nth-child(2){right: -100% !important;}
+.action.work .navWrap ul li:nth-child(2){height:850px; width: 850px; right: -400px !important; background-color: rgba(0,0,0,0.8);}
+.action.work .navWrap ul li:nth-child(2) a{display: none;}
+
+.action.contact .navWrap ul li:nth-child(3){height:800px; width: 800px; left: -400px !important; opacity: 0.03;}
+.action.gallery .navWrap ul li:nth-child(3),
+.action.work .navWrap ul li:nth-child(3),
+.action.about .navWrap ul li:nth-child(3){left: -100% !important; }
+.action.contact .navWrap ul li:nth-child(3) a{display: none;}
+
+.action.work .navWrap ul li:nth-child(4),
+.action.contact .navWrap ul li:nth-child(4),
+.action.about .navWrap ul li:nth-child(4){bottom: -100% !important;}
+.action.gallery .navWrap ul li:nth-child(4){width: 100%; height: 150px; border-radius: 0; bottom: 0 !important; background:rgba(0,0,0,0.8);}
+.action.gallery .navWrap ul li:nth-child(4) a{display: none;}
+/*------------------------home--------------------------*/
+
+/*--------------about------------*/
+.aboutNav{ position: absolute; left: 50%; top: -200px; transform: translate(-50%, 0); transition: 0.4s ease; z-index: 2;}
+.action.about .aboutNav{ top:30px;}
+.aboutNav ul li{float: left; border: 3px solid #000; width: 110px; text-align: center; font-size: 1.5rem; margin:2px 25px}
+.aboutNav ul li a{display: block; font-size: 1.3rem; font-weight: bold; transition: 0.4s ease;}
+.action.about .aboutNav ul li a.active,
+.aboutNav ul li:hover a{color: #fff; background-color: #000;}
+.action.career .aboutNav ul li,
+.action.skill .aboutNav ul li{border-color: #fff;}
+.action.career .aboutNav ul li a,
+.action.skill .aboutNav ul li a{color: #fff;}
+.action.skill .aboutNav ul li a.active,
+.action.career .aboutNav ul li a.active,
+.action.career .aboutNav ul li:hover a,
+.action.skill .aboutNav ul li:hover a{color: #000; background-color: #fff;}
+
+.careerWrap,
+.aboutWrap{
+    background: #cf455c;
+    background-image: url(../img/header-shadow.png);
+    background-position: center bottom;
+    background-repeat: repeat-x;
+    overflow: hidden;
+    position: absolute;
+    top: -100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: 1s ease-in-out;
+    width: 900px;
+    z-index: 2;
+    box-shadow: 0 10px 10px rgba(0,0,0,.5);
+}
+
+.careerWrap{ background: #144884; width: 730px;}
+
+.action.about.career .careerWrap,
+.action.about .aboutWrap{
+	top: 50%; 
+}
+
+.action.about .careerWrap,
+.action.about.skill .careerWrap,
+.action.about.career .aboutWrap,
+.action.about.skill .aboutWrap{
+	top: -100%;
+}
+.aboutBox{
+    float: left;
+    margin-top:10px;
+    width: 490px;
+    margin-left:10px;
+}
+
+.aboutBox .photo-inner{
+    float: left;
+    background: url(../img/photo-inner.png) no-repeat;
+    width: 180px;
+    height: 214px;
+    padding: 12px 0 0 19px;
+    margin-right: 5px;
+}
+.aboutBox .photo-inner img{width: 154px; height: 188px;}
+
+.aboutBox h1{
+    font-weight: 900;
+    color: white;
+    line-height: 34px;
+    margin-top: 15px;
+    margin-left: -20px;
+}
+
+.aboutBox h3{
+    margin-top: 5px;
+    font-size: 18px;
+    color: white;
+    line-height: 18px;
+    letter-spacing: 1px;
+}
+
+.aboutBox p{
+    font-size:14px;
+    margin-top: 15px;
+    color: white;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.personal-info{
+    float: left;
+    width: 300px;
+    min-height: 210px;
+    margin-left: 10px;
+    margin-top: 10px;
+    background: url(../img/personal-info-sep.png) no-repeat left;
+    padding: 20px 0 19px 20px;
+}
+
+.careerWrap .personal-info{width: 350px; margin-top: 0;}
+.personal-info.mb15{margin-bottom: 15px;}
+
+.personal-info li{
+    line-height: 15px;
+    font-size: 14px;
+    margin-bottom: 10px;
+    list-style: none;
+    overflow: hidden;
+    float: left;
+    width: 320px;
+}
+.personal-info.pmt0{
+	padding: 0px 19px 10px;
+	min-height: 140px;
+}
+.personal-info li label{
+    color: white;
+    float: left;
+    padding: 4px 7px;
+    font-weight: 550;
+    border-radius: 3px;
+    text-transform: uppercase;
+}
+
+.careerWrap .personal-info li label{
+	color: #fff;
+}
+
+.personal-info li span{
+    float: right;
+    width: 220px;
+    padding-top: 4px;
+    font-weight: 400;
+    color:#eee;
+}
+
+.careerWrap .personal-info li span{
+	color: #eee;
+}
+
+
+
+
+.aboutSkills
+{
+	position: absolute;
+	top: 50%;
+	left: -100%;
+	transform: translate(-50%,-50%);
+	transition: 1s ease-in-out;
+	width: 85%;
+	max-width: 700px;
+	z-index: 3;
+}
+.action.skill .aboutSkills{
+	left: 50%;
+}
+
+.aboutSkills:hover .skills
+{
+	opacity: 0.2;
+}
+.aboutSkills h2
+{
+	color: #fff;
+}
+.aboutSkills .skills
+{
+	position: relative;
+	display: flex;
+	margin: 20px 0;
+	padding: 20px 10px 16px;
+	background: linear-gradient(#616161 0%,#333 10%,#222);
+	border-radius: 8px;
+	overflow: hidden;
+    border: 2px solid #000;
+    transition: 0.5s;
+}
+
+.aboutSkills .skills:hover
+{
+	opacity: 1;
+	transform: scale(1.05);
+	box-shadow: 0 10px 10px rgba(0,0,0,.5);
+}
+.aboutSkills .skills:before
+{
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 50%;
+	background: rgba(255,255,255,.1);
+	z-index: 10;
+}
+.aboutSkills .skills .name
+{
+	position: relative;
+	width: 110px;
+	text-align: right;
+	color: #fff;
+	margin-top: -2px;
+	text-transform: uppercase;
+}
+.aboutSkills .skills .value
+{
+	position: relative;
+	width: 40px;
+	text-align: left;
+	color: #fff;
+}
+.aboutSkills .skills .percent
+{
+	position: relative;
+	width: calc(100% - 150px) ;
+	height: 20px;
+	margin: 0 10px;
+	border-radius: 10px;
+	background: #151515;
+	box-shadow: inset 0 0 10px #000;
+	overflow: hidden;
+}
+.action.skill .aboutSkills .skills .percent .progress
 {
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
-	overflow: hidden;
-  visibility: hidden;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	box-shadow: inset 0 0 2px #000;
+	border-radius: 10px;
+	animation: animate 3.5s ease-in-out forwards;
 }
-#toggleNav.active{
-  visibility: visible;
-}
-#toggleNav span
+@keyframes animate 
 {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 200%;
-	height: 100%;
-	display: block;
-	transform-origin: bottom left;
-	transition: 0.5s ease-in-out;
-	transform: rotate(-90deg);
-}
-#toggleNav span:nth-child(1)
-{
-	background: #ff1f6b;
-	transform: rotate(-90deg);
-	transition-delay: 0.2s;
-}
-#toggleNav span:nth-child(2)
-{
-	background: #219dff;
-	transform: rotate(-90deg);
-	transition-delay: 0.1s;
-}
-#toggleNav span:nth-child(3)
-{
-	background: #111;
-	transform: rotate(-90deg);
-	transition-delay: 0s;
-}
-#toggleNav.active span:nth-child(1)
-{
-	z-index: 1;
-	transition-delay: 0s;
-}
-#toggleNav.active span:nth-child(2)
-{
-	z-index: 2;
-	transition-delay: 0.1s;
-}
-#toggleNav.active span:nth-child(3)
-{
-	z-index: 3;
-	transition-delay: 0.2s;
-}
-#toggleNav.active span
-{
-	transform: rotate(0deg);
-}
-
-#toggleNav ul
-{
-	position: absolute;
-	z-index: 100;
-	transition: 0.5s;
-	text-align: center;
-	visibility: hidden;
-	opacity: 0;
-	transition-delay: 0s;
-}
-#toggleNav.active ul
-{
-	visibility: visible;
-	opacity: 1;
-	transition-delay: 0.7s;
-} 
-
-#toggleNav ul li a
-{
-  color: #fff;
-  font-size: 3em;
-  padding: 5px 20px;
-  display: inline-flex;
-  font-weight: 700;
-  transition: 0.5s;
-  font-family: 'Poppins', sans-serif;
-}
-#toggleNav ul:hover li a
-{
-  color: #0002;
-}
-#toggleNav ul li:hover a
-{
-  color: #000;
-  background: rgba(255,255,255,1);
-}
-#toggleNav ul li a:before
-{
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 40%;
-  transform: translate(-50%,-50%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 5em;
-  color: rgba(0,0,0,.1);
-  border-radius: 50%;
-  z-index: -1;
-  opacity: 0;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 500px;
-  transition: letter-spacing 0.5s,left 0.5s;
-}
-#toggleNav ul li a:hover:before
-{
-  content: attr(data-text);
-  opacity: 1;
-  left: 50%;
-  letter-spacing: 10px;
-  width: 1800px;
-  height: 1800px;
-}
-#toggleNav ul li:nth-child(6n+1) a:before
-{
-  background: #81ecec;
-}
-#toggleNav ul li:nth-child(6n+2) a:before
-{
-  background: #ff7675;
-}
-#toggleNav ul li:nth-child(6n+3) a:before
-{
-  background: #55efc4;
-}
-#toggleNav ul li:nth-child(6n+4) a:before
-{
-  background: #a29bfe;
-}
-#toggleNav ul li:nth-child(6n+5) a:before
-{
-  background: #fd79a8;
-}
-/*=============nav end=============*/
-
-.sliderNavWrap{animation:navSpan 0.4s 1.6s forwards; bottom:-100px; position: absolute; width: 200px; left: 50%; transform: translate(-50%, 0); }
-.sliderNav{width: 100%; display: flex; justify-content: space-around; }
-@keyframes navSpan{
-	to{bottom: 50px;}
-}
-
-.sliderNav span {width: 20px; height: 20px; border-radius: 5px; border:2px solid #000; cursor: pointer;}
-.sliderNav span:before {content: ""; display: block; position: absolute;	opacity: 0; content: attr(data-text); font-size:1.5rem; font-weight: bold; transition: 0.4s; bottom: 40px; left: 0;
+	from 
+	{
+		width: 0%;
 	}
-.sliderNav span:hover:before { opacity: 1; left: 50%; transform: translate(-50%, 0);}
+}
+.aboutSkills .skills:nth-child(2) .percent .progress
+{
+    background: linear-gradient(45deg, #1fe6ff, #673AB7);
+}
+.aboutSkills .skills:nth-child(3) .percent .progress
+{
+    background: linear-gradient(45deg, #3bc0ff, #33ff00);
+}
+.aboutSkills .skills:nth-child(4) .percent .progress
+{
+    background: linear-gradient(45deg, #ffee54, #ff00ca);
+}
+.aboutSkills .skills:nth-child(5) .percent .progress
+{
+    background: linear-gradient(45deg, #8193f5, #22ffde);
+}
+.aboutSkills .skills:nth-child(6) .percent .progress
+{
+    background: linear-gradient(45deg, #f57a72, #f4ce21);
+}
+/*--------------about------------*/
 
-.sliderNav span.active,
-.sliderNav span:hover {background-color: #000;}
 
-.nextWrap,
-.prevWrap { position: absolute;  bottom: -50px; font-size: 1.6rem; font-weight: bold; cursor: pointer;}
+/*--------------work------------*/
+.workList ul li{position: absolute; width: 0px; top: 50%; right: -400px; opacity: 0; visibility: hidden; transform: translate(0, -50%) scale(0); transition: 0.6s ease-out; z-index: 2;}
+.action.work .workList ul li.active{visibility: visible; opacity: 1; cursor: pointer; right: 100px; width: 450px; transform: translate(0, -50%) scale(1);}
+.workList ul li a{display: block;}
+.workList ul li img{width: 100%;}
 
-.nextWrap {right: 50px; animation:prev 0.4s 1.4s forwards;}
-.prevWrap {left: 50px; animation:prev 0.4s 2s forwards;}
-@keyframes prev{
-	to {bottom: 50px;}
+.sliderBtnWrap{width: 550px;height: 80px; position: absolute; bottom: -200px; left: 50%; transform: translate(-50%, 0); display: flex; justify-content: space-around; transition: 0.8s ease-in; z-index: 2;}
+.action.work .sliderBtnWrap{bottom: 100px;}
+/*--------------work------------*/
+.prevBtn,
+.nextBtn{width: 80px; height: 100%; background-color: #000; color: #fff; font-size: 1.2rem; font-weight: bold; line-height: 80px; text-align: center; cursor: pointer; border-radius: 50%; transition: 0.4s ease-in-out;}
+
+.prevBtn:hover,
+.nextBtn:hover{color: #000; background-color: #fff; border:5px solid #000;}
+
+.workSliderNav{width: 30px; position:absolute; display: flex; flex-direction: column; position: absolute; right: -500px; bottom: 50%; transform: translate(0, 50%); z-index: 2;transition: 0.5s ease;} 
+.action.work .workSliderNav{right: 30px;}
+.workSliderNav span{width: 30px; height: 30px; border-radius: 50%; border: 2px solid #fff; margin:5px 0;cursor: pointer; transition: 0.3s ease;}
+.workSliderNav span:hover,
+.workSliderNav span.active{background: #fff;}
+
+.workTxtWrap{width: 600px;  height: 300px;  position: absolute; top: 50%; left: 30px; transform: translate(0, -50%);}
+.workTxtBox{width: 100%; position: relative;}
+
+.workToptxt h2{position: relative; font-size: 2rem;}
+.workToptxt h2:after{content: ''; display: none; position: absolute; width: 0px; bottom: 0; height: 3px; background-color: #000;}
+.workTxtBox.active .workToptxt h2:after{display: block; animation:workTopLine 1.2s 0.4s ease-in forwards;}
+@keyframes workTopLine{
+	to{width: 100%;}
 }
 
- 
-.nextBtn {position: relative;}
-.prevBtn {position: relative;}
-
-.prevBtn:after,
-.prevBtn:before { content: ""; display: block; position: absolute; width: 20px; height: 5px; left: -20px; top: 15px; background-color: #000; transform-origin: left; border-radius: 5px;
-}
-.prevBtn:after {animation:prevAfter 0.4s 2.8s forwards;}
-.prevBtn:before {animation:nextBefore 0.4s 2.8s forwards;}
-
-@keyframes nextAfter{
-	to {transform: rotate(45deg); top: 14px;}
-}
-@keyframes nextBefore{
-	to {transform: rotate(-45deg); top: 16px;}
+.workMidTxt p{position: relative;  font-size: 0.9rem; color: #222; height: 100px;}
+.workMidTxt p:after{content: ''; display: none; position: absolute; width: 0px; height: 280px; bottom: -85px; left: -20px; background-color: rgba(0,0,0,0.1); z-index: -1;}
+.workTxtBox.active .workMidTxt p:after{display: block; animation:workMidLine 0.8s 0.6s ease-in forwards;}
+@keyframes workMidLine{
+	to{width: 500%;}
 }
 
-.nextBtn:after,
-.nextBtn:before { content: ""; display: block; position: absolute; width: 20px; height: 5px; right: -20px; top: 15px; transform-origin: right; background-color: #000; border-radius: 5px;
+.workMoreBtn a{color: #fff; display: block; border-radius:50px; background-color: #000; transition: 0.4s ease;}
+.workMoreBtn a:hover{ background: #585858;}
+
+.workToptxt{color: #000; position: absolute; top: -50px; opacity: 0; transition: 0.7s 0.2s ease;}
+.action.work .workTxtBox.active .workToptxt{top: 0; opacity: 1;}
+
+.workMidTxt{position: absolute; width: 500px; left: -3000px; top: 70px; transition: 0.5s 0.2s ease;}
+.action.work .workTxtBox.active .workMidTxt{left:0px;}
+
+.workMoreBtn{position: absolute; left:0;top: 300px; opacity: 0; transition: 0.5s 0.2s ease; width: 100px; height: 40px; line-height: 40px; text-align: center;}
+.action.work .workTxtBox.active .workMoreBtn{top: 180px; opacity: 1;}
+
+.workBlack{position: fixed; cursor: pointer; width: 100%; height: 100%; background-color:rgba(0,0,0,0.8); top: 0; left: 0;  opacity: 0; visibility: hidden; transition:0.4s ease;}
+.workBlack.active{visibility: visible; opacity: 1; z-index: 1111;}
+.workBox{color: #fff; border:3px solid #fff; text-align: center; width: 70%;  max-width: 650px; padding: 30px 20px 30px 20px; position: absolute; left: 50%; top: 30%; opacity: 0; transform: translate(-50%, -50%); visibility: hidden; background-color: #000; z-index: 1111; transition:0.4s ease;}
+.workBox.active{visibility: visible; opacity:1; top: 50%; z-index: 1112;}
+.workBox h2{font-size: 2rem;}
+.workBox h5{color: #bbb; font-size: 0.8rem;}
+.workBox p:nth-child(3){margin-top: 20px;}
+.workBox p:nth-child(4){margin-top: 5px;}
+.workBox p:nth-child(5){margin-top: 5px;}
+.workBox p:nth-child(6){margin-top: 20px; margin-bottom: 20px;  font-size: 0.9rem; color: #ddd;}
+.workBox a:nth-child(7){color: #fff; border-bottom: 1px solid #fff;}
+.workBox a:nth-child(7):hover{color: skyblue; border-color: skyblue;}
+.workBox a:nth-child(8){display: block; padding: 2px; width: 105px; margin:0 auto; border:2px solid #fff; font-size: 1.5rem; color: #fff; margin-top: 30px; transition:0.3s ease;}
+.workBox a:nth-child(8):hover{background-color: #fff; color: #000;}
+.workBox span{display: block;}
+/*--------------gallery------------*/
+.pageWrap{transition: 1s 0.3s ease;}
+.action.home .pageWrap{background:none;}
+
+.galleryNav{ position: absolute; left: 50%; bottom: -500px; transform: translate(-50%, 0); transition: 0.6s 0.2s ease; z-index: 2;}
+.action.gallery .galleryNav{ bottom:55px; width: 100%;}
+.galleryNav ul{width: 100%; display: flex; justify-content: space-around;}
+.galleryNav ul li{border: 3px solid #fff; width: 150px; text-align: center; font-size: 1.5rem; margin:0 20px}
+.galleryNav ul li a{display: block; font-size: 1.5rem; font-weight: bold; transition: 0.4s ease; background-color: #000; color: #fff;}
+.action.gallery .galleryNav ul li a.active,
+.galleryNav ul li:hover a{color: #000; background-color: #fff;}
+/*--------------gallery------------*/
+
+
+/*--------------contact------------*/
+.contactWrap{width: 100%; height: 100%; position: absolute; top: -100%; left: 0; visibility: hidden; opacity: 0; display: flex; justify-content: center; align-items: center; transition: 0.8s ease; }
+.action.contact .contactWrap{top: 0; visibility: visible; opacity: 1;}
+.contactWrap .contactBox{width: 80%;}
+.contactWrap .contactBox h2{ width: 100%; color: #000; text-align: center; font-size: 36px; margin-bottom: 20px;}
+.contactWrap .row100{ position: relative; width: 100%; display: grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr));}
+.contactWrap .row100 .col{ position: relative; width: 100%; margin: 30px 0 20px; transition: 0.5s; z-index: 3;}
+.contactWrap .row100 .inputBox{ position: relative; width: 100%; margin: 0 auto; height: 40px; color: #000;}
+.contactWrap .row100 .inputBox input,
+.contactWrap .row100 .inputBox textarea{ position: absolute; width: 95%; height: 100%; background: transparent; box-shadow: none; border: none; outline: none; font-size: 18px; padding: 0 10px; z-index: 1; color: #fff;}
+.contactWrap .row100 .inputBox .text{ position: absolute; top: 0; left: 0; line-height: 40px; font-size: 18px; padding: 0 10px; display: block; transition: 0.5s; pointer-events: none;}
+.contactWrap .row100 .inputBox input:focus + .text,
+.contactWrap .row100 .inputBox input:valid + .text{ top: -35px; left: -10px;}
+.contactWrap .row100 .inputBox .line{ position: absolute; bottom: 0; display: block; width: 100%; height: 2px; background: #000; transition: 0.5s; border-radius: 2px; pointer-events: none;}
+.contactWrap .row100 .inputBox input:focus ~ .line,
+.contactWrap .row100 .inputBox input:valid ~ .line{height: 100%;}
+.contactWrap .row100 .inputBox textarea:focus ~ .line,
+.contactWrap .row100 .inputBox textarea:valid ~ .line{ height: 100%;}
+.contactWrap .row100 .inputBox.textarea{ position: relative; width: 100%; height: 100px; padding: 10px 0;}
+.contactWrap .row100 .inputBox textarea{ height: 100%; resize: none;}
+.contactWrap .row100 .inputBox textarea:focus + .text,
+.contactWrap .row100 .inputBox textarea:valid + .text{ top: -35px; left: -10px;}
+.submit{text-align: center;}
+input[type="submit"]{ border: none; padding: 10px 40px; cursor: pointer; outline: none; background: #000; color: #fff; font-size: 18px; border-radius: 2px; border:3px solid #fff;}
+.HomeTextMobile{display: none;}
+
+@media screen and (min-height:900px){
+	.action.work .navWrap ul li:nth-child(2){width: 1150px; height: 1150px;}
 }
-.nextBtn:after {animation:nextAfter 0.4s 2.8s forwards;}
-.nextBtn:before {animation:nextBefore 0.4s 2.8s forwards;}
-@keyframes prevAfter {
-	to{transform: rotate(45deg); top: 16px;}
-}
-@keyframes prevBefore {
-	to{transform: rotate(-45deg); top: 14px;}
+
+@media screen and (min-height:1200px){
+	.action.work .navWrap ul li:nth-child(2){width: 1300px; height: 100%; right: -600px !important;}
 }
 
-.contentWrap{width: 100%; height: 100%; visibility: visible; opacity: 1;  position:relative; transition: 0.2s}
-.contentWrap.active{visibility: hidden;  opacity:0; }
+@media screen and (min-width: 1260px){
+	.action.work .workList ul li.active {
+    right: 220px;
+    width: 550px;}
+    .navWrap ul li{width: 170px; height: 170px;}
+	.navWrap ul li:nth-child(2){right: 200px !important;}
+	.navWrap ul li:nth-child(3){left: 200px !important;}
 
-
-.contentWrap section{width: 100%; visibility: hidden; opacity: 0; position: absolute; top: 0; left: 0;  }
-.contentWrap section.active{visibility: visible;  opacity:1; }
-
-.backColorWrap span{width: 100%; height: 100%; position: absolute; top: 0; left: 0; opacity: 0; visibility: hidden; transition: 0.4s; z-index: -1;}
-.backColorWrap span.active{visibility: visible; opacity: 1;}
-
-.backColorWrap span:nth-child(1){background-color: #81ecec;}
-.backColorWrap span:nth-child(2){background-color: #ff7675;}
-.backColorWrap span:nth-child(3){background-color: #55efc4;}
-.backColorWrap span:nth-child(4){background-color: #a29bfe;}
-.backColorWrap span:nth-child(5){background-color: #fd79a8;}
-
-.contentTxtWrap{position: absolute; top: 100px; left:-300px; transition: 0.6s ease;}
-.contentTxtWrap h2{font-size: 3rem; position: relative;}
-.contentTxtWrap h2:before{content: ""; display: block; position: absolute; bottom: 0px; left: -200px; background-color: #000; width: 150%; height: 5px; transition: 0.6s 0.3s ease; border-radius: 5px;}
-section.active .contentTxtWrap h2:before{left:-50px;}
-section.active .contentTxtWrap{left: 50px;}
-
-.home.first .contentTxtWrap{animation:conTxt 0.6s 2.6s ease forwards; left: -200px;}
-.home.first .contentTxtWrap h2:before{animation:conTxtBf 0.6s 2.8s ease forwards; left: -200px;}
-@keyframes conTxt{
-  to{left: 50px;}
 }
-@keyframes conTxtBf{
-  to{left: -50px;}
+
+@media screen and (min-width: 1600px){
+	.action.work .workList ul li.active {
+    right: 280px;
+    width: 40%;
+	}
+	.navWrap ul li{width: 200px; height: 200px;}
+	.navWrap ul li:nth-child(2){right: 300px !important;}
+	.navWrap ul li:nth-child(3){left: 300px !important;}
+	.action.work .navWrap ul li:nth-child(2){width: 1300px; height: 1300px;}
+	.workMidTxt{width: 700px;}
 }
+@media screen and (min-width: 2200px){
+	.workMidTxt{width: 1000px;}
+}
+
+@media screen and (max-width:1080px){
+	.action.work .workList ul li.active{right: 50%; top: 45%; width: 70%; transform: translate(50%, -50%) rotate(0);}
+	.workTxtWrap{display: none;}
+}
+
+@media screen and (max-width:960px){
+	.aboutBox p{display: none;}
+	.aboutBox h1{padding-top: 30px;}
+	.aboutBox h3{margin: 12px 0;}
+	.aboutWrap{width: 560px;}
+	.aboutWrap .aboutBox{float: none; width: auto; margin-top: 10px; margin-left: 0;}
+	.aboutWrap .personal-info{float: none; margin-top: 0; padding: 0; min-height: 0;}
+	.aboutWrap .aboutBox .photo-inner{margin-right: 5px;}
+	.toggleNav ul li a:hover:before{width: 600px !important; height: 600px !important;}
+	.toggleNav ul li a:before{font-size:6.2rem !important;}
+	.action.about .aboutNav{width: 60%; top: 80px;}
+	.action.about .aboutNav ul{width: 100%;}
+	.aboutNav ul li{width: 33.33%; margin: 0;}
+	.aboutNav ul li a{font-size: 1rem; }
+}
+
+@media screen and (max-width: 700px){
+	.mBlind{overflow: hidden; position: absolute; clip: rect(0 0 0 0); width: 1px; height: 1px; margin: -1px;}
+	.careerWrap{width: 90%;}
+	.personal-info.pmt0,
+	.personal-info{min-height: 0;}
+	.personal-info.fr{float: left;}
+	.personal-info.pmt0,
+	.personal-info{background: none; padding: 5px 0 5px 15px; margin-left: 0;}
+	.careerWrap .personal-info{width: 100%; border-bottom: 3px solid #000;}
+	.personal-info li{margin-bottom: 5px;}
+	.personal-info.mb15{margin-bottom: 0px;}
+}
+
+@media screen and (max-width: 750px){
+	.line.w90{width: 100% !important;}
+	.workList ul li{right: -600px;}
+	.contactWrap .row100 .col{margin: 20px 0 20px;}
+	.contactWrap .contact{margin-top: 25px;}
+	.contactWrap .contact h2{font-size: 26px; margin: 0;}
+	.navWrap ul li{visibility: hidden; opacity: 0;}
+	.face{display: none;}
+	.HomeText h2{display: none;}
+	.HomeTextMobile{display: block;}
+	.action.about .navWrap ul li,
+	.action.work .navWrap ul li,
+	.action.gallery .navWrap ul li,
+	.action.contact .navWrap ul li{visibility: visible; opacity: 1; transition: 0.8s 0.3s ease-in; background:#222;}
+	.workSliderNav span{width: 20px; height: 20px;}
+	.faceWrap{z-index: -1;}
+	.action.work .sliderBtnWrap{bottom: 60px;}
+	.action.gallery.psai .pageWrap{background: url(../img/gallery3.png); background-size: cover; background-position: center;}
+	.action.gallery.photo .pageWrap{background: url(../img/gallery2.jpg);  background-size: cover; background-position: center;}
+		.workBox{width: 95%; padding: 20px;}
+}
+
+
+
+@media screen and (max-width: 560px){
+	.workList ul li{right: -900px;}
+	.workList ul li{width: 90%;}
+	.action.work .navWrap ul li:nth-child(2){width:700px; height: 120%;}
+	.action.work .workList ul li.active {right: 50%; transform: translate(50%, -50%) rotate(0); width: 85%; }
+	.workSliderNav{width: 200px;}
+	.action.work .workSliderNav {left: 50%; bottom: 140px; transform: translate(-50%, -50%); flex-direction:row; justify-content: space-around;}
+	.workSliderNav span{border: 3px solid #000;}
+	.workSliderNav span:hover, .workSliderNav span.active{background: #000;}
+	.workTxtWrap{display: none;}
+	.aboutSkills{width: 85%;}
+	.aboutSkills .skills{padding: 15px 10px 12px;}
+	.action.work .sliderBtnWrap{ width: 60%; bottom: 60px;height: 65px;}
+	.prevBtn, .nextBtn{width: 65px; line-height: 65px; font-size: 1rem;}
+
+	.aboutWrap{width:90%}
+	.action.about .aboutWrap{top: 52%;}
+	.contactWrap .contactBox h2{margin: 0;}
+	.careerWrap{width: 90%;}
+	.personal-info.pmt0,
+	.personal-info{min-height: 0;}
+	.personal-info.fr{float: left;}
+	.personal-info.pmt0,
+	.personal-info{background: none; padding: 5px 0 5px 15px; margin-left: 0;}
+	.careerWrap .personal-info{width: 100%; border-bottom: 3px solid #000;}
+	.personal-info li{margin-bottom: 5px;}
+}
+
+@media screen and (max-width: 350px){
+	.action.about .aboutNav{width: 60%; top: 100px;}
+	.action.about .aboutWrap{top: 52%;}
+	.aboutBox .photo-inner{display: none;}
+	.aboutBox h1{padding: 0; text-align: center;}
+	.aboutBox h3{text-align: center;}
+	.action.work .sliderBtnWrap{bottom: 80px;}
+
+}
+
+@media screen and (max-height:620px){
+	.face{display: none;}
+	.action.work .sliderBtnWrap{bottom: 40px;}
+}
+/*--------------contact------------*/

@@ -5,185 +5,788 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 	<title>:: seongeon ::</title>
-	<link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet">	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/all.min.css">
 	<link rel="stylesheet" href="css/reset.css">
 	<link rel="stylesheet" href="css/style.css">
 
 </head>
 
-<body>
+<body class="audio-on">
 
-	<div id="fixed" class="fixedWrap">
-		<div class="anyLineWrap">
-			<span></span>
-			<span></span>
-			<span></span>
-			<span></span>
-		</div>
-
-		<div class="logoWrap">
-			<div class="logoS">
-				<span></span>
-				<span></span>
-			</div>
-			<div class="logoG">
-				<span></span>
-				<span></span>
-			</div>
-			<div class="logoEon">
+	<div id="fullpage" class="action start home">
+		<section id="section" class="pageWrap">
+			<div class="backPrx" id="prx"></div>
+			<div class="backPrx2" id="prxs"></div>
+			<div class="backPrx3" id="prxss"></div>
+			<div class="backPrx4" id="prxsss"></div>
+			<div class="anyLineWrap">
 				<span></span>
 				<span></span>
 				<span></span>
 				<span></span>
 			</div>
-		</div>
-
-		<div class="toggleMenu" onclick="toggleMenu()">
-			<span></span>
-			<span></span>
-			<span></span>
-			<span></span>
-			<span></span>
-			<span></span>
-		</div>
-
-		<div id="toggleNav">
-	        <span></span>
-	        <span></span>
-	        <span></span>
-	        <ul>
-				<li><a href="#" data-text="Home">Home</a></li>
-				<li><a href="#" data-text="About">About</a></li>
-				<li><a href="#" data-text="Work">Work</a></li>
-				<li><a href="#" data-text="Gallery">Gallery</a></li>
-				<li><a href="#" data-text="Contact">Contact</a></li>
-			</ul>
-   		</div>
-
-   		
-   		<div class="sliderNavWrap">
-   			<div class="sliderNav">
-   				<span data-text="Home" class="active"></span>
-   				<span data-text="About"></span>
-   				<span data-text="Work"></span>
-   				<span data-text="Gallery"></span>
-   				<span data-text="Contact"></span>
-   			</div>
-   		</div>
-
-   		<div class="nextWrap">
-   			<div class="nextBtn">NEXT</div>
-   		</div>
-   		<div class="prevWrap">
-   			<div class="prevBtn">PREV</div>
-   		</div>
-
-	</div>
-
-
-	<div id="content" class="contentWrap">
-		<section class="home first active">
-			<div class="contentTxtWrap">
-				<h2>HOME</h2>
+			<div class="logoWrap homeBtn">
+				<a href="#"><div class="logoS">
+						<span></span>
+						<span></span>
+					</div>
+					<div class="logoG">
+						<span></span>
+						<span></span>
+					</div>
+					<div class="logoEon">
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+				</a>
 			</div>
-		</section>
-		<section class="about">
-			<div class="contentTxtWrap">
-				<h2>ABOUT</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae sed laboriosam nesciunt iste vitae doloremque, voluptatibus excepturi nulla dicta alias eum incidunt, adipisci reprehenderit assumenda aut perspiciatis exercitationem, tenetur quo optio veritatis! Suscipit quia adipisci sit ipsum atque sequi at dolores error, ipsam accusamus harum velit pariatur aut iusto. Magni nulla blanditiis, quia totam temporibus unde expedita error ullam, facere assumenda eligendi, nobis possimus impedit adipisci porro facilis ad iste libero architecto ducimus nihil! Aliquam aut maxime, voluptas iste. Impedit quis ad, eos, perferendis optio velit nam minima vero tenetur deleniti labore itaque soluta blanditiis eligendi commodi incidunt, hic cumque sequi eveniet in quisquam debitis magni, voluptate non maxime. Amet expedita sed explicabo ipsam pariatur consectetur ipsa earum vero porro inventore est tenetur laudantium nostrum animi dolorem, minus fugiat aut cum velit dolores autem deleniti voluptas ut! Eos impedit aspernatur, ut atque laboriosam quia, culpa delectus accusamus a doloremque porro repellendus cum autem ipsam facilis fuga quod esse minus eveniet! Voluptatum minima earum esse reprehenderit deserunt, voluptatem minus nobis accusamus mollitia ea facilis sint commodi maiores tempore saepe neque, temporibus quod ipsa, aliquam maxime harum? Inventore, hic omnis eos voluptatem cumque quisquam sunt. Expedita natus illum laudantium deleniti iste cum.</p>
+		
+			<div class="toggleMenu">
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
 			</div>
-		</section>
-		<section class="work">
-			<div class="contentTxtWrap">
-				<h2>WORK</h2>
-			</div>
-			<div class="contentSliderWrap">
+		
+			<div class="toggleNav">
+		        <span></span>
+		        <span></span>
+		        <span></span>
+		        <ul>
+					<li><a href="#" data-text="Home" class="homeBtn">Home</a></li>
+					<li><a href="#" data-text="About" class="aboutBtn">About</a></li>
+					<li><a href="#" data-text="Work" class="workBtn">Work</a></li>
+					<li><a href="#" data-text="Gallery" class="galleryBtn">Gallery</a></li>
+					<li><a href="#" data-text="Contact" class="contactBtn">Contact</a></li>
+				</ul>
+		   	</div>
+		   	
+			<div class="navWrap">
 				<ul>
-					<li><a href="#"><img src="img/back_img1.jpg" alt=""></a></li>
-					<li><a href="#"><img src="img/back_img2.jpg" alt=""></a></li>
-					<li><a href="#"><img src="img/back_img3.jpg" alt=""></a></li>
-					<li><a href="#"><img src="img/back_img1.jpg" alt=""></a></li>
-					<li><a href="#"><img src="img/back_img2.jpg" alt=""></a></li>
-					<li><a href="#"><img src="img/back_img3.jpg" alt=""></a></li>
-					<li><a href="#"><img src="img/back_img1.jpg" alt=""></a></li>
-					<li><a href="#"><img src="img/back_img2.jpg" alt=""></a></li>
-					<li><a href="#"><img src="img/back_img3.jpg" alt=""></a></li>
+					<li class="navList1"><a href="#" class="aboutBtn"><p>ABOUT</p></a></li>
+					<li class="navList2"><a href="#" class="workBtn"><p>WORK</p></a></li>
+					<li class="navList3"><a href="#" class="contactBtn"><p>CONTACT</p></a></li>
+					<li class="navList4"><a href="#" class="galleryBtn"><p>GALLERY</p></a></li>
 				</ul>
 			</div>
-		</section>
-		<section class="gallery">
-			<div class="contentTxtWrap">
-				<h2>GALLERY</h2>
+
+		   	<div class="snsBtnWrap">
+		   		<div class="snsBtn">
+		   			<span></span>
+		   			<span></span>
+		   		</div>
+		   	</div>
+
+		   	<div class="snsListWrap">
+		   		<div class="snsList">
+		   			   			<ul>
+		   			   				<li><a href="https://www.facebook.com/YSgeon/" target="_blank"><i class="sns fab fa-facebook-f"></i></a></li>
+		   			   				<li><a href="https://www.instagram.com/_____gunny_____/" target="_blank"><i class="sns fab fa-instagram"></i></a></li>
+		   			   				<li><a href="#" class="contIcon"><i class="sns far fa-envelope"></i></a></li>
+		   			   				<li><a href="https://www.pinterest.co.kr/dbtjsrjs8282/" target="_blank"><i class="sns fab fa-pinterest-p"></i></a></li>
+		   			   				<li><a href="https://github.com/tjsrjs8282" target="_blank"><i class="fab fa-github"></i></a></li>
+		   			   			</ul>
+		   		</div>
+		   	</div>
+		   	<div class="snsBlack"></div>
+
+		   	<div class="soundBtnWrap">
+				<div class="soundBtnBox">
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
 			</div>
 
-		</section>
-		<section class="contact">
-			<div class="contentTxtWrap">
-				<h2>CONTACT</h2>
+			<div class="HomeText">
+				<h2 data-text="Welcome to my portfolio :)">Hello!</h1>
 			</div>
+
+			<div class="HomeTextMobile">
+				<h2 data-text="Welcome to my portfolio :)">Hello!</h1>
+			</div>
+
+			<div class="faceWrap">
+				<div data-text="Return home" class="face homeBtn">
+					<div data-text="I'm home button" class="eyes">
+						<span class="eye"></span>
+						<span class="eye"></span>
+					</div>
+				</div>
+			</div>
+
+			<div class="aboutNav">
+				<ul class="clearfix">
+					<li><a href="#" class="aboutBtn">About</a></li>
+					<li><a href="#" class="skillBtn">Skills</a></li>
+					<li><a href="#" class="careerBtn">Career</a></li>
+				</ul>
+			</div>
+
+			<div class="aboutWrap" id="about">
+				<div class="aboutBox">
+                    <div class="photo-inner">
+                        <ul>
+                            <li><img src="img/MyPhoto1.png" alt=""></li>
+                        </ul>
+                    </div>
+                    <h1>SeonGeon Yu</h1>
+                    <h3>Web Designer & Publisher</h3>
+                    <p>
+                        생각을 통해 설계하고, 직접 만드는 것을 좋아하는 제게 ‘웹’ 분야는 제 마음을 사로잡았습니다. 이 무궁무진한 코딩의 세계에서 계속해서 배우고 앞으로 나아가고 싶은 욕심이 생겼습니다.
+                    </p>
+                </div>
+                
+                <ul class="personal-info">
+                    <li><label>Name</label><span>SeonGeon Yu</span></li>
+                    <li><label>Birthday</label><span>November 28, 1992</span></li>
+                    <li><label>Address</label><span>25, Gyeongin-ro 40-gil, Guro-gu, Seoul</span></li>
+                    <li><label>Phone</label><span>82+ 01 9768-1128</span></li>
+                    <li><label>E-mail</label><span>dbtjsrjs8282@naver.com</span></li>
+                </ul>
+			</div>
+
+			<div class="careerWrap" id="career">
+				<ul class="personal-info">
+                    <li><label>교육기간</label><span style="font-weight: bold;">2019. 11 ~ 2019. 05</span></li>
+                    <li><label>교육기관명</label><span>하이미디어 컴퓨터학원</span></li>
+                    <li><label>교육명</label><span>(UI UX)웹디자인 & 퍼블리셔</span></li>
+                    <li class="mBlind"><label>상세내용</label>
+                    <span>웹사이트디자인, 백터디자인활용</span>
+            	    <span>HTML/CSS를 이용한 웹페이지제작</span>
+        		    <span>javascript / j-query 활용</span>
+        		    <span>포트폴리오 제작 및 실무프로젝트</span>
+        			</li>
+                </ul>
+                
+                </ul>
+                <ul class="personal-info mb15">
+                	<li><label>근무기간</label><span style="font-weight: bold;">2017. 04~2018. 01</span></li>
+                    <li><label>회사명</label><span>렛츠런파크(경마공원)</span></li>
+                    <li class="mBlind"><label>직종</label><span>포토그래퍼</span></li>
+                    <li class="mBlind"><label>근무부서</label><span>홍보팀</span></li>
+                    <li><label>담당업무</label><span>사진촬영보정 및 인화</span></li>
+                </ul>
+
+                <ul class="personal-info pmt0">
+                	<li><label>근무기간</label><span style="font-weight: bold;">2018. 03 ~ 2019. 09</span></li>
+                    <li><label>회사명</label><span>한샘(가구)</span></li>
+                    <li class="mBlind"><label>직종</label><span>AS / 시공기사</span></li>
+                    <li class="mBlind"><label>근무부서</label><span>AS서비스센터</span></li>
+                    <li><label>담당업무</label><span>한샘제품시공 및 수리</span></li>
+        		</ul>
+
+                <ul class="personal-info pmt0">
+                    <li>
+                		<label>소유 자격증</label><span>GTQ , GTQI 1급</span>
+                	    <span>실내기능사</span>
+              	  		<span>ATC 1급(CAD)</span>
+          				  <span>운전면허 1종 (대형)</span>
+       					 <span class="mBlind">굴삭기 기능사</span>
+    					<span class="mBlind">조주기능사</span>
+                	</li>
+                </ul>
+			</div>
+
+			<div class="aboutSkills">
+				<h2>My Skills Bar</h2>
+				<div class="skills">
+					<span class="name">Html</span>
+					<div class="percent">
+						<div class="progress" style="width:92%;"></div>
+					</div>
+					<span class="value">92%</span>
+				</div>
+				<div class="skills">
+					<span class="name">CSS</span>
+					<div class="percent">
+						<div class="progress" style="width:90%;"></div>
+					</div>
+					<span class="value">90%</span>
+				</div>
+				<div class="skills">
+					<span class="name">Javascript</span>
+					<div class="percent">
+						<div class="progress" style="width:72%;"></div>
+					</div>
+					<span class="value">72%</span>
+				</div>
+				<div class="skills">
+					<span class="name">Photoshop</span>
+					<div class="percent">
+						<div class="progress" style="width:88%;"></div>
+					</div>
+					<span class="value">88%</span>
+				</div>
+				<div class="skills">
+					<span class="name">Illustrator</span>
+					<div class="percent">
+						<div class="progress" style="width:82%;"></div>
+					</div>
+					<span class="value">82%</span>
+				</div>
+			</div>
+
+
+
+
+		    <div class="workList">
+		    	<ul>
+		    		<li class="active"><img src="img/work1.png" alt=""></li>
+		    		<li><img src="img/work2.png" alt=""></li>
+		    		<li><img src="img/work3.png" alt=""></li>
+		    		<li><img src="img/work4.png" alt=""></li>
+		    		<li><img src="img/work5.png" alt=""></li>
+		    		<li><img src="img/work7.png" alt=""></li>
+		    		<li><img src="img/work6.png" alt=""></li>
+		    		<li><img src="img/work8.png" alt=""></li>
+		    		<li><img src="img/work9.png" alt=""></li>
+		    	</ul>
+
+		    	<div class="sliderBtnWrap">
+		    		<div class="prevBtn">PREV</div>
+		    		<div class="nextBtn">NEXT</div>
+		    	</div>
+		    </div>
+
+
+			<div class="workBlack"></div>
+
+		    <div class="workPopupBox">
+		    	<div class="workBox">
+		    		<h2>Hollow knight</h2>
+		    		<h5>인디게임 할로우나이트 소개 및 홍보 사이트 입니다 :)</h5>
+		    		<p>Environment : HTML / CSS / JS / Jquery / PS / AI</p>
+		    		<p>Plug-In : Parallax</p>
+		    		<p>Media query : Web / Tablet / Mobile</p>
+		    		<p>최대한 플러그인을 사용하지 않고 제작 <span>
+						할로우나이트의 컨셉을 최대한 살려 웹 디자인 기획 </span> 
+		    		섹션마다의 차별 된 레벨디자인과 엑티브한 애니메이션효과
+		    			<span>왼쪽 하단 LP버튼으로 OST 3곡을 들을 수 있도록 플레이리스트</span>
+		    			메뉴에 있는 옵션 웹 제어기능으로 편리성을 제공
+		    			</p>
+					<a href="http://dbtjstjs8282.dothome.co.kr/hollow/" target="_blank">dbtjstjs8282.dothome.co.kr/hollow</a>
+					<a href="#" class="workCloseBtn">CLOSE</a>
+		    	</div>
+		    	<div class="workBox">
+		    		<h2>Knives Out</h2>
+		    		<h5>추리영화 나이브스아웃 소개 및 홍보 사이트 입니다 :)</h5>
+		    		<p>Environment : HTML / CSS / JS / Jquery / PS / AI</p>
+		    		<p>Plug-In : No Plug-In</p>
+		    		<p>Media query : Web</p>
+		    		<p>플러그인을 사용하지 않고 제작 
+		    			<span>나이브스아웃의 분위기와 색상을 활용한 디자인 기획</span>
+						자바스크립트를 이용한 인터렉티브 원페이지
+						<span>재미있는 방식의 캐릭터 소개와 슬라이드 방식의 갤러리</span>
+		    		</p>
+					<a href="http://dbtjstjs8282.dothome.co.kr/knives/" target="_blank">dbtjstjs8282.dothome.co.kr/knives</a>
+					<a href="#" class="workCloseBtn">CLOSE</a>
+		    	</div>
+		    	<div class="workBox">
+		    		<h2>ZINI</h2>
+		    		<h5>성인용품 브랜드 ZINI 소개 및 판매 사이트 입니다 :)</h5>
+		    		<p>Environment : HTML, CSS, JS, Jquery, Bootstrap, PS, AI</p>
+		    		<p>Plug-In : Swiper, BxSlider, magnific-popup</p>
+		    		<p>Media query : Web / Tablet / Mobile</p>
+		    		<p>부트스트랩과 여러 플러그인을 활용하여 제작
+		    			<span>틀에 박혀있는 기존 성인용품몰의 디자인 고정관념을 깬 웹 디자인</span>
+		    			SVG를 활용한 로고 및 네비게이션바 디자인
+		    			<span>방문자에게 ZINI의 아이덴티티를 최대한 각인시키도록 디자인 기획</span></p>
+					<a href="http://dbtjstjs8282.dothome.co.kr/zini/" target="_blank">dbtjstjs8282.dothome.co.kr/zini</a>
+					<a href="#" class="workCloseBtn">CLOSE</a>
+		    	</div>
+		    	<div class="workBox">
+		    		<h2>Oculus VR</h2>
+		    		<h5>오큘러스 VR 제품 소개 및 판매 사이트 입니다 :)</h5>
+		    		<p>Environment : HTML, CSS, JS, Jquery, PS, AI</p>
+		    		<p>Plug-In : BxSlider, Parallax, Wow, Colorbox</p>
+		    		<p>Media query : Web / Mobile</p>
+		    		<p>Wow 와 Colorbox 등 플러그인을 활용하여 제작
+		    			<span>Float를 활용한 박스형 레이아웃 기획</span>
+		    			OCULUS VR 주제의 맞는 역동적이고 엑티브한 디자인 기획</p>
+					<a href="http://dbtjstjs8282.dothome.co.kr/oculus/" target="_blank">dbtjstjs8282.dothome.co.kr/oculus</a>
+					<a href="#" class="workCloseBtn">CLOSE</a>
+		    	</div>
+		    	<div class="workBox">
+		    		<h2>Musa</h2>
+		    		<h5>여성의류 판매 쇼핑몰 사이트 입니다 :)</h5>
+		    		<p>Environment : HTML, CSS, JS, Jquery, PS</p>
+		    		<p>Plug-In : Swiper</p>
+		    		<p>Media query : Web / Tablet / Mobile</p>
+		    		<p>스와이퍼를 활용하여 웹 제작
+		    			<span>여성의류 쇼핑몰 사이트들의 </span>
+		    			Flex와 Float를 활용한 박스형 레이아웃 기획</p>
+					<a href="http://dbtjstjs8282.dothome.co.kr/musa/" target="_blank">dbtjstjs8282.dothome.co.kr/musa</a>
+					<a href="#" class="workCloseBtn">CLOSE</a>
+		    	</div>		    	<div class="workBox">
+		    		<h2>Idelo</h2>
+		    		<h5>항공 / 호텔 / 렌트카 등 예약 사이트 입니다 :)</h5>
+		    		<p>Environment : HTML, CSS, JS, Jquery, PS, AI</p>
+		    		<p>Plug-In : BxSlider</p>
+		    		<p>Media query : Web</p>
+		    		<p>처음 배우게 된 CSS animation 속성을 활용하여 제작
+		    			<span>Float를 활용한 박스형 레이아웃 기획</span></p>
+	
+					<a href="http://dbtjstjs8282.dothome.co.kr/idelo/" target="_blank">dbtjstjs8282.dothome.co.kr/idelo</a>
+					<a href="#" class="workCloseBtn">CLOSE</a>
+		    	</div>
+		    	<div class="workBox">
+		    		<h2>Hankuk university</h2>
+		    		<h5>한국 대학교 메인 사이트 입니다 :)</h5>
+		    		<p>Environment : HTML, CSS, JS, Jquery, PS</p>
+		    		<p>Plug-In : BxSlider</p>
+		    		<p>Media query : Web / Tablet / Mobile</p>
+		    		<p><span>BxSlider 를 활용하여 제작</span>
+		    		처음 배우게 된 CSS Floatfmf 활용한 박스형 레이아웃 기획</p>
+					<a href="http://dbtjstjs8282.dothome.co.kr/hankuk/" target="_blank">dbtjstjs8282.dothome.co.kr/hankuk</a>
+					<a href="#" class="workCloseBtn">CLOSE</a>
+		    	</div>
+		    	<div class="workBox">
+		    		<h2>WPN</h2>
+		    		<h5>워드프레스 학습책 홍보 사이트 입니다 :) </h5>
+		    		<p>Environment : Wordpress</p>
+		    		<p></p>
+		    		<p>Media query : Web / Tablet / Mobile</p>
+		    		<p>워드프레스를 활용하여 제작</p>
+					<a href="http://mushingun.dothome.co.kr/wp/" target="_blank">dbtjstjs8282.dothome.co.kr/wp</a>
+					<a href="#" class="workCloseBtn">CLOSE</a>
+		    	</div>
+		    	<div class="workBox">
+		    		<h2>My goods</h2>
+		    		<h5>저의 굿즈 사이트 입니다 :) (현재 제작중)</h5>
+		    		<p>Environment : Gnuvoard5</p>
+		    		<p>Media query : Web / Tablet / Mobile</p>
+		    		<p></p>
+		    		<p><span>그누보드5 테마 및 스킨을 활용하여 제작</span>
+		    		(현재 제작중)</p>
+					<a href="http://dbtjstjs8282.dothome.co.kr/main/" target="_blank">dbtjstjs8282.dothome.co.kr/main</a>
+					<a href="#" class="workCloseBtn">CLOSE</a>
+		    	</div>
+		    </div>
+
+		    <div class="workSliderNav">
+		    	<span class="active"></span>
+		    	<span></span>
+		    	<span></span>
+		    	<span></span>
+		    	<span></span>
+		    	<span></span>
+		    	<span></span>
+		    	<span></span>
+		    	<span></span>
+		    </div> 
+
+		    <div class="workTxtWrap">
+		    	<div class="workTxtBox active">
+		    		<div class="workToptxt">
+		    			<h2>Hollow Knight.</h2>
+		    		</div>
+		    		<div class="workMidTxt">
+		    			<p><span>할로우나이트 게임에서 특히 드러나는 레벨디자인을 그대로 가져와 섹션마다의 차별성을 주어 구분을 지어주는 동시 지루하지않게 기획하였다. </span>
+		    			할로우나이트의 컨셉을 그대로 살려 마치 게임을 하는 듯한 디자인구 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, necessitatibus!</p>
+		    		</div>
+		    		<div class="workMoreBtn">
+		    			<a href="http://dbtjstjs8282.dothome.co.kr/hollow/" target="_blank">More</a>
+		    		</div>
+		    	</div>
+		    	<div class="workTxtBox">
+		    		<div class="workToptxt">
+		    			<h2>Knives Out</h2>
+		    		</div>
+		    		<div class="workMidTxt">
+		    			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut saepe, perspiciatis, reiciendis facere consequuntur provident inventore maiores consequatur amet? Eligendi tempore molestias fugit maiores accusantium officiis rerum, possimus neque quis.</p>
+		    		</div>
+		    		<div class="workMoreBtn">
+		    			<a href="http://dbtjstjs8282.dothome.co.kr/knives" target="_blank">More</a>
+		    		</div>
+		    	</div>
+		    	<div class="workTxtBox">
+		    		<div class="workToptxt">
+		    			<h2>ZINI</h2>
+		    		</div>
+		    		<div class="workMidTxt">
+		    			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut saepe, perspiciatis, reiciendis facere consequuntur provident inventore maiores consequatur amet? Eligendi tempore molestias fugit maiores accusantium officiis rerum, possimus neque quis.</p>
+		    		</div>
+		    		<div class="workMoreBtn">
+		    			<a href="http://dbtjstjs8282.dothome.co.kr/zini/" target="_blank">More</a>
+		    		</div>
+		    	</div>
+		    	<div class="workTxtBox">
+		    		<div class="workToptxt">
+		    			<h2>Oculus VR</h2>
+		    		</div>
+		    		<div class="workMidTxt">
+		    			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut saepe, perspiciatis, reiciendis facere consequuntur provident inventore maiores consequatur amet? Eligendi tempore molestias fugit maiores accusantium officiis rerum, possimus neque quis.</p>
+		    		</div>
+		    		<div class="workMoreBtn">
+		    			<a href="http://dbtjstjs8282.dothome.co.kr/oculus/" target="_blank">More</a>
+		    		</div>
+		    	</div>
+		    	<div class="workTxtBox">
+		    		<div class="workToptxt">
+		    			<h2>MUSA</h2>
+		    		</div>
+		    		<div class="workMidTxt">
+		    			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut saepe, perspiciatis, reiciendis facere consequuntur provident inventore maiores consequatur amet? Eligendi tempore molestias fugit maiores accusantium officiis rerum, possimus neque quis.</p>
+		    		</div>
+		    		<div class="workMoreBtn">
+		    			<a href="http://dbtjstjs8282.dothome.co.kr/musa/" target="_blank">More</a>
+		    		</div>
+		    	</div>
+		    	<div class="workTxtBox">
+		    		<div class="workToptxt">
+		    			<h2>Idelo</h2>
+		    		</div>
+		    		<div class="workMidTxt">
+		    			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut saepe, perspiciatis, reiciendis facere consequuntur provident inventore maiores consequatur amet? Eligendi tempore molestias fugit maiores accusantium officiis rerum, possimus neque quis.</p>
+		    		</div>
+		    		<div class="workMoreBtn">
+		    			<a href="http://dbtjstjs8282.dothome.co.kr/hankuk/" target="_blank">More</a>
+		    		</div>
+		    	</div>
+		    	<div class="workTxtBox">
+		    		<div class="workToptxt">
+		    			<h2>Hankuk</h2>
+		    		</div>
+		    		<div class="workMidTxt">
+		    			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut saepe, perspiciatis, reiciendis facere consequuntur provident inventore maiores consequatur amet? Eligendi tempore molestias fugit maiores accusantium officiis rerum, possimus neque quis.</p>
+		    		</div>
+		    		<div class="workMoreBtn">
+		    			<a href="http://dbtjstjs8282.dothome.co.kr/idelo/" target="_blank">More</a>
+		    		</div>
+		    	</div>
+		    	<div class="workTxtBox">
+		    		<div class="workToptxt">
+		    			<h2>WPN</h2>
+		    		</div>
+		    		<div class="workMidTxt">
+		    			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut saepe, perspiciatis, reiciendis facere consequuntur provident inventore maiores consequatur amet? Eligendi tempore molestias fugit maiores accusantium officiis rerum, possimus neque quis.</p>
+		    		</div>
+		    		<div class="workMoreBtn">
+		    			<a href="http://dbtjstjs8282.dothome.co.kr/idelo/" target="_blank">More</a>
+		    		</div>
+		    	</div>
+		    	<div class="workTxtBox">
+		    		<div class="workToptxt">
+		    			<h2>My goods</h2>
+		    		</div>
+		    		<div class="workMidTxt">
+		    			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut saepe, perspiciatis, reiciendis facere consequuntur provident inventore maiores consequatur amet? Eligendi tempore molestias fugit maiores accusantium officiis rerum, possimus neque quis.</p>
+		    		</div>
+		    		<div class="workMoreBtn">
+		    			<a href="http://dbtjstjs8282.dothome.co.kr/idelo/" target="_blank">More</a>
+		    		</div>
+		    	</div>
+		    </div>
+
+	
+			<div class="galleryWrap" id="gallery">
+				<div class="galleryNav">
+					<ul>
+						<li><a href="#" class="photoBtn">My <span>PhotoGrab</span></a></li>
+						<li><a href="#" class="psaiBtn">PS / AI / <span>Interior</span></a></li>
+					</ul>
+				</div>
+
+			</div>
+
+
+
+		    <section class="contactWrap" id="contact">
+			    <div class="contactBox">
+			    	<h2>Contact Us</h2>
+			    	<div class="row100">
+			    	  <div class="col">
+			    	    <div class="inputBox">
+			    	      <input type="text" name="" required="required">
+			    	      <span class="text">Name</span>
+			    	      <span class="line w90"></span>
+			    	    </div>
+			    	  </div>
+			    	  <div class="col">
+			    	    <div class="inputBox">
+			    	      <input type="text" name="" required="required">
+			    	      <span class="text">Mobile</span>
+			    	      <span class="line"></span>
+			    	    </div>
+			    	  </div>
+			    	</div>
+			    	<div class="row100">
+			    	  <div class="col">
+			    	    <div class="inputBox">
+			    	      <input type="text" name="" required="required">
+			    	      <span class="text">Email</span>
+			    	      <span class="line"></span>
+			    	    </div>
+			    	  </div>
+			    	</div>
+			    	<div class="row100">
+			    	  <div class="col">
+			    	    <div class="inputBox textarea">
+			    	      <textarea required="required"></textarea>
+			    	      <span class="text">Type Your Message Here...</span>
+			    	      <span class="line"></span>
+			    	    </div>
+			    	  </div>
+			    	</div>
+			    	<div class="row100 submit">
+			    	  <div class="col">
+			    	      <input type="submit" value="Send">
+			    	  </div>
+			    	</div>
+			    </div>
+		    </section>
 		</section>
+		
+		
 	</div>
 	
-	
+	<audio autoplay volume="1" loop id="audio-player">
+		<source src="img/거니 - 아름다워지다.mp3" type="audio/mp3">
+	</audio>
 
 
-	<script src="js/jquery-3.1.1.min.js"></script>	
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/js/swiper.min.js"></script>
-	
+	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+	<script src="js/all.min.js"></script>
 	<script type="text/javascript">
-		
+		$(function(){
+			$(".gooey span").draggable();
+		})
+		setTimeout(snsForwards ,1000);
+		setTimeout(soundForwards ,1100);
+
+		function snsForwards(){
+			$(".snsBtnWrap").animate({right:20},400);
+		};
+		function soundForwards(){
+			$(".soundBtnWrap").animate({left:20},400);
+		};
+
+		function reset(){
+			$("#fullpage").removeClass();
+			$("#fullpage").addClass("action");
+		};
+
 		$(".toggleMenu").click(function(){
-			$(this).toggleClass("active");
-			$(".anyLineWrap").toggleClass("active");
-			$(".logoWrap").toggleClass("active");
-			$(".contentWrap").toggleClass("active");
+			$(".action").removeClass("snsPlus")
+			$(".action").toggleClass("toggle");
 		});
 
-		function toggleMenu(){
-            var curtain = document.getElementById('toggleNav');
-            curtain.classList.toggle('active')
-        }
+		$(".snsBtnWrap").click(function(){
+			$(".action").removeClass("toggle")
+			$(".action").toggleClass("snsPlus");
+		});
+
+		$(".soundBtnWrap").click(function(){
+			$(this).toggleClass("active");
+		});
+
+		$(".contIcon").click(function(){
+			reset();
+			$(".action").addClass("contact");
+		});
+
+		$(".homeBtn").click(function(){
+			const hasHome = $('.action').hasClass('home');
+			reset();
+			$(".action").addClass("home");
+			if(hasHome){alert("현재 Home 입니다.")}
+		});
+
+		$(".aboutBtn").click(function(e){
+			reset();
+			$(".action").addClass("about");
+			$(".aboutNav ul li a").removeClass("active");
+			$(".aboutNav ul li .aboutBtn").addClass("active");
+		});
+
+		$(".skillBtn").click(function(e){
+			reset();
+			$(".action").addClass("about skill");
+			$(".aboutNav ul li a").removeClass("active");
+			$(this).addClass("active");
+		});
+
+		$(".careerBtn").click(function(e){
+			reset();
+			$(".action").addClass("about career");
+			$(".aboutNav ul li a").removeClass("active");
+			$(this).addClass("active");
+		});
+
+		$(".workBtn").click(function(e){
+			reset();
+			$(".action").addClass("work");
+		});
+
+		$(".galleryBtn").click(function(){
+			reset();
+			$(".action").addClass("gallery");
+		});
+
+		$(".photoBtn").click(function(){
+			reset();
+			$(".action").addClass("gallery photo");
+		});
+
+		$(".psaiBtn").click(function(){
+			reset();
+			$(".action").addClass("gallery psai");
+		});
+
+		$(".contactBtn").click(function(){
+			reset();
+			$(".action").addClass("contact");
+		});
+
+		
+		
+
+		$(".prevBtn").click(function(){
+			var workNum = $(".workList > ul > li.active").index();
+			var workList = $(".workList > ul > li");
+			var spList = $(".workSliderNav > span");
+			var txtList = $(".workTxtWrap > div");
+			workList.removeClass();
+			spList.removeClass();
+			txtList.removeClass("active");
+
+			if(workNum >= 0){
+				workList.eq(workNum -1).addClass("active");
+				spList.eq(workNum -1).addClass("active");
+				txtList.eq(workNum -1).addClass("active");
+			} else if(workNum == 0){
+				workList.eq(workList.length).addClass("active");
+				spList.eq(workList.length).addClass("active");
+				txtList.eq(workList.length).addClass("active");
+			}
+		});
 
 
-        $(".nextWrap").click(function(){
-        	var secNum = $(".contentWrap > section.active").index();
-        	var bgNum = $(".backColorWrap > span.active").index();
-        	var spNum = $(".sliderNav > span.active").index();
-        	var secList = $(".contentWrap > section");
-        	var spList = $(".sliderNav > span");
-        	var bgList = $(".backColorWrap > span");
+		$(".nextBtn").click(function(){
+			var workNum = $(".workList > ul > li.active").index();
+			var workList = $(".workList > ul > li");
+			var spList = $(".workSliderNav > span");
+			var txtList = $(".workTxtWrap > div");
+			workList.removeClass();
+			spList.removeClass();
+			txtList.removeClass("active");
 
-        		
-        		secList.removeClass("active");
-        		secList.removeClass("first");
-        		spList.removeClass();
-        		bgList.removeClass();
-        	if(secNum < 4){
-        		secList.eq(secNum + 1).addClass("active");
-        		spList.eq(secNum + 1).addClass("active");
-        		bgList.eq(secNum + 1),addClass("active");
-        	} else if(secNum == 4)
-        		secList.eq(0).addClass("active");
-        		spList.eq(0).addClass("active");
-        });
+			if(workNum < 8){
+				workList.eq(workNum +1).addClass("active");
+				spList.eq(workNum +1).addClass("active");
+				txtList.eq(workNum +1).addClass("active");
+			} else if(workNum == 8){
+				workList.eq(0).addClass("active");
+				spList.eq(0).addClass("active");
+				txtList.eq(0).addClass("active");
+			}
+		});
 
-        $(".sliderNav > span").click(function(){
-        	var spNum = $(this).index();
-        	var secList = $(".contentWrap > section");
-        	var spList = $(".sliderNav > span");
-        	var bgList = $(".backColorWrap > span");
+		$(".workSliderNav > span").click(function(){
+			var spNum = $(this).index();
+			var workList = $(".workList > ul > li");
+			var spList = $(".workSliderNav > span");
+			var txtList = $(".workTxtWrap > div");
+			workList.removeClass();
+			spList.removeClass();
+			txtList.removeClass("active");
+			workList.eq(spNum).addClass("active");
+			spList.eq(spNum).addClass("active");
+			txtList.eq(spNum).addClass("active");
+		});
 
-        	secList.removeClass("active");
-        	secList.removeClass("first");
-        	spList.removeClass();
-        	bgList.removeClass();
+		$(".workList > ul > li").click(function(){
+			var workNum = $(this).index();
+			$(".workBlack").addClass("active");
+			$(".workPopupBox > div").eq(workNum).addClass("active");
+		});
 
-        	secList.eq(spNum).addClass("active");
-        	spList.eq(spNum).addClass("active");
-        	bgList.eq(spNum).addClass("active");
-        });
+		$(".workBlack").click(function(e){
+			$(this).removeClass("active");
+			$(".workPopupBox > div").removeClass("active");
+			e.preventdefault();
+		});
 
+		$(".workCloseBtn").click(function(e){
+			$(".workBlack").removeClass("active");
+			$(".workPopupBox > div").removeClass("active");
+			e.preventdefault();
+		});
+
+        
+		window.onmousemove = function (e) {
+			var prx = document.getElementById('prx');
+	        var prxs = document.getElementById('prxs');
+	        var prxss = document.getElementById('prxss');
+	        var prxsss = document.getElementById('prxsss');
+		    var x = - e.clientX/80,
+		        y = - e.clientY/50;
+		    prx.style.backgroundPositionX = x + 'px';
+		    prx.style.backgroundPositionY = y + 'px';
+		    var x2 = - e.clientX/25,
+		        y2 = - e.clientY/40;	
+		    prxs.style.backgroundPositionX = y2 + 'px';
+		    prxs.style.backgroundPositionY = x2 + 'px';
+		    var y3 = - e.clientY/20,
+		    	xy = - x + y;
+		    prxss.style.backgroundPositionX = xy + 'px';
+		    prxss.style.backgroundPositionY = y3 + 'px';
+		    var x4 = - e.clientX/80,
+		        y4 = - e.clientY/100;
+		    prxsss.style.backgroundPositionX = x4 + 'px';
+		    prxsss.style.backgroundPositionY = y4 + 'px';
+		};
+
+		document.querySelector("body").addEventListener('mousemove', eyeball);
+		function eyeball(){
+		    var eye = document.querySelectorAll(".eye");
+		    eye.forEach(function (eye) {
+		        let x = (eye.getBoundingClientRect().left) + (eye.clientWidth / 2);
+		        let y = (eye.getBoundingClientRect().top) + (eye.clientHeight / 2);
+		        let radian = Math.atan2(event.pageX - x, event.pageY - y);
+		        let rot = (radian * (180 / Math.PI) * -1)+270;
+		        eye.style.transform = "rotate(" + rot + "deg)";
+		    });
+
+		}
+
+
+		if($(window).length) {
+			var audio = document.getElementById("audio-player");
+		    audio.volume = 0.3;
+				$('body').addClass("audio-on");
+				if ($('body').hasClass('audio-off')) {
+		        	$('body').removeClass('audio-on');
+				} 
+				$(".soundBtnWrap").on('click', function() {
+					$('body').toggleClass("audio-on audio-off");         
+						if ($('body').hasClass('audio-off')) {
+						audio.pause();
+					}
+
+						if ($('body').hasClass('audio-on')) {
+						audio.play();
+					}
+				});
+			}
+
+		// $(window).mousemove(function(){
+
+		//  x = event.pageX;
+  // 		 y = event.pageY; 
+  //  		console.log('x좌표:' + x + ', y좌표:' + y);
+		// });
+		
 
 	</script>
+
+
 </body>
 </html>
