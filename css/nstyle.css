@@ -19,10 +19,10 @@ section{ width: 100%; height: 100%; position: relative; overflow: hidden; scroll
 .action.gallery .backPrx4,
 .action.work .backPrx,
 .action.work .backPrx2,
-.action.start.home .backPrx{display: block; width: 100%; height:100%; position: absolute; top: 0; left: 0; background: url(../img/home_back.svg); z-index: -1; background-repeat: no-repeat; animation:prxForward 1s 2.8s forwards; transform: scale(0); background-size: cover;}
-.action.start.home .backPrx2{background: url(../img/home_back2.svg); animation-delay: 3s;  background-size: cover;}
-.action.start.home .backPrx3{background: url(../img/home_back3.svg); animation-delay: 3.2s; background-size: cover;}
-.action.start.home .backPrx4{background: url(../img/home_back4.svg); animation-delay: 3.4s;  background-size: cover;}
+.action.start.home .backPrx{display: block; width: 100%; height:100%; position: absolute; top: 0; left: 0; background: url(../img/home_back.svg); z-index: -1; background-repeat: no-repeat; animation:prxForward 1s forwards; transform: scale(0); background-size: cover;}
+.action.start.home .backPrx2{background: url(../img/home_back2.svg);  background-size: cover;}
+.action.start.home .backPrx3{background: url(../img/home_back3.svg);  background-size: cover;}
+.action.start.home .backPrx4{background: url(../img/home_back4.svg);  background-size: cover;}
 
 .action.home .backPrx,
 .action.home .backPrx2,
@@ -83,15 +83,11 @@ section{ width: 100%; height: 100%; position: relative; overflow: hidden; scroll
 .anyLineWrap span{position: absolute; transition: 0.4s;  z-index: 999; transition: 0.4s;}
 .action.snsPlus .anyLineWrap span,
 .action.toggle .anyLineWrap span{background-color: #fff; transition: 0.4s;}
-.anyLineWrap span:nth-child(1){width:0px; height: 10px; background-color: #000; top: 0;left: 0; animation:line1 0.6s forwards linear;}
-.anyLineWrap span:nth-child(2){width:10px; height: 0px; background-color: #000; top: 0; right: 0; animation:line2 0.8s 0.6s forwards linear;}
-.anyLineWrap span:nth-child(3){width:0px; height: 10px; background-color: #000; bottom: 0;right: 0; animation:line3 0.6s 1.4s forwards linear;}
-.anyLineWrap span:nth-child(4){width:10px; height: 0px; background-color: #000; bottom: 0;left: 0; animation:line4 0.8s 2s forwards linear;}
+.anyLineWrap span:nth-child(1){width:100%; height: 10px; background-color: #000; top: 0;left: 0;}
+.anyLineWrap span:nth-child(2){width:10px; height: 100%; background-color: #000; top: 0; right: 0;}
+.anyLineWrap span:nth-child(3){width:100%; height: 10px; background-color: #000; bottom: 0;right: 0;}
+.anyLineWrap span:nth-child(4){width:10px; height: 100%; background-color: #000; bottom: 0;left: 0;}
 
-@keyframes line1{ to{width: 100%;} }
-@keyframes line2{ to{height: 100%;} }
-@keyframes line3{ to{width: 100%;} }
-@keyframes line4{ to{height: 100%;} }
 /*-----------------------------line animation end--*/
 
 /*--------------------------------home---------------------------*/
@@ -153,12 +149,11 @@ section{ width: 100%; height: 100%; position: relative; overflow: hidden; scroll
 }
 
 /*===============menu start==============*/
-.toggleMenu {position: absolute; top:20px; right: -50px; width: 40px; height: 40px; z-index: 9999; transition: 0.5s; cursor: pointer; animation:hamberger 0.4s 0.6s forwards;}
+.toggleMenu {position: absolute; top:20px; right: 20px; width: 40px; height: 40px; z-index: 9999; transition: 0.5s; cursor: pointer;}
 .toggleMenu span {position: absolute; display: block;  background-color: #000; border-radius: 5px; width: 50%;  height: 7px;    transition: 0.5s;}
 .toggleMenu span:nth-child(even) {left: 50%;}
 .toggleMenu span:nth-child(1),
 .toggleMenu span:nth-child(2) {top: 0;}
-@keyframes hamberger { to{right: 20px;} }
 .toggleMenu span:nth-child(3),
 .toggleMenu span:nth-child(4) {top: 15px;}
 .toggleMenu span:nth-child(5),
@@ -214,7 +209,7 @@ section{ width: 100%; height: 100%; position: relative; overflow: hidden; scroll
 /*=============nav end=============*/
 
 /*--------------sns plus------------*/
-.snsBtnWrap {position: absolute; bottom: 20px; right: -100px; width: 45px; height: 45px; border-radius: 50%; background-color: #fff; border: 3px solid #000; cursor: pointer; z-index: 999;}
+.snsBtnWrap {position: absolute; bottom: 20px; right: 20px; width: 45px; height: 45px; border-radius: 50%; background-color: #fff; border: 3px solid #000; cursor: pointer; z-index: 999;}
 .action.snsPlus .snsBtnWrap{animation:snsRotate 2s forwards; z-index: 999; transform-origin: right bottom;}
 @keyframes snsRotate{
 50%{right: 50%; bottom: 50%;  width: 45px; height: 45px; transform:rotate(0deg)}
@@ -276,7 +271,7 @@ section{ width: 100%; height: 100%; position: relative; overflow: hidden; scroll
 
 /*--------------sound------------*/
 
-.soundBtnWrap{ position: absolute; width: 45px; height:45px; bottom: 20px; left: -100px; display: flex; justify-content: center; align-items: center; border:3px solid #000; cursor: pointer; z-index: 999; transition: 0.8s;}
+.soundBtnWrap{ position: absolute; width: 45px; height:45px; bottom: 20px; left: 20px; display: flex; justify-content: center; align-items: center; border:3px solid #000; cursor: pointer; z-index: 999; transition: 0.8s;}
 .soundBtnWrap:hover {background-color: #000; }
 .action.snsPlus .soundBtnWrap{ border-color: #fff; background: none;}
 .action.about .soundBtnWrap{border-color: #000; background: #fff;}
@@ -341,7 +336,7 @@ body.audio-on .soundBtnBox span:nth-child(5){ animation: soundBar5 1s infinite l
 }
 /*--------------sound------------*/
 
-.faceWrap{ animation:faceAni 0.8s 9.3s ease-in forwards; position: absolute; width: 200px; height: 200px; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0); opacity: 0; z-index: 3; transition: 0.5s ease-out; border-radius: 50%;}
+.faceWrap{ position: absolute; width: 200px; height: 200px; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 3; transition: 0.5s ease-out; border-radius: 50%;}
 .action.about .faceWrap{top: 90%; left: 25%;}
 .action.skill .faceWrap{top: 90%; left: 50%;}
 .action.career .faceWrap{top: 90%; left: 75%;}
@@ -350,9 +345,7 @@ body.audio-on .soundBtnBox span:nth-child(5){ animation: soundBar5 1s infinite l
 .action.gallery .faceWrap{top: 50%;}
 .action.gallery.photo .faceWrap{top: 90%;}
 .action.gallery.psai .faceWrap{top: 90%;}
-@keyframes faceAni{
-	to{transform: translate(-50%, -50%) scale(1); opacity: 1;}
-}
+
 .face{box-shadow: 0 10px 10px rgba(0,0,0,.5);  display: block; position: relative; width: 200px; height: 200px; border-radius: 50%; background: #000; display: flex; justify-content: center; align-items: center; transition: 0.5s ease-in; cursor: pointer;}
 .face:after{ content:attr(data-text); position: absolute; width: 140px; bottom: 70px; left: 50%; transform: translate(-50%, 0) scale(0); background-color: #444; color: #fff; opacity: 0; text-align: center; font-size: 1.2rem; transition: 0.4s ease;}
 .action.about .face:after,
@@ -398,20 +391,13 @@ body.audio-on .soundBtnBox span:nth-child(5){ animation: soundBar5 1s infinite l
 .HomeTextMobile h2{font-size: 2.6rem;}
 .HomeTextMobile h2:before,
 .HomeText h2:before{animation:homeTxtBefore 2s 5.7s forwards;  content:attr(data-text);  display: block; position: absolute; bottom: -40px; left: 50%; width:3000px; transform: translate(-50%, 0) rotateY(180deg); font-size: 1.6rem; text-align: center; letter-spacing: 100px; filter: blur(2px); opacity: 0;}
-.HomeTextMobile h2:before{animation-delay: 4s; font-size: 1rem;}
+.HomeTextMobile h2:before{animation-delay: 3.8s; font-size: 1rem;}
 @keyframes homeTxtBefore{
 	to{opacity: 1; letter-spacing: 1px; filter: blur(0px); transform: translate(-50%, 0) rotateY(0deg);}
 }
 
-.navWrap{animation:navStart 7s 3.2s forwards; transform:rotate(0deg) scale(0); opacity: 1; width: 100%; height: 100%; position:absolute; top: 0; left: 0; transition: 0.4s 0.1s ease; z-index: 1}
+.navWrap{opacity: 1; width: 100%; height: 100%; position:absolute; top: 0; left: 0; transition: 0.4s 0.1s ease; z-index: 1}
 .action.work .navWrap{z-index: 0;}
-@keyframes navStart{
-	25%{transform: rotate(360deg) scale(4);}
-	50%{opacity:0.1; transform: rotate(360deg) scale(2);}
-	80%{opacity:0.2; transform: rotate(360deg) scale(1.9);}
-	90%{opacity:0.5; transform: rotate(0deg) scale(1.5);}
-	to{opacity:1; transform: rotate(0deg) scale(1);}
-}
 
 .action.toggle .navWrap{opacity: 0;}
 .navWrap ul {width: 100%; height: 100%; position: relative;}
@@ -616,11 +602,11 @@ body.audio-on .soundBtnBox span:nth-child(5){ animation: soundBar5 1s infinite l
 
 .workBox h2{font-size: 2rem;}
 .workBox h5{color: #bbb; font-size: 0.8rem;}
-.workBox p:nth-child(3){margin-top: 20px; font-size: 0.93rem; line-height: 14px;}
-.workBox p:nth-child(4){margin-top: 5px; font-size: 0.93rem; line-height: 14px;}
-.workBox p:nth-child(5){margin-top: 5px; font-size: 0.93rem; line-height: 14px;}
+.workBox p:nth-child(3){margin-top: 20px;}
+.workBox p:nth-child(4){margin-top: 5px;}
+.workBox p:nth-child(5){margin-top: 5px;}
 .galleryWrap p,
-.workBox p:nth-child(6){margin-top: 20px; margin-bottom: 20px;  font-size: 0.87rem; color: #ccc;}
+.workBox p:nth-child(6){margin-top: 20px; margin-bottom: 20px;  font-size: 0.9rem; color: #ccc;}
 .galleryWrap a,
 .workBox a:nth-child(7){color: skyblue; border-bottom: 1px solid skyblue;}
 .psai a:hover,

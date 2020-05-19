@@ -1,16 +1,3 @@
-		$(function(){
-			$(".gooey span").draggable();
-		})
-		setTimeout(snsForwards ,1000);
-		setTimeout(soundForwards ,1100);
-
-		function snsForwards(){
-			$(".snsBtnWrap").animate({right:20},400);
-		};
-		function soundForwards(){
-			$(".soundBtnWrap").animate({left:20},400);
-		};
-
 		function reset(){
 			$("#fullpage").removeClass();
 			$("#fullpage").addClass("action");
