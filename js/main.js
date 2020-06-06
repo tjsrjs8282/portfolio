@@ -132,10 +132,18 @@
 			txtList.eq(spNum).addClass("active");
 		});
 
-		$(".workList > ul > li").click(function(){
+		$(".workList > ul > li").click(function(e){
 			var workNum = $(this).index();
 			$(".workBlack").addClass("active");
 			$(".workPopupBox > div").eq(workNum).addClass("active");
+			e.preventdefault();
+		});
+
+		$(".workTxtWrap > .workTxtBox > .workMoreBtn").click(function(e){
+			var workNum = $(".workTxtBox.active").index();
+			$(".workBlack").addClass("active");
+			$(".workPopupBox > div").eq(workNum).addClass("active");
+			e.preventdefault();
 		});
 
 		$(".workBlack").click(function(e){

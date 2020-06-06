@@ -535,7 +535,7 @@ body.audio-on .soundBtnBox span:nth-child(5){ animation: soundBar5 1s infinite l
 
 
 /*--------------work------------*/
-
+.workTxtWrap span{display: block;}
 .workList ul li{position: absolute; width: 0px; top: 45%; right: -400px; opacity: 0; visibility: hidden; transform: translate(0, -50%) scale(0); transition: 0.6s ease-out; z-index: 2;}
 .action.work .workList ul li.active{visibility: visible; opacity: 1; cursor: pointer; right: 100px; width: 450px; transform: translate(0, -50%) scale(1);}
 .workList ul li a{display: block;}
@@ -607,7 +607,7 @@ body.audio-on .soundBtnBox span:nth-child(5){ animation: soundBar5 1s infinite l
 .action.work .workTxtBox.active .workMidTxt{left:0px;}
 
 .workMoreBtn{position: absolute; left:0;top: 300px; opacity: 0; transition: 0.5s 0.2s ease; width: 100px; height: 40px; line-height: 40px; text-align: center;}
-.action.work .workTxtBox.active .workMoreBtn{top: 180px; opacity: 1;}
+.action.work .workTxtBox.active .workMoreBtn{top: 190px; opacity: 1;}
 
 .workBlack{position: fixed; cursor: pointer; width: 100%; height: 100%; background-color:rgba(0,0,0,0.8); top: 0; left: 0;  opacity: 0; visibility: hidden; transition:0.4s ease;}
 .workBlack.active{visibility: visible; opacity: 1; z-index: 1111;}
