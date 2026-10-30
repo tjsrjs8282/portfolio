@@ -1,0 +1,14 @@
+{
+  "name": "유선건 · GEONY WORKS",
+  "short_name": "GEONY WORKS",
+  "description": "거니웍스(GEONY WORKS) 대표 유선건 — Full-stack Harness Engineering",
+  "start_url": "/portfolio/",
+  "scope": "/portfolio/",
+  "display": "browser",
+  "background_color": "#07070b",
+  "theme_color": "#07070b",
+  "icons": [
+    { "src": "/portfolio/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/portfolio/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

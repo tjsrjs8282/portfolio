@@ -1,0 +1,14 @@
+---
+// Three wires bundled into one node — the harness, as a mark.
+interface Props {
+  size?: number;
+}
+const { size = 30 } = Astro.props;
+---
+
+<svg class="logo" width={size} height={size} viewBox="0 0 32 32" fill="none" aria-hidden="true">
+  <path d="M3 7.5c9 0 11.5 8.5 18 8.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"></path>
+  <path d="M3 16h18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"></path>
+  <path d="M3 24.5c9 0 11.5-8.5 18-8.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"></path>
+  <circle cx="25.2" cy="16" r="4.3" fill="#FF5B1F"></circle>
+</svg>

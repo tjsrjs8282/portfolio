@@ -1,0 +1,229 @@
+---
+import { SITE } from "../data/site";
+import Logo from "./Logo.astro";
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
+const LINKS = [
+  { label: "GEONY WORKS", sub: "geonyworks.com", href: SITE.links.company },
+  { label: "카카오톡 채널", sub: "거니웍스 · 1:1 채팅", href: SITE.links.kakao },
+  { label: "GitHub", sub: "@tjsrjs8282", href: SITE.links.github },
+  { label: "Blog", sub: "sg-coding.tistory.com", href: SITE.links.blog },
+  { label: "Google Play", sub: "말랑 모험", href: SITE.links.play },
+];
+---
+
+<section class="contact" id="contact" aria-labelledby="contact-title">
+  <div class="wrap">
+    <p class="eyebrow mono">Contact</p>
+    <h2 class="contact__title" id="contact-title">
+      <span class="contact__line">다음 서비스,</span>
+      <span class="contact__line hot-text">같이 만들까요?</span>
+    </h2>
+    <p class="contact__lede">
+      아이디어 한 줄이면 충분합니다. 기획 · 디자인 · 개발부터 결제 · 출시 · 운영까지 — 거니웍스가 끝까지 맡습니다.
+    </p>
+
+    <div class="contact__cta">
+      <a class="btn btn--hot btn--xl" href={SITE.links.contact} data-magnetic>프로젝트 문의하기 <span aria-hidden="true">↗</span></a>
+      <a class="contact__mail" href={`mailto:${SITE.email}`} data-cursor="Mail">{SITE.email}</a>
+    </div>
+
+    <ul class="contact__links" role="list">
+      {
+        LINKS.map((l) => (
+          <li>
+            <a href={l.href} data-cursor="Open">
+              <span class="contact__label">{l.label}</span>
+              <span class="contact__sub">{l.sub}</span>
+              <span class="contact__arrow" aria-hidden="true">
+                ↗
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  <footer class="foot">
+    <div class="foot__mark" aria-hidden="true" data-footmark>
+      <span>GEONY</span><span class="hot-text">WORKS</span>
+    </div>
+    <div class="wrap foot__row">
+      <p class="foot__brand"><Logo size={22} /> © 2026 {SITE.name} · {SITE.companyEn}</p>
+      <p class="foot__meta">
+        Astro · TypeScript · GSAP · Lenis — 사운드는 ElevenLabs로 직접 만들었습니다.
+        <a href={`${base}legacy/`}>2020 버전 보기</a>
+      </p>
+      <a class="foot__top" href="#top" data-scroll>맨 위로 <span aria-hidden="true">↑</span></a>
+    </div>
+  </footer>
+</section>
+
+<style>
+  .contact {
+    position: relative;
+    padding-top: clamp(96px, 14vw, 200px);
+    overflow: clip;
+    background:
+      radial-gradient(60% 50% at 80% 30%, rgb(255 91 31 / 0.13), transparent 70%),
+      radial-gradient(50% 40% at 10% 80%, rgb(58 75 255 / 0.14), transparent 70%);
+  }
+  .contact__title {
+    margin-top: 22px;
+    font-size: clamp(48px, 9.4vw, 156px);
+    font-weight: 900;
+    letter-spacing: -0.065em;
+    line-height: 1.02;
+  }
+  .contact__line {
+    display: block;
+  }
+  .contact__lede {
+    margin-top: 28px;
+    max-width: 32em;
+    color: var(--muted);
+    font-size: clamp(17px, 1.5vw, 21px);
+  }
+  .contact__cta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 18px 32px;
+    margin-top: 40px;
+  }
+  .btn--xl {
+    min-height: 64px;
+    padding: 0 34px;
+    font-size: 18px;
+  }
+  .contact__mail {
+    font-size: clamp(18px, 2vw, 26px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 6px;
+    color: var(--text);
+  }
+  .contact__mail:hover {
+    color: var(--hot-3);
+  }
+
+  .contact__links {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 1px;
+    margin: clamp(56px, 7vw, 96px) 0 0;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: var(--line);
+  }
+  .contact__links a {
+    position: relative;
+    display: grid;
+    gap: 4px;
+    min-height: 120px;
+    align-content: end;
+    padding: 20px 22px;
+    background: var(--bg);
+    transition: background-color 0.3s var(--ease);
+  }
+  .contact__links a:hover {
+    background: var(--panel-2);
+  }
+  .contact__label {
+    font-weight: 800;
+    font-size: 18px;
+    letter-spacing: -0.03em;
+  }
+  .contact__sub {
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .contact__arrow {
+    position: absolute;
+    top: 18px;
+    right: 20px;
+    color: var(--dim);
+    transition:
+      transform 0.3s var(--ease),
+      color 0.3s var(--ease);
+  }
+  .contact__links a:hover .contact__arrow {
+    transform: translate(3px, -3px);
+    color: var(--hot);
+  }
+
+  .foot {
+    margin-top: clamp(80px, 10vw, 140px);
+  }
+  .foot__mark {
+    display: flex;
+    justify-content: center;
+    gap: 0.12em;
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: clamp(56px, 15.4vw, 276px);
+    line-height: 0.78;
+    letter-spacing: -0.05em;
+    font-variation-settings: "wdth" 72;
+    white-space: nowrap;
+    user-select: none;
+    padding-inline: var(--gutter);
+  }
+  .foot__row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px 32px;
+    padding-block: 28px 36px;
+    margin-top: clamp(24px, 3vw, 40px);
+    border-top: 1px solid var(--line);
+    color: var(--dim);
+    font-size: 14px;
+  }
+  .foot__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--muted);
+  }
+  .foot__meta a,
+  .foot__top {
+    color: var(--muted);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  .foot__meta a {
+    margin-left: 8px;
+  }
+  .foot__top {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+  .foot__meta a:hover,
+  .foot__top:hover {
+    color: var(--text);
+  }
+
+  @media (max-width: 1000px) {
+    .contact__links {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .contact__links li:last-child {
+      grid-column: 1 / -1;
+    }
+  }
+  @media (max-width: 480px) {
+    .contact__links {
+      grid-template-columns: 1fr;
+    }
+    .contact__links a {
+      min-height: 88px;
+    }
+  }
+</style>

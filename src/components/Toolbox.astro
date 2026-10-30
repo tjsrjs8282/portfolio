@@ -1,0 +1,130 @@
+---
+import { TOOLBOX } from "../data/site";
+const LABELS = ["제품 · 플랫폼", "하네스 · 검증 · 배포", "결제 · 성장 · 미디어"];
+---
+
+<section class="toolbox" aria-labelledby="toolbox-title">
+  <div class="wrap toolbox__head">
+    <p class="eyebrow mono" id="toolbox-title">Toolbox</p>
+    <p class="toolbox__note">매일 쓰는 도구들 — 결제와 배포까지 한 사람의 손에.</p>
+  </div>
+  {
+    TOOLBOX.map((row, i) => (
+      <div class={`marquee ${i % 2 ? "is-rev" : ""}`}>
+        <ul class="sr-only" aria-label={LABELS[i]}>
+          {row.map((t) => (
+            <li>{t}</li>
+          ))}
+        </ul>
+        <div class="marquee__track" aria-hidden="true">
+          {[0, 1].map(() => (
+            <div class="marquee__group">
+              {row.map((t) => (
+                <span class="marquee__item">
+                  {t}
+                  <span class="marquee__star">✶</span>
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+    ))
+  }
+</section>
+
+<style>
+  .toolbox {
+    padding-block: clamp(56px, 8vw, 120px);
+    border-block: 1px solid var(--line);
+    overflow: clip;
+  }
+  .toolbox__head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px 32px;
+    margin-bottom: clamp(28px, 4vw, 48px);
+  }
+  .toolbox__note {
+    color: var(--muted);
+  }
+  .marquee {
+    display: flex;
+    overflow: clip;
+    padding-block: 6px;
+    --speed: 46s;
+  }
+  .marquee.is-rev {
+    --speed: 54s;
+  }
+  .marquee__track {
+    display: flex;
+    flex: none;
+    animation: marquee var(--speed) linear infinite;
+  }
+  .marquee.is-rev .marquee__track {
+    animation-direction: reverse;
+  }
+  .marquee:hover .marquee__track {
+    animation-play-state: paused;
+  }
+  .marquee__group {
+    display: flex;
+    flex: none;
+  }
+  .marquee__item {
+    display: inline-flex;
+    align-items: center;
+    gap: clamp(18px, 2.4vw, 36px);
+    padding-right: clamp(18px, 2.4vw, 36px);
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(36px, 5.6vw, 92px);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: transparent;
+    -webkit-text-stroke: 1.2px rgb(245 242 234 / 0.42);
+    font-variation-settings: "wdth" 84;
+    transition:
+      color 0.3s var(--ease),
+      -webkit-text-stroke-color 0.3s var(--ease);
+  }
+  .marquee__item:hover {
+    color: var(--text);
+    -webkit-text-stroke-color: var(--text);
+  }
+  .marquee:nth-child(3) .marquee__item {
+    color: var(--text);
+    -webkit-text-stroke-color: transparent;
+  }
+  .marquee__star {
+    font-size: 0.42em;
+    color: var(--hot);
+    -webkit-text-stroke: 0;
+  }
+  @keyframes marquee {
+    to {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+  /* Reduced motion: no drift — the words simply wrap in place. */
+  :global(html.reduce-motion) .marquee__track {
+    animation: none;
+    flex: 1;
+    padding-inline: var(--gutter);
+  }
+  :global(html.reduce-motion) .marquee__group {
+    flex: 1;
+    flex-wrap: wrap;
+  }
+  :global(html.reduce-motion) .marquee__group + .marquee__group {
+    display: none;
+  }
+  :global(html.reduce-motion) .marquee__item {
+    font-size: clamp(26px, 3.4vw, 48px);
+  }
+</style>

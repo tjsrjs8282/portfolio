@@ -1,0 +1,34 @@
+---
+import Base from "../layouts/Base.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import Manifesto from "../components/Manifesto.astro";
+import Pipeline from "../components/Pipeline.astro";
+import Products from "../components/Products.astro";
+import Harness from "../components/Harness.astro";
+import Toolbox from "../components/Toolbox.astro";
+import Archive from "../components/Archive.astro";
+import Path from "../components/Path.astro";
+import Contact from "../components/Contact.astro";
+import Cursor from "../components/Cursor.astro";
+---
+
+<Base>
+  <Header />
+  <main id="main" tabindex="-1">
+    <Hero />
+    <Manifesto />
+    <Pipeline />
+    <Products />
+    <Harness />
+    <Toolbox />
+    <Archive />
+    <Path />
+    <Contact />
+  </main>
+  <Cursor />
+</Base>
+
+<script>
+  import "../scripts/app";
+</script>

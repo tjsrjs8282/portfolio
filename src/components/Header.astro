@@ -1,0 +1,392 @@
+---
+import Logo from "./Logo.astro";
+import { SITE } from "../data/site";
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
+const NAV = [
+  { href: "#work", label: "Work", ko: "운영 중인 서비스" },
+  { href: "#pipeline", label: "Process", ko: "기획부터 수익화까지" },
+  { href: "#harness", label: "Harness", ko: "일하는 방식" },
+  { href: "#archive", label: "Archive", ko: "2020 → 2026" },
+  { href: "#contact", label: "Contact", ko: "연락하기" },
+];
+---
+
+<header class="hdr" data-hdr>
+  <div class="hdr__bar">
+    <a class="hdr__logo" href={base} aria-label="GEONY WORKS 유선건 — 처음으로">
+      <Logo />
+      <span class="hdr__word" aria-hidden="true">GEONY WORKS</span>
+    </a>
+
+    <nav class="hdr__nav" aria-label="주요 메뉴">
+      <ul role="list">
+        {
+          NAV.filter((n) => n.href !== "#pipeline").map((n) => (
+            <li>
+              <a href={n.href} data-scroll>
+                {n.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="hdr__right">
+      <p class="hdr__clock mono" aria-hidden="true">SEOUL <span data-clock>--:--</span></p>
+      <button class="hdr__sound" type="button" data-sound aria-pressed="false">
+        <span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <span class="mono">Sound</span>
+      </button>
+      <button class="hdr__menu" type="button" data-menu-open aria-haspopup="dialog" aria-controls="menu">
+        <span class="mono">Menu</span>
+        <span class="burger" aria-hidden="true"><i></i><i></i></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<dialog class="menu" id="menu" aria-labelledby="menu-title" data-lenis-prevent>
+  <div class="menu__inner">
+    <div class="menu__top">
+      <p class="mono menu__title" id="menu-title">Menu</p>
+      <button class="menu__close" type="button" data-menu-close>
+        <span class="mono">Close</span>
+        <span class="x" aria-hidden="true"></span>
+      </button>
+    </div>
+    <nav aria-label="전체 메뉴">
+      <ol class="menu__list" role="list">
+        {
+          NAV.map((n, i) => (
+            <li>
+              <a href={n.href} data-scroll data-menu-link>
+                <span class="mono menu__num">{String(i + 1).padStart(2, "0")}</span>
+                <span class="menu__label">{n.label}</span>
+                <span class="menu__ko">{n.ko}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ol>
+    </nav>
+    <div class="menu__foot">
+      <a href={SITE.links.company} class="btn btn--hot">geonyworks.com <span aria-hidden="true">↗</span></a>
+      <a href={`mailto:${SITE.email}`} class="menu__mail">{SITE.email}</a>
+    </div>
+  </div>
+</dialog>
+
+<style>
+  .hdr {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 60;
+    padding: 14px var(--gutter);
+    transition: transform 0.5s var(--ease);
+    pointer-events: none;
+  }
+  .hdr.is-hidden {
+    transform: translateY(-120%);
+  }
+  .hdr__bar {
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    max-width: var(--max);
+    margin-inline: auto;
+    height: 52px;
+    padding: 0 10px 0 16px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    transition:
+      background-color 0.4s var(--ease),
+      border-color 0.4s var(--ease),
+      backdrop-filter 0.4s var(--ease);
+  }
+  .hdr.is-solid .hdr__bar {
+    background: rgb(12 12 20 / 0.72);
+    border-color: var(--line);
+    backdrop-filter: blur(14px) saturate(1.3);
+    -webkit-backdrop-filter: blur(14px) saturate(1.3);
+  }
+
+  .hdr__logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 15px;
+    letter-spacing: 0.02em;
+    font-variation-settings: "wdth" 110;
+  }
+
+  .hdr__nav {
+    margin-inline: auto;
+  }
+  .hdr__nav ul {
+    display: flex;
+    gap: 4px;
+    margin: 0;
+  }
+  .hdr__nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    padding: 0 14px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--muted);
+    transition:
+      color 0.25s var(--ease),
+      background-color 0.25s var(--ease);
+  }
+  .hdr__nav a:hover,
+  .hdr__nav a[aria-current="true"] {
+    color: var(--text);
+    background: rgb(255 255 255 / 0.07);
+  }
+
+  .hdr__right {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .hdr__clock {
+    color: var(--dim);
+    margin-right: 10px;
+    white-space: nowrap;
+  }
+  .hdr__clock span {
+    color: var(--text);
+  }
+
+  .hdr__sound,
+  .hdr__menu {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 40px;
+    padding: 0 14px;
+    border-radius: 999px;
+    color: var(--muted);
+    transition:
+      color 0.25s var(--ease),
+      background-color 0.25s var(--ease);
+  }
+  .hdr__sound:hover,
+  .hdr__menu:hover {
+    color: var(--text);
+    background: rgb(255 255 255 / 0.07);
+  }
+  .hdr__sound[aria-pressed="true"] {
+    color: var(--text);
+  }
+
+  /* Equaliser bars — a nod to the 2020 site's sound button. */
+  .bars {
+    display: inline-flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 14px;
+  }
+  .bars i {
+    width: 2px;
+    height: 4px;
+    background: currentColor;
+    border-radius: 1px;
+    transition: height 0.3s var(--ease);
+  }
+  .hdr__sound[aria-pressed="true"] .bars i {
+    animation: eq 0.9s ease-in-out infinite alternate;
+    background: var(--hot);
+  }
+  .hdr__sound[aria-pressed="true"] .bars i:nth-child(2) {
+    animation-delay: -0.4s;
+  }
+  .hdr__sound[aria-pressed="true"] .bars i:nth-child(3) {
+    animation-delay: -0.2s;
+  }
+  .hdr__sound[aria-pressed="true"] .bars i:nth-child(4) {
+    animation-delay: -0.65s;
+  }
+  @keyframes eq {
+    from {
+      height: 3px;
+    }
+    to {
+      height: 14px;
+    }
+  }
+
+  .hdr__menu {
+    display: none;
+  }
+  .burger {
+    position: relative;
+    width: 18px;
+    height: 10px;
+  }
+  .burger i {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    border-radius: 2px;
+    background: currentColor;
+  }
+  .burger i:first-child {
+    top: 0;
+  }
+  .burger i:last-child {
+    bottom: 0;
+  }
+
+  @media (max-width: 1100px) {
+    .hdr__clock {
+      display: none;
+    }
+  }
+  @media (max-width: 900px) {
+    .hdr__nav {
+      display: none;
+    }
+    .hdr__right {
+      margin-left: auto;
+    }
+    .hdr__menu {
+      display: inline-flex;
+    }
+  }
+  @media (max-width: 420px) {
+    .hdr__word {
+      display: none;
+    }
+    .hdr__sound .mono {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+    }
+  }
+
+  /* ───── full-screen menu (native dialog) ───── */
+  .menu {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: #0b0b12;
+    color: var(--text);
+    overflow: auto;
+  }
+  .menu::backdrop {
+    background: rgb(0 0 0 / 0.6);
+  }
+  .menu[open] {
+    animation: menu-in 0.45s var(--ease) both;
+  }
+  @keyframes menu-in {
+    from {
+      clip-path: inset(0 0 100% 0);
+    }
+    to {
+      clip-path: inset(0 0 0 0);
+    }
+  }
+  .menu__inner {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px var(--gutter) 32px;
+  }
+  .menu__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 52px;
+  }
+  .menu__title {
+    color: var(--dim);
+  }
+  .menu__close {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 44px;
+    padding: 0 14px;
+    border-radius: 999px;
+    border: 1px solid var(--line-2);
+  }
+  .menu__close .x {
+    position: relative;
+    width: 14px;
+    height: 14px;
+  }
+  .menu__close .x::before,
+  .menu__close .x::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 18px;
+    height: 2px;
+    background: currentColor;
+    border-radius: 2px;
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  .menu__close .x::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+  .menu__list {
+    margin: auto 0;
+    padding: 32px 0;
+  }
+  .menu__list a {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    align-items: baseline;
+    column-gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .menu__num {
+    color: var(--hot);
+  }
+  .menu__label {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(44px, 13vw, 84px);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    font-variation-settings: "wdth" 80;
+  }
+  .menu__ko {
+    grid-column: 2;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .menu__foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px 24px;
+  }
+  .menu__mail {
+    color: var(--muted);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+</style>

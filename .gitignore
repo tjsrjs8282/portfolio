@@ -1,0 +1,25 @@
+# deps & build
+node_modules/
+dist/
+.astro/
+
+# env — keys never leave this machine
+.env
+.env.*
+!.env.example
+
+# scratch
+.cache/
+scripts/.out/
+lighthouse/
+
+# editors / OS
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.log
+
+# local agent config
+.claude/

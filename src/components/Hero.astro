@@ -1,0 +1,247 @@
+---
+import { SITE } from "../data/site";
+import { LIVE_COUNT, DEV_COUNT } from "../data/products";
+---
+
+<section class="hero" id="top" aria-labelledby="hero-title" data-hero>
+  <div class="hero__bg" aria-hidden="true" data-hero-bg>
+    <canvas class="hero__canvas" data-harness></canvas>
+  </div>
+  <div class="hero__veil" aria-hidden="true"></div>
+
+  <div class="hero__inner wrap">
+    <p class="hero__kicker mono" data-hero-in>
+      <span class="live-dot" aria-hidden="true"></span>
+      <span class="sr-only">GEONY WORKS · CEO {SITE.name}</span>
+      <span data-scramble aria-hidden="true">GEONY WORKS · CEO {SITE.name}</span>
+    </p>
+
+    <h1 class="hero__title" id="hero-title">
+      <span class="sr-only">{SITE.name} — 거니웍스(GEONY WORKS) 대표 · 풀스택 하네스 엔지니어링</span>
+      <span class="hero__line" aria-hidden="true"><span class="hero__word w1" data-hero-word>FULL-STACK</span></span>
+      <span class="hero__line l2" aria-hidden="true"><span class="hero__word w2" data-hero-word>HARNESS</span></span>
+      <span class="hero__line" aria-hidden="true"><span class="hero__word w3" data-hero-word>ENGINEERING</span></span>
+    </h1>
+
+    <div class="hero__row">
+      <p class="hero__lead" data-hero-in>
+        아이디어 한 줄을 <strong>기획 → 디자인 → 개발 → 배포 → 실사용자 → 수익화</strong>까지.<br class="lead-br" />
+        사람은 한 명, 팀은 하네스로 — 끝까지 만듭니다.
+      </p>
+      <div class="hero__cta" data-hero-in>
+        <a class="btn btn--hot" href="#work" data-magnetic data-scroll>운영 중인 서비스 <span aria-hidden="true">↓</span></a>
+        <a class="btn btn--ghost" href={SITE.links.company} data-magnetic>geonyworks.com <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero__foot wrap mono" data-hero-in>
+    <span class="hero__status"><span class="live-dot" aria-hidden="true"></span> 운영 중 {LIVE_COUNT} · 개발 중 {DEV_COUNT}</span>
+    <span class="hero__scroll" aria-hidden="true"><i></i> Scroll</span>
+    <span class="hero__est">Est. 2026 · Seoul</span>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-top: calc(var(--header-h) + 24px);
+    overflow: clip;
+    isolation: isolate;
+  }
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    will-change: transform, opacity;
+  }
+  /* Faint blueprint grid behind the cables. */
+  .hero__bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgb(255 255 255 / 0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(255 255 255 / 0.045) 1px, transparent 1px);
+    background-size: 64px 64px;
+    -webkit-mask-image: radial-gradient(70% 60% at 68% 40%, #000 0%, transparent 75%);
+    mask-image: radial-gradient(70% 60% at 68% 40%, #000 0%, transparent 75%);
+  }
+  .hero__canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .hero__veil {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      radial-gradient(120% 70% at 0% 100%, rgb(7 7 11 / 0.92) 0%, rgb(7 7 11 / 0.55) 45%, transparent 75%),
+      linear-gradient(180deg, rgb(7 7 11 / 0.4) 0%, transparent 25%, transparent 70%, var(--bg) 100%);
+    pointer-events: none;
+  }
+
+  .hero__inner {
+    position: relative;
+    padding-bottom: clamp(20px, 3vw, 36px);
+  }
+  .hero__kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--line-2);
+    background: rgb(12 12 20 / 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: var(--text);
+    margin-bottom: clamp(20px, 3vw, 36px);
+  }
+
+  .hero__title {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(46px, 13.2vw, 214px);
+    line-height: 0.84;
+    letter-spacing: -0.045em;
+    text-transform: uppercase;
+    margin-left: -0.04em;
+  }
+  .hero__line {
+    display: block;
+    overflow: clip;
+    overflow-clip-margin: 0.08em;
+    padding-bottom: 0.02em;
+  }
+  .hero__word {
+    display: inline-block;
+    white-space: nowrap;
+    will-change: transform;
+  }
+  .w1 {
+    font-variation-settings: "wdth" 112;
+  }
+  .l2 {
+    padding-left: 0.9em;
+  }
+  .w2 {
+    font-variation-settings: "wdth" var(--wd, 72);
+    background: var(--grad-hot);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    padding-right: 0.06em;
+  }
+  .w3 {
+    font-variation-settings: "wdth" 92;
+    color: transparent;
+    -webkit-text-stroke: max(1.5px, 0.012em) var(--text);
+  }
+
+  .hero__row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px 48px;
+    margin-top: clamp(24px, 3.4vw, 48px);
+  }
+  .hero__lead {
+    max-width: 34em;
+    font-size: clamp(16px, 1.45vw, 21px);
+    line-height: 1.65;
+    color: var(--muted);
+  }
+  .lead-br {
+    display: none;
+  }
+  @media (min-width: 1100px) {
+    .lead-br {
+      display: inline;
+    }
+  }
+  .hero__lead strong {
+    color: var(--text);
+    font-weight: 700;
+  }
+  .hero__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .hero__foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding-block: 18px 22px;
+    border-top: 1px solid var(--line);
+    color: var(--dim);
+  }
+  .hero__status {
+    letter-spacing: 0.02em;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text);
+  }
+  .hero__scroll {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .hero__scroll i {
+    position: relative;
+    width: 1px;
+    height: 26px;
+    background: var(--line-2);
+    overflow: hidden;
+  }
+  .hero__scroll i::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--hot);
+    transform: translateY(-100%);
+    animation: drip 1.8s var(--ease) infinite;
+  }
+  @keyframes drip {
+    0% {
+      transform: translateY(-100%);
+    }
+    60%,
+    100% {
+      transform: translateY(100%);
+    }
+  }
+
+  @media (max-width: 700px) {
+    .l2 {
+      padding-left: 0.5em;
+    }
+    .hero__est,
+    .hero__scroll {
+      display: none;
+    }
+    .hero__cta .btn {
+      flex: 1 1 auto;
+      justify-content: center;
+    }
+  }
+
+  /* Intro states (JS + motion only). */
+  :global(html.js-motion) [data-hero-in] {
+    opacity: 0;
+  }
+  :global(html.js-motion) .hero__word {
+    transform: translate3d(0, 105%, 0);
+  }
+</style>

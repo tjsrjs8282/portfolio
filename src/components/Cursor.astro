@@ -1,0 +1,73 @@
+---
+// A ring that trails the real pointer (which stays visible) and names what a
+// click will do. Fine pointers only; the script never starts it otherwise.
+---
+
+<div class="cursor" aria-hidden="true" data-cursor-el>
+  <span class="cursor__ring"></span>
+  <span class="cursor__label mono" data-cursor-label></span>
+</div>
+
+<style>
+  .cursor {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s var(--ease);
+  }
+  .cursor.is-on {
+    opacity: 1;
+  }
+  .cursor__ring {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1.5px solid rgb(245 242 234 / 0.55);
+    transform: translate(-50%, -50%);
+    transition:
+      width 0.35s var(--ease),
+      height 0.35s var(--ease),
+      background-color 0.35s var(--ease),
+      border-color 0.35s var(--ease);
+  }
+  .cursor.is-link .cursor__ring {
+    width: 56px;
+    height: 56px;
+    border-color: var(--hot);
+    background: rgb(255 91 31 / 0.1);
+  }
+  .cursor.has-label .cursor__ring {
+    width: 84px;
+    height: 84px;
+    border-color: transparent;
+    background: var(--hot);
+  }
+  .cursor__label {
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translate(-50%, -50%) scale(0.6);
+    color: #0b0b10;
+    font-weight: 700;
+    font-size: 11px;
+    white-space: nowrap;
+    opacity: 0;
+    transition:
+      opacity 0.25s var(--ease),
+      transform 0.35s var(--ease);
+  }
+  .cursor.has-label .cursor__label {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  .cursor.is-down .cursor__ring {
+    width: 26px;
+    height: 26px;
+  }
+</style>

@@ -1,0 +1,127 @@
+---
+import { PATH } from "../data/site";
+---
+
+<section class="path section" id="path" aria-labelledby="path-title" data-path>
+  <div class="wrap path__grid">
+    <div class="path__head">
+      <p class="eyebrow mono">Path</p>
+      <h2 class="h-section" id="path-title">Hands <span class="hot-text" aria-hidden="true">→</span><span class="sr-only">에서</span><br />Harness</h2>
+      <p class="lede">사진과 시공에서 웹으로, 퍼블리셔에서 엔지니어로, 그리고 대표로. 손으로 만들던 사람이 하네스로 만들기까지.</p>
+    </div>
+
+    <div class="timeline">
+      <span class="timeline__rail" aria-hidden="true"><span class="timeline__fill" data-path-fill></span></span>
+      <ol class="timeline__list" role="list">
+        {
+          PATH.map((p, i) => (
+            <li class={`step ${i === PATH.length - 1 ? "is-now" : ""}`} data-reveal>
+              <span class="step__dot" aria-hidden="true" />
+              <p class="step__when mono">{p.when}</p>
+              <h3 class="step__title">{p.title}</h3>
+              <p class="step__body">{p.body}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </div>
+</section>
+
+<style>
+  .path__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: clamp(32px, 5vw, 96px);
+    align-items: start;
+  }
+  .path__head {
+    position: sticky;
+    top: calc(var(--header-h) + 40px);
+  }
+  .path__head .h-section {
+    margin-top: 18px;
+    font-size: clamp(44px, 6.6vw, 104px);
+    font-variation-settings: "wdth" 76;
+  }
+  .path__head .lede {
+    margin-top: 24px;
+  }
+
+  .timeline {
+    position: relative;
+    padding: 8px 0 8px 44px;
+  }
+  .timeline__list {
+    margin: 0;
+  }
+  .timeline__rail {
+    position: absolute;
+    left: 7px;
+    top: 14px;
+    bottom: 14px;
+    width: 2px;
+    background: var(--line);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .timeline__fill {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, var(--hot-3), var(--hot));
+    transform-origin: 50% 0;
+    transform: scaleY(1);
+  }
+  :global(html.js-motion) .timeline__fill {
+    transform: scaleY(0);
+  }
+
+  .step {
+    position: relative;
+    padding: 0 0 clamp(40px, 5vw, 64px);
+  }
+  .step:last-child {
+    padding-bottom: 0;
+  }
+  .step__dot {
+    position: absolute;
+    left: -44px;
+    top: 6px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--hot);
+  }
+  .step.is-now .step__dot {
+    background: var(--hot);
+    box-shadow: 0 0 0 6px rgb(255 91 31 / 0.18);
+  }
+  .step__when {
+    color: var(--hot);
+    letter-spacing: 0.04em;
+  }
+  .step__title {
+    margin-top: 8px;
+    font-size: clamp(24px, 2.4vw, 34px);
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    line-height: 1.2;
+  }
+  .step__body {
+    margin-top: 10px;
+    color: var(--muted);
+    max-width: 38em;
+    line-height: 1.8;
+  }
+
+  @media (max-width: 900px) {
+    .path__grid {
+      grid-template-columns: 1fr;
+    }
+    .path__head {
+      position: relative;
+      top: 0;
+    }
+  }
+</style>

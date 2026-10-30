@@ -1,0 +1,366 @@
+/* ───────────────────────── tokens ───────────────────────── */
+:root {
+  --bg: #07070b;
+  --bg-2: #0c0c14;
+  --panel: #10111a;
+  --panel-2: #171826;
+  --line: rgb(255 255 255 / 0.08);
+  --line-2: rgb(255 255 255 / 0.16);
+  --text: #f5f2ea;
+  --muted: #a8a8b3;
+  --dim: #8d8d99;
+  --hot: #ff5b1f;
+  --hot-2: #ff8a3d;
+  --hot-3: #ffc56b;
+  --blue: #3a4bff;
+  --blue-text: #9aa3ff;
+  --lime: #c6f432;
+  --coral: #d97757;
+  --grad-hot: linear-gradient(92deg, #ff5b1f 0%, #ff8a3d 52%, #ffc56b 100%);
+
+  --gutter: clamp(16px, 4vw, 56px);
+  --max: 1480px;
+  --radius: 22px;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --header-h: 68px;
+
+  --display: var(--font-display), "Arial Narrow", Arial, sans-serif;
+  --sans: var(--font-sans), "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --mono: var(--font-mono), ui-monospace, Consolas, monospace;
+
+  color-scheme: dark;
+}
+
+/* ───────────────────────── reset ───────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-padding-top: calc(var(--header-h) + 12px);
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.7;
+  letter-spacing: -0.01em;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+ul,
+ol,
+dl,
+dd {
+  margin: 0;
+}
+
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+  padding: 0;
+}
+
+img,
+picture,
+svg,
+canvas,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+::selection {
+  background: var(--hot);
+  color: #0b0b10;
+}
+
+:focus-visible {
+  outline: 2px solid var(--hot-3);
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+
+/* ───────────────────────── lenis ───────────────────────── */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* ───────────────────────── utilities ───────────────────────── */
+.sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: fixed;
+  left: 16px;
+  top: 12px;
+  z-index: 200;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: var(--text);
+  color: var(--bg);
+  font-weight: 700;
+  transform: translateY(-160%);
+  transition: transform 0.25s var(--ease);
+}
+.skip-link:focus-visible {
+  transform: none;
+}
+
+.wrap {
+  width: 100%;
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.mono {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hot-text {
+  background: var(--grad-hot);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.live-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--lime);
+  box-shadow: 0 0 0 0 rgb(198 244 50 / 0.55);
+  animation: live 2.2s ease-out infinite;
+  flex: none;
+}
+@keyframes live {
+  0% {
+    box-shadow: 0 0 0 0 rgb(198 244 50 / 0.5);
+  }
+  70%,
+  100% {
+    box-shadow: 0 0 0 10px rgb(198 244 50 / 0);
+  }
+}
+
+/* Noto Sans KR has no Vietnamese tone marks; Archivo does. */
+:lang(vi) {
+  font-family: var(--font-display), var(--sans);
+  font-variation-settings: "wdth" 100;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* Section scaffolding */
+.section {
+  position: relative;
+  padding-block: clamp(96px, 14vw, 200px);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--muted);
+}
+.eyebrow::before {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.6;
+}
+
+.h-section {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(44px, 8.4vw, 132px);
+  line-height: 0.9;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+  font-variation-settings: "wdth" 88;
+  /* Display words never split mid-word; sizes are set so they fit. */
+  overflow-wrap: normal;
+}
+
+.h-ko {
+  font-weight: 800;
+  font-size: clamp(26px, 3.4vw, 46px);
+  line-height: 1.25;
+  letter-spacing: -0.045em;
+}
+
+.lede {
+  color: var(--muted);
+  font-size: clamp(16px, 1.35vw, 19px);
+  max-width: 46ch;
+}
+
+/* Buttons */
+.btn {
+  --b-bg: transparent;
+  --b-fg: var(--text);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 0 24px;
+  border-radius: 999px;
+  background: var(--b-bg);
+  color: var(--b-fg);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  border: 1px solid var(--line-2);
+  transition:
+    background-color 0.3s var(--ease),
+    border-color 0.3s var(--ease),
+    color 0.3s var(--ease);
+  will-change: transform;
+}
+.btn--hot {
+  --b-bg: var(--hot);
+  --b-fg: #0b0b10;
+  border-color: transparent;
+}
+.btn--hot:hover {
+  --b-bg: var(--hot-3);
+}
+.btn--ghost:hover {
+  border-color: var(--text);
+  --b-bg: rgb(255 255 255 / 0.06);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 2px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--line-2);
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+/* Film grain over everything, below the cursor. */
+.grain {
+  position: fixed;
+  inset: -50%;
+  z-index: 90;
+  pointer-events: none;
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  animation: grain 1.2s steps(6) infinite;
+}
+@keyframes grain {
+  0% {
+    transform: translate(0, 0);
+  }
+  20% {
+    transform: translate(-3%, 2%);
+  }
+  40% {
+    transform: translate(2%, -3%);
+  }
+  60% {
+    transform: translate(-2%, -1%);
+  }
+  80% {
+    transform: translate(3%, 3%);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+/* ───────────────────────── motion gates ─────────────────────────
+   Initial states only apply when JS runs with motion allowed, so a
+   no-JS or reduced-motion visit always sees the full page. */
+html.js-motion [data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+}
+
+html.reduce-motion *,
+html.reduce-motion *::before,
+html.reduce-motion *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  scroll-behavior: auto !important;
+}
+html.reduce-motion .grain {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grain {
+    animation: none;
+  }
+}

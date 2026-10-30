@@ -1,0 +1,623 @@
+---
+import { Picture, getImage } from "astro:assets";
+import { PRODUCTS, LIVE_COUNT, DEV_COUNT } from "../data/products";
+
+const total = String(PRODUCTS.length).padStart(2, "0");
+
+// Hover previews in the index list load only on first hover, so their URLs
+// are resolved here and handed to the script as data attributes.
+const previews = await Promise.all(
+  PRODUCTS.map(async (p) => (p.preview ? (await getImage({ src: p.preview, width: 720, format: "webp" })).src : "")),
+);
+
+const host = (href: string) => href.replace(/^https?:\/\//, "").replace(/\/$/, "");
+---
+
+<section class="work section" id="work" aria-labelledby="work-title">
+  <div class="wrap work__head">
+    <div>
+      <p class="eyebrow mono">Live products</p>
+      <h2 class="h-section" id="work-title">Built <span class="hot-text">&amp;</span><br />Running</h2>
+    </div>
+    <div class="work__intro">
+      <p class="lede">
+        직접 기획하고, 만들고, 지금도 운영하는 서비스들. 결제가 일어나고, 업데이트가 나가고, 공지가 올라갑니다.
+      </p>
+      <p class="work__count mono">
+        <span class="live-dot" aria-hidden="true"></span> 운영 중 {LIVE_COUNT} <span class="sep">/</span> 개발 중 {DEV_COUNT}
+      </p>
+    </div>
+  </div>
+
+  <nav class="wrap" aria-label="서비스 목록">
+    <ol class="index" role="list" data-index>
+      {
+        PRODUCTS.map((p, i) => (
+          <li>
+            <a class="index__row" href={`#p-${p.id}`} data-scroll data-preview={previews[i]} style={`--accent:${p.accent}`}>
+              <span class="index__num mono">{String(i + 1).padStart(2, "0")}</span>
+              <span class="index__name">
+                {p.name}
+                <span class="index__alt">{p.alt}</span>
+              </span>
+              <span class="index__kind">{p.kind}</span>
+              <span class={`index__status mono ${p.status === "운영 중" ? "is-live" : "is-dev"}`}>{p.status}</span>
+              <span class="index__arrow" aria-hidden="true">
+                ↓
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ol>
+  </nav>
+  <div class="preview" aria-hidden="true" data-preview-box><img alt="" width="720" height="378" decoding="async" /></div>
+
+  <div class="chapters">
+    {
+      PRODUCTS.map((p, i) => (
+        <article class={`product ${i % 2 ? "is-flip" : ""}`} id={`p-${p.id}`} style={`--accent:${p.accent}`} aria-labelledby={`p-${p.id}-name`}>
+          <div class="product__glow" aria-hidden="true" />
+          <div class="product__grid wrap">
+            <div class="product__info" data-reveal>
+              <p class="product__num mono">
+                {String(i + 1).padStart(2, "0")} <span>/ {total}</span>
+              </p>
+              <p class="product__kind mono">{p.kind}</p>
+              <h3 class="product__name" id={`p-${p.id}-name`}>
+                {p.name} <span class="product__alt">{p.alt}</span>
+              </h3>
+              <p class="product__line">{p.line}</p>
+              <ul class="product__badges" role="list">
+                <li class={`badge ${p.status === "운영 중" ? "badge--live" : "badge--dev"}`}>
+                  <span class="badge__dot" aria-hidden="true" />
+                  {p.status}
+                </li>
+                {p.badges.map((b) => (
+                  <li class="badge">{b.split(/(Tiếng Việt)/).map((part) => (part === "Tiếng Việt" ? <span lang="vi">{part}</span> : part))}</li>
+                ))}
+              </ul>
+              <p class="product__body">{p.body}</p>
+              <ul class="product__stack" role="list" aria-label="사용 기술">
+                {p.stack.map((s) => (
+                  <li class="chip">{s}</li>
+                ))}
+              </ul>
+              <div class="product__links">
+                {p.links.map((l, j) => (
+                  <a class={`btn ${j === 0 ? "btn--accent" : "btn--ghost"}`} href={l.href} data-magnetic data-cursor="Open">
+                    {l.label} <span aria-hidden="true">↗</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            <figure class="product__stage" data-stage>
+              {p.wide ? (
+                <div class={`frame ${p.wide.isScreen ? "frame--browser" : "frame--poster"}`} data-depth="0.06">
+                  {p.wide.isScreen && (
+                    <div class="frame__bar" aria-hidden="true">
+                      <i />
+                      <i />
+                      <i />
+                      <span class="frame__url mono">{host(p.links[0].href)}</span>
+                    </div>
+                  )}
+                  <div class={`frame__view ${p.wide.isScreen ? "is-screen" : "is-card"}`}>
+                    <Picture
+                      src={p.wide.src}
+                      alt={p.wide.alt}
+                      formats={["avif", "webp"]}
+                      widths={[560, 900, 1280, 1680]}
+                      sizes="(max-width: 900px) 92vw, 58vw"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                </div>
+              ) : (
+                <div class="frame frame--term" data-depth="0.06">
+                  <div class="frame__bar" aria-hidden="true">
+                    <i />
+                    <i />
+                    <i />
+                    <span class="frame__url mono">creakor — renewal</span>
+                  </div>
+                  <div class="term mono">
+                    <p>
+                      <span class="t-dim">$</span> geonyworks build <span class="t-acc">creakor</span>
+                    </p>
+                    <p>
+                      <span class="t-ok">✓</span> 3D 까치 랜딩 <span class="t-dim">— react-three-fiber</span>
+                    </p>
+                    <p>
+                      <span class="t-ok">✓</span> 소개 · 서비스 · 사례 · 소식 · 문의
+                    </p>
+                    <p>
+                      <span class="t-ok">✓</span> 관리자 CMS <span class="t-dim">— Tiptap · Supabase</span>
+                    </p>
+                    <p>
+                      <span class="t-run">◌</span> 다국어 · 오픈 준비 <span class="t-dim">— in progress</span>
+                    </p>
+                    <p class="t-cursor">
+                      <span class="t-dim">$</span> <i aria-hidden="true" />
+                    </p>
+                  </div>
+                </div>
+              )}
+              {p.phone && (
+                <div class="frame frame--phone" data-depth="0.16">
+                  <Picture
+                    src={p.phone.src}
+                    alt={p.phone.alt}
+                    formats={["avif", "webp"]}
+                    widths={[260, 420, 640]}
+                    sizes="(max-width: 900px) 34vw, 15vw"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              )}
+              <figcaption class="sr-only">
+                {p.name} {p.wide ? (p.wide.isScreen ? "실제 화면" : "대표 이미지") : "작업 진행 상황"}
+              </figcaption>
+            </figure>
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .work {
+    padding-bottom: clamp(40px, 6vw, 80px);
+  }
+  .work__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 32px 48px;
+  }
+  .work__head .h-section {
+    margin-top: 18px;
+  }
+  .work__intro {
+    display: grid;
+    gap: 18px;
+    max-width: 30em;
+  }
+  .work__count {
+    letter-spacing: 0.02em;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text);
+  }
+  .work__count .sep {
+    color: var(--dim);
+  }
+
+  /* ───── index list ───── */
+  .index {
+    margin: clamp(48px, 7vw, 96px) 0 0;
+    border-top: 1px solid var(--line);
+  }
+  .index__row {
+    position: relative;
+    display: grid;
+    grid-template-columns: 56px minmax(0, 1.4fr) minmax(0, 1fr) 96px 32px;
+    align-items: center;
+    gap: 16px;
+    min-height: 92px;
+    padding: 14px 8px;
+    border-bottom: 1px solid var(--line);
+    isolation: isolate;
+  }
+  .index__row::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(90deg, color-mix(in srgb, var(--accent) 16%, transparent), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.35s var(--ease);
+  }
+  .index__row:hover::before,
+  .index__row:focus-visible::before {
+    opacity: 1;
+  }
+  .index__num {
+    color: var(--dim);
+  }
+  .index__name {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 4px 14px;
+    font-size: clamp(26px, 3.6vw, 52px);
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    line-height: 1.1;
+    transition:
+      transform 0.45s var(--ease),
+      color 0.3s var(--ease);
+  }
+  .index__row:hover .index__name {
+    transform: translateX(14px);
+    color: var(--accent);
+  }
+  .index__alt {
+    font-family: var(--display);
+    font-size: 0.42em;
+    font-weight: 600;
+    letter-spacing: 0;
+    color: var(--muted);
+    text-transform: uppercase;
+    font-variation-settings: "wdth" 100;
+  }
+  .index__kind {
+    color: var(--muted);
+    font-size: 15px;
+  }
+  .index__status {
+    letter-spacing: 0.02em;
+    justify-self: start;
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--line-2);
+  }
+  .index__status.is-live {
+    color: var(--lime);
+    border-color: rgb(198 244 50 / 0.35);
+  }
+  .index__status.is-dev {
+    color: #7ff0dc;
+    border-color: rgb(94 234 212 / 0.35);
+  }
+  .index__arrow {
+    justify-self: end;
+    font-size: 22px;
+    color: var(--muted);
+    transition:
+      transform 0.35s var(--ease),
+      color 0.3s var(--ease);
+  }
+  .index__row:hover .index__arrow {
+    transform: translateY(4px);
+    color: var(--text);
+  }
+
+  .preview {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 40;
+    width: min(380px, 30vw);
+    aspect-ratio: 1200 / 630;
+    border-radius: 14px;
+    overflow: hidden;
+    pointer-events: none;
+    opacity: 0;
+    transform: translate3d(-50%, -50%, 0) scale(0.85);
+    box-shadow: 0 30px 80px rgb(0 0 0 / 0.55);
+    border: 1px solid var(--line-2);
+    background: var(--panel);
+  }
+  .preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media (max-width: 900px) {
+    .index__row {
+      grid-template-columns: 36px minmax(0, 1fr) auto;
+      min-height: 76px;
+    }
+    .index__kind,
+    .index__arrow {
+      display: none;
+    }
+  }
+  @media (hover: none), (pointer: coarse) {
+    .preview {
+      display: none;
+    }
+  }
+
+  /* ───── chapters ───── */
+  .chapters {
+    margin-top: clamp(80px, 12vw, 180px);
+    display: grid;
+    gap: clamp(120px, 16vw, 240px);
+  }
+  .product {
+    position: relative;
+  }
+  .product__glow {
+    position: absolute;
+    inset: -20% 0;
+    z-index: -1;
+    background: radial-gradient(40% 50% at 70% 50%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 70%);
+    pointer-events: none;
+  }
+  .product.is-flip .product__glow {
+    background: radial-gradient(40% 50% at 30% 50%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 70%);
+  }
+  .product__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: clamp(32px, 5vw, 88px);
+    align-items: center;
+  }
+  .product.is-flip .product__grid {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  }
+  .product.is-flip .product__info {
+    order: 2;
+  }
+
+  .product__num {
+    color: var(--accent);
+    font-size: 13px;
+  }
+  .product__num span {
+    color: var(--dim);
+  }
+  .product__kind {
+    letter-spacing: 0.04em;
+    margin-top: 22px;
+    color: var(--muted);
+  }
+  .product__name {
+    margin-top: 10px;
+    font-size: clamp(42px, 5.6vw, 84px);
+    font-weight: 900;
+    letter-spacing: -0.06em;
+    line-height: 1;
+  }
+  .product__alt {
+    display: block;
+    margin-top: 10px;
+    font-family: var(--display);
+    font-size: clamp(15px, 1.2vw, 18px);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-variation-settings: "wdth" 110;
+  }
+  .product__line {
+    margin-top: 22px;
+    font-size: clamp(19px, 1.7vw, 24px);
+    font-weight: 700;
+    line-height: 1.45;
+    letter-spacing: -0.035em;
+  }
+  .product__badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 22px 0 0;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 32px;
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: rgb(255 255 255 / 0.05);
+    border: 1px solid var(--line);
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .badge--live {
+    color: var(--lime);
+    border-color: rgb(198 244 50 / 0.3);
+  }
+  .badge--dev {
+    color: #7ff0dc;
+    border-color: rgb(94 234 212 / 0.3);
+  }
+  .badge__dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+  .product__body {
+    margin-top: 22px;
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.8;
+    max-width: 36em;
+  }
+  .product__stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 22px 0 0;
+  }
+  .product__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 28px;
+  }
+  .btn--accent {
+    --b-bg: var(--accent);
+    --b-fg: #0b0b10;
+    border-color: transparent;
+  }
+  .btn--accent:hover {
+    --b-bg: var(--text);
+  }
+
+  /* stage: browser frame + phone */
+  .product__stage {
+    position: relative;
+    padding: 0 0 12% 0;
+  }
+  .product.is-flip .product__stage {
+    padding: 0 0 12% 0;
+  }
+  .frame {
+    position: relative;
+    will-change: transform;
+  }
+  .frame--browser,
+  .frame--poster,
+  .frame--term {
+    border-radius: 16px;
+    overflow: hidden;
+    background: #0e0f17;
+    border: 1px solid var(--line-2);
+    box-shadow:
+      0 40px 120px -20px rgb(0 0 0 / 0.7),
+      0 0 0 1px rgb(255 255 255 / 0.02) inset;
+  }
+  .frame__bar {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    height: 36px;
+    padding: 0 14px;
+    border-bottom: 1px solid var(--line);
+    background: #12131d;
+  }
+  .frame__bar i {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #2a2b38;
+  }
+  .frame__bar i:nth-child(1) {
+    background: #ff5f57;
+  }
+  .frame__bar i:nth-child(2) {
+    background: #febc2e;
+  }
+  .frame__bar i:nth-child(3) {
+    background: #28c840;
+  }
+  .frame__url {
+    margin-left: 12px;
+    padding: 3px 12px;
+    border-radius: 6px;
+    background: rgb(255 255 255 / 0.05);
+    color: var(--muted);
+    font-size: 11px;
+    text-transform: none;
+    letter-spacing: 0.02em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .frame__view {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+  }
+  .frame__view.is-card {
+    aspect-ratio: 1200 / 630;
+  }
+  .frame__view :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+  }
+
+  .frame--phone {
+    position: absolute;
+    right: -2%;
+    bottom: 0;
+    width: 27%;
+    padding: 7px;
+    border-radius: 30px;
+    background: #0b0b12;
+    border: 1px solid var(--line-2);
+    box-shadow:
+      0 30px 80px -10px rgb(0 0 0 / 0.75),
+      0 0 0 6px rgb(255 255 255 / 0.03);
+  }
+  .product.is-flip .frame--phone {
+    right: auto;
+    left: -2%;
+  }
+  .frame--phone :global(picture),
+  .frame--phone :global(img) {
+    border-radius: 23px;
+    overflow: hidden;
+    aspect-ratio: 390 / 844;
+    width: 100%;
+    object-fit: cover;
+    object-position: top center;
+  }
+
+  /* creakor terminal card */
+  .term {
+    display: grid;
+    align-content: center;
+    gap: 14px;
+    aspect-ratio: 16 / 10;
+    padding: clamp(24px, 4vw, 56px);
+    font-size: clamp(12px, 1.15vw, 16px);
+    text-transform: none;
+    letter-spacing: 0.01em;
+    line-height: 1.5;
+    color: var(--text);
+    background:
+      radial-gradient(80% 60% at 80% 20%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 70%),
+      #0b0c13;
+  }
+  .t-dim {
+    color: var(--dim);
+  }
+  .t-acc {
+    color: var(--accent);
+  }
+  .t-ok {
+    color: var(--lime);
+  }
+  .t-run {
+    color: var(--hot-3);
+  }
+  .t-cursor i {
+    display: inline-block;
+    width: 0.6em;
+    height: 1.1em;
+    vertical-align: -0.2em;
+    background: var(--text);
+    animation: blink 1.05s steps(1) infinite;
+  }
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .product__grid,
+    .product.is-flip .product__grid {
+      grid-template-columns: 1fr;
+    }
+    .product.is-flip .product__info {
+      order: 0;
+    }
+    .product__stage {
+      order: -1;
+    }
+    .frame--phone {
+      width: 30%;
+      right: 2%;
+    }
+    .product.is-flip .frame--phone {
+      left: auto;
+      right: 2%;
+    }
+  }
+</style>

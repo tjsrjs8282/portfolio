@@ -1,0 +1,54 @@
+---
+import Base from "../layouts/Base.astro";
+import Logo from "../components/Logo.astro";
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
+---
+
+<Base title="404 · 길을 잃었어요 — GEONY WORKS" description="찾는 페이지가 없어요. 유선건 · GEONY WORKS 포트폴리오로 돌아가세요." noindex>
+  <main id="main" class="nf">
+    <a class="nf__logo" href={base} aria-label="GEONY WORKS 유선건 — 처음으로"><Logo size={36} /></a>
+    <p class="mono nf__code">404 · route not found</p>
+    <h1 class="nf__title">이 길은 아직<br /><span class="hot-text">기획 중</span>이에요.</h1>
+    <p class="nf__body">찾는 페이지가 없어요. 주소를 확인하거나 처음으로 돌아가 주세요.</p>
+    <div class="nf__cta">
+      <a class="btn btn--hot" href={base}>포트폴리오로 <span aria-hidden="true">→</span></a>
+      <a class="btn btn--ghost" href={`${base}legacy/`}>2020 버전 보기</a>
+    </div>
+  </main>
+</Base>
+
+<style>
+  .nf {
+    min-height: 100svh;
+    display: grid;
+    align-content: center;
+    gap: 20px;
+    padding: 40px var(--gutter);
+    max-width: 1100px;
+    margin-inline: auto;
+  }
+  .nf__logo {
+    justify-self: start;
+    margin-bottom: 24px;
+  }
+  .nf__code {
+    color: var(--hot);
+  }
+  .nf__title {
+    font-size: clamp(44px, 8vw, 120px);
+    font-weight: 900;
+    letter-spacing: -0.06em;
+    line-height: 1.05;
+  }
+  .nf__body {
+    color: var(--muted);
+    font-size: 18px;
+  }
+  .nf__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 12px;
+  }
+</style>

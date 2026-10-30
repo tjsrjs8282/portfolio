@@ -1,0 +1,289 @@
+---
+import { HARNESS_CODE, PRINCIPLES, STATS } from "../data/site";
+
+// Tiny build-time highlighter for the one code sample on the page.
+const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+function highlight(line: string) {
+  const out: string[] = [];
+  const re = /(\/\/.*$)|("(?:[^"\\]|\\.)*")|\b(const)\b|\b([a-z]+)(?=:)|([{}[\],;=:])/g;
+  let last = 0;
+  for (const m of line.matchAll(re)) {
+    out.push(esc(line.slice(last, m.index)));
+    const [tok, comment, str, kw, key] = m;
+    const cls = comment ? "c" : str ? "s" : kw ? "k" : key ? "p" : "o";
+    out.push(`<span class="tk-${cls}">${esc(tok)}</span>`);
+    last = (m.index ?? 0) + tok.length;
+  }
+  out.push(esc(line.slice(last)));
+  return out.join("");
+}
+const lines = HARNESS_CODE.split("\n").map(highlight);
+
+const ICONS: Record<string, string> = {
+  rules: "M5 4h10l4 4v12H5zM15 4v4h4M8 12h8M8 16h6",
+  night: "M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z",
+  verify: "M4 12.5l5 5L20 6.5",
+  lock: "M6 11h12v9H6zM8.5 11V8a3.5 3.5 0 0 1 7 0v3",
+};
+---
+
+<section class="harness section" id="harness" aria-labelledby="harness-title">
+  <div class="wrap">
+    <div class="harness__head">
+      <div>
+        <p class="eyebrow mono">How I build</p>
+        <h2 class="h-section" id="harness-title">One person.<br /><span class="hot-text">One harness.</span></h2>
+      </div>
+      <p class="lede">
+        거니웍스 = 사람 1 + 하네스. 저장소마다 규칙과 검증, 인계 문서를 깔아 두고 에이전트에게 일을 맡깁니다. 일을 끝내는 건 “다 했어요”가 아니라 통과한 검증입니다.
+      </p>
+    </div>
+
+    <div class="harness__grid">
+      <figure class="code" data-code>
+        <div class="code__bar" aria-hidden="true">
+          <i></i><i></i><i></i>
+          <span class="mono">geonyworks.config.ts</span>
+        </div>
+        <pre class="code__pre" tabindex="0" aria-label="거니웍스 하네스 구성 예시 코드"><code>{lines.map((l, i) => <span class="code__line" data-code-line><span class="code__ln" aria-hidden="true">{String(i + 1).padStart(2, " ")}</span><span set:html={l} /></span>)}</code></pre>
+        <figcaption class="code__cap mono">verify → main → 자동 배포 <span aria-hidden="true">●</span></figcaption>
+      </figure>
+
+      <ul class="principles" role="list">
+        {
+          PRINCIPLES.map((p, i) => (
+            <li class="principle" data-reveal style={`--d:${i}`}>
+              <svg class="principle__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d={ICONS[p.icon]} stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              <h3 class="principle__title">{p.title}</h3>
+              <p class="principle__body">{p.body}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <dl class="stats">
+      {
+        STATS.map((s) => (
+          <div class="stat" data-reveal>
+            <dt class="sr-only">{s.label}</dt>
+            <dd class="stat__value">
+              <span data-count={s.value}>{s.value.toLocaleString("en-US")}</span>
+              {s.suffix}
+            </dd>
+            <dd class="stat__label">{s.label}</dd>
+            <dd class="stat__note mono">{s.note}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </div>
+</section>
+
+<style>
+  .harness__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px 48px;
+  }
+  .harness__head .h-section {
+    margin-top: 18px;
+  }
+
+  .harness__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    gap: clamp(24px, 3vw, 40px);
+    margin-top: clamp(48px, 6vw, 80px);
+    align-items: start;
+  }
+
+  .code {
+    position: sticky;
+    top: calc(var(--header-h) + 24px);
+    border-radius: var(--radius);
+    border: 1px solid var(--line-2);
+    background:
+      radial-gradient(70% 60% at 100% 0%, rgb(58 75 255 / 0.16), transparent 60%),
+      radial-gradient(60% 50% at 0% 100%, rgb(255 91 31 / 0.12), transparent 60%),
+      #0c0d15;
+    overflow: hidden;
+    box-shadow: 0 40px 120px -30px rgb(0 0 0 / 0.8);
+  }
+  .code__bar {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    height: 44px;
+    padding: 0 16px;
+    border-bottom: 1px solid var(--line);
+  }
+  .code__bar i {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: #ff5f57;
+  }
+  .code__bar i:nth-child(2) {
+    background: #febc2e;
+  }
+  .code__bar i:nth-child(3) {
+    background: #28c840;
+  }
+  .code__bar span {
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--dim);
+    text-transform: none;
+    letter-spacing: 0.02em;
+  }
+  .code__pre {
+    margin: 0;
+    padding: 24px 0;
+    overflow-x: auto;
+    font-family: var(--mono);
+    font-size: clamp(12px, 1.05vw, 15px);
+    line-height: 1.85;
+    color: #d6d3cc;
+  }
+  .code__line {
+    display: block;
+    padding: 0 24px 0 16px;
+    white-space: pre;
+  }
+  .code__ln {
+    display: inline-block;
+    width: 2.6em;
+    color: #4f5060;
+    user-select: none;
+  }
+  .code__pre :global(.tk-c) {
+    color: #8b8fa3;
+    font-style: italic;
+  }
+  .code__pre :global(.tk-s) {
+    color: #ffc56b;
+  }
+  .code__pre :global(.tk-k) {
+    color: #ff8a3d;
+  }
+  .code__pre :global(.tk-p) {
+    color: #9aa3ff;
+  }
+  .code__pre :global(.tk-o) {
+    color: #8d8d99;
+  }
+  .code__cap {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 20px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+  }
+  .code__cap span {
+    color: var(--lime);
+  }
+  :global(html.js-motion) .code__line {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+
+  .principles {
+    display: grid;
+    gap: 14px;
+    margin: 0;
+  }
+  .principle {
+    padding: 26px 26px 28px;
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    background: var(--panel);
+    transition: border-color 0.35s var(--ease);
+  }
+  .principle:hover {
+    border-color: var(--line-2);
+  }
+  .principle__icon {
+    width: 28px;
+    height: 28px;
+    color: var(--hot);
+  }
+  .principle__title {
+    margin-top: 18px;
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+  }
+  .principle__body {
+    margin-top: 8px;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1px;
+    margin-top: clamp(56px, 7vw, 96px);
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: var(--line);
+  }
+  .stat {
+    display: grid;
+    align-content: start;
+    gap: 6px;
+    padding: clamp(24px, 3vw, 40px);
+    background: var(--bg);
+  }
+  .stat dd {
+    margin: 0;
+  }
+  .stat__value {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(56px, 7.4vw, 120px);
+    line-height: 0.9;
+    letter-spacing: -0.05em;
+    font-variation-settings: "wdth" 80;
+    background: var(--grad-hot);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-variant-numeric: tabular-nums;
+  }
+  .stat__label {
+    margin-top: 10px;
+    font-size: 19px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+  .stat__note {
+    color: var(--dim);
+    text-transform: none;
+    letter-spacing: 0.02em;
+  }
+
+  @media (max-width: 1000px) {
+    .harness__grid {
+      grid-template-columns: 1fr;
+    }
+    .code {
+      position: relative;
+      top: 0;
+    }
+  }
+  @media (max-width: 700px) {
+    .stats {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
