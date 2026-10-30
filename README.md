@@ -35,14 +35,14 @@
 | 개인정보 | 생일 · 집 주소 · 전화번호 공개 | 연락은 이메일 · 거니웍스 문의로만 (`legacy/`에서도 가림) |
 | 문의 폼 | `mail.php` — Pages에서 PHP가 돌지 않아 동작 안 함 | geonyworks.com 문의 · 카카오톡 채널 · 이메일 |
 
-**Lighthouse 13** (로컬 `astro preview`, 2026-10-31)
+**Lighthouse 13** (2026-10-31 · 2026은 배포된 라이브 주소, 2020은 같은 파일을 로컬에서 측정)
 
 | | Performance | Accessibility | Best Practices | SEO |
 |---|---|---|---|---|
 | 2020 · 데스크톱 | 75 | 70 | 92 | 91 |
-| **2026 · 데스크톱** | **97–100** | **100** | **100** | **100** |
+| **2026 · 데스크톱** | **100** (LCP 0.6 s · CLS 0) | **100** | **100** | **100** |
 | 2020 · 모바일 | 71 (LCP 38.9 s) | 77 | 92 | 91 |
-| **2026 · 모바일** | **86** (LCP 1.5 s · CLS 0) | **100** | **100** | **100** |
+| **2026 · 모바일** | **86** (LCP 1.6 s · CLS 0) | **100** | **100** | **100** |
 
 <table>
   <tr>
@@ -153,7 +153,7 @@ npm run shots          # README 스크린샷 → docs/screenshots/ (preview 서�
 
 ## 배포
 
-`master`에 푸시하면 [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)이 `astro check` → `astro build` 후 GitHub Pages로 올립니다. 처음 한 번은 저장소 설정의 Pages 소스를 **GitHub Actions**로 바꿔야 합니다(지금은 `master` 브랜치 루트를 그대로 서빙하는 legacy 빌드).
+`master`에 푸시하면 [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)이 `astro check` → `astro build` 후 GitHub Pages로 올립니다(Pages 소스: **GitHub Actions**). Actions 탭에서 손으로 다시 돌릴 수도 있습니다(`workflow_dispatch`).
 
 ```
 src/
