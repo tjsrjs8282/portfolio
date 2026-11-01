@@ -155,6 +155,8 @@ npm run shots          # README 스크린샷 → docs/screenshots/ (preview 서�
 
 `master`에 푸시하면 [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)이 `astro check` → `astro build` 후 GitHub Pages로 올립니다(Pages 소스: **GitHub Actions**). Actions 탭에서 손으로 다시 돌릴 수도 있습니다(`workflow_dispatch`).
 
+Vercel에도 Git 연동으로 올라갑니다(`master` → Production). Pages는 사이트를 `/portfolio/` 아래에, Vercel은 도메인 루트에 두므로 Vercel 빌드(`VERCEL=1`)에서는 `astro.config.mjs`가 `base`를 `/`로, `site`를 `VERCEL_PROJECT_PRODUCTION_URL`로 바꿉니다. `site.webmanifest`는 상대 경로라 양쪽에서 그대로 맞습니다.
+
 ```
 src/
   components/   Hero · Manifesto · Pipeline · Products · Harness · Toolbox · Archive · Path · Contact …

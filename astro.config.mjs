@@ -5,7 +5,11 @@ import { createReadStream, existsSync, readdirSync, readFileSync, statSync } fro
 import { extname, join, normalize } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const BASE = "/portfolio";
+// GitHub Pages serves the site under /portfolio/; Vercel serves it from the domain root.
+// Vercel sets VERCEL=1 and VERCEL_PROJECT_PRODUCTION_URL (host only, no scheme) on its builds.
+const VERCEL = Boolean(process.env.VERCEL);
+const SITE = VERCEL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "https://tjsrjs8282.github.io";
+const BASE = VERCEL ? "" : "/portfolio";
 const LEGACY = fileURLToPath(new URL("./legacy/", import.meta.url));
 
 /**
@@ -43,7 +47,7 @@ const MIME = {
 };
 
 /**
- * The 2020 site lives on, untouched, at /portfolio/legacy/.
+ * The 2020 site lives on, untouched, at legacy/ under the base (/portfolio/legacy/ on Pages).
  * mail.php stays in the repo for history but is not shipped: Pages can't run PHP.
  * @returns {import("astro").AstroIntegration}
  */
@@ -73,8 +77,8 @@ function legacy2020() {
 }
 
 export default defineConfig({
-  site: "https://tjsrjs8282.github.io",
-  base: BASE,
+  site: SITE,
+  base: BASE || "/",
   output: "static",
   compressHTML: true,
   devToolbar: { enabled: false },
