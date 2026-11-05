@@ -95,7 +95,7 @@
 | **Work** | 커서를 따라오는 미리보기가 붙은 인덱스와, 서비스마다 브라우저 · 폰 프레임에 담긴 실제 화면. |
 | **Harness** | 저장소마다 까는 규칙 · 검증 · 인계를 코드 한 장과 원칙 네 개로. |
 | **Toolbox** | 매일 쓰는 도구들이 흐르는 마키. |
-| **Archive** | Hollow Knight 랜딩 페이지 2020/2026 비교 슬라이더(키보드로도 조작), 이 사이트의 2020 버전, 2020년 작업들. |
+| **Archive** | Hollow Knight 랜딩 페이지 · ZINI 브랜드 사이트의 2020/2026 비교 슬라이더(키보드로도 조작), 이 사이트의 2020 버전, 2020년 작업들. |
 | **Path** | 사진 · 시공 → 웹디자인 → 웹 에이전시 → 엔지니어 → 거니웍스 개업 → 출시와 실결제. |
 | **Contact** | 거니웍스 문의 · 카카오톡 채널 · 이메일 · GitHub · 블로그 · Google Play. |
 
@@ -162,9 +162,9 @@ src/
   components/   Hero · Manifesto · Pipeline · Products · Harness · Toolbox · Archive · Path · Contact …
   data/         site.ts (문구 · 연혁) · products.ts (서비스 7개)
   scripts/      app.ts (스크롤 · 모션) · harness.ts (캔버스) · sound.ts (Web Audio)
-  assets/       shots/ (라이브 화면) · og/ (서비스 OG) · archive/ (2020 · Hollow Knight)
+  assets/       shots/ (라이브 화면) · og/ (서비스 OG) · archive/ (2020 · Hollow Knight · ZINI)
 legacy/         2020년 원본
 scripts/        capture · sound · og · shots
 ```
 
-<sub>Hollow Knight는 Team Cherry의 게임이며, 비교 슬라이더의 화면은 그 게임을 소재로 만든 개인 작업(랜딩 페이지)입니다. 서비스 화면과 OG 이미지는 모두 거니웍스가 만들고 운영하는 서비스의 것입니다.</sub>
+<sub>Hollow Knight는 Team Cherry의 게임이며, 비교 슬라이더의 화면은 그 게임을 소재로 만든 개인 작업(랜딩 페이지)입니다. ZINI는 케어앤셰어의 캐릭터 콘돔 브랜드이며, 그 브랜드 사이트를 소재로 다시 만든 리디자인 작업물입니다. 서비스 화면과 OG 이미지는 모두 거니웍스가 만들고 운영하는 서비스의 것입니다.</sub>

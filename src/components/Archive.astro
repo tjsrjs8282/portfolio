@@ -1,8 +1,10 @@
 ---
 import { Picture } from "astro:assets";
-import { OLD_WORKS } from "../data/site";
+import { OLD_WORKS, REMASTERS } from "../data/site";
 import hollow2020 from "../assets/archive/hollow-2020.jpg";
 import hollow2026 from "../assets/archive/hollow-2026.jpg";
+import zini2020 from "../assets/archive/zini-2020.jpg";
+import zini2026 from "../assets/archive/zini-2026.jpg";
 import portfolio2020 from "../assets/archive/portfolio-2020.jpg";
 // The 2020 mock-ups ship from legacy/ as they always did; here they get optimised copies.
 import knives from "../../legacy/img/work2.png";
@@ -12,6 +14,11 @@ import hankuk from "../../legacy/img/work6.png";
 
 const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
 const THUMBS = { knives, oculus, musa, hankuk } as const;
+// 2020 / 2026 screenshots for each remaster's before/after slider.
+const IMAGES = {
+  hk: { before: hollow2020, after: hollow2026 },
+  zini: { before: zini2020, after: zini2026 },
+} as const;
 ---
 
 <section class="archive section" id="archive" aria-labelledby="archive-title">
@@ -24,48 +31,59 @@ const THUMBS = { knives, oculus, musa, hankuk } as const;
       <p class="lede">2020년, 처음 만든 작업들. 그리고 지금의 도구로 처음부터 다시 지은 것들.</p>
     </div>
 
-    <article class="remaster" aria-labelledby="hk-title">
-      <div class="compare" data-compare style="--pos: 50%">
-        <div class="compare__img compare__img--after">
-          <Picture
-            src={hollow2026}
-            alt="2026년 리마스터 — 어둠 속 HOLLOW KNIGHT 타이틀과 ‘여정 시작’ 메뉴"
-            formats={["avif", "webp"]}
-            widths={[640, 1024, 1440]}
-            sizes="(max-width: 900px) 92vw, 62vw"
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
-        <div class="compare__img compare__img--before" aria-hidden="true">
-          <Picture src={hollow2020} alt="" formats={["avif", "webp"]} widths={[640, 800]} sizes="(max-width: 900px) 92vw, 62vw" loading="lazy" decoding="async" />
-        </div>
-        <span class="compare__tag compare__tag--l mono" aria-hidden="true">2020 · jQuery</span>
-        <span class="compare__tag compare__tag--r mono" aria-hidden="true">2026 · Astro</span>
-        <span class="compare__handle" aria-hidden="true"><i>⟷</i></span>
-        <label class="sr-only" for="compare-range">2020년 원본과 2026년 리마스터 비교 — 왼쪽은 2020년, 오른쪽은 2026년</label>
-        <input class="compare__range" id="compare-range" type="range" min="0" max="100" value="50" data-compare-range data-cursor="Drag" />
-      </div>
+    {
+      REMASTERS.map((r, i) => (
+        <article class:list={["remaster", { "remaster--flip": i % 2 === 1 }]} aria-labelledby={`${r.id}-title`}>
+          <div class="compare" data-compare style="--pos: 50%">
+            <div class="compare__img compare__img--after">
+              <Picture
+                src={IMAGES[r.id].after}
+                alt={r.alt}
+                formats={["avif", "webp"]}
+                widths={[640, 1024, 1440]}
+                sizes="(max-width: 900px) 92vw, 62vw"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="compare__img compare__img--before" aria-hidden="true">
+              <Picture src={IMAGES[r.id].before} alt="" formats={["avif", "webp"]} widths={[640, 800]} sizes="(max-width: 900px) 92vw, 62vw" loading="lazy" decoding="async" />
+            </div>
+            <span class="compare__tag compare__tag--l mono" aria-hidden="true">2020 · jQuery</span>
+            <span class="compare__tag compare__tag--r mono" aria-hidden="true">2026 · Astro</span>
+            <span class="compare__handle" aria-hidden="true"><i>⟷</i></span>
+            <label class="sr-only" for={`compare-${r.id}`}>{r.title} 2020년 원본과 2026년 리마스터 비교 — 왼쪽은 2020년, 오른쪽은 2026년</label>
+            <input class="compare__range" id={`compare-${r.id}`} type="range" min="0" max="100" value="50" data-compare-range data-cursor="Drag" />
+          </div>
 
-      <div class="remaster__meta">
-        <p class="mono remaster__kicker">Selected · 대표 개인 작업</p>
-        <h3 class="remaster__title" id="hk-title">Hollow Knight 랜딩 페이지 <span>Remastered</span></h3>
-        <p class="remaster__body">
-          2020년 jQuery로 만든 첫 개인 작업을, 2026년의 도구로 처음부터 다시 지었습니다. 신성둥지로 내려가는 시네마틱 스크롤, 입장 제스처로 여는 Web Audio 사운드, 실크송까지 반영한 정보 — 그리고 키보드와 스크린 리더로도 끝까지 쓸 수 있게.
-        </p>
-        <ul class="remaster__stack" role="list">
-          <li class="chip">Astro 7</li>
-          <li class="chip">TypeScript</li>
-          <li class="chip">GSAP · Lenis</li>
-          <li class="chip">Web Audio</li>
-          <li class="chip">ElevenLabs SFX</li>
-        </ul>
-        <div class="remaster__links">
-          <a class="btn btn--ghost" href="https://github.com/tjsrjs8282/HollowKnight/tree/remaster-2026" data-magnetic>2026 리마스터 코드 <span aria-hidden="true">↗</span></a>
-          <a class="text-link" href="https://tjsrjs8282.github.io/HollowKnight/">2020 원본 보기 <span aria-hidden="true">↗</span></a>
-        </div>
-      </div>
-    </article>
+          <div class="remaster__meta">
+            <p class="mono remaster__kicker">{r.kicker}</p>
+            <h3 class="remaster__title" id={`${r.id}-title`}>
+              {r.title} <span>Remastered</span>
+            </h3>
+            <p class="remaster__body">{r.body}</p>
+            <ul class="remaster__stack" role="list">
+              {r.stack.map((s) => (
+                <li class="chip">{s}</li>
+              ))}
+            </ul>
+            <div class="remaster__links">
+              {r.links.map((l, j) =>
+                j === 0 ? (
+                  <a class="btn btn--ghost" href={l.href} data-magnetic>
+                    {l.label} <span aria-hidden="true">↗</span>
+                  </a>
+                ) : (
+                  <a class="text-link" href={l.href}>
+                    {l.label} <span aria-hidden="true">↗</span>
+                  </a>
+                ),
+              )}
+            </div>
+          </div>
+        </article>
+      ))
+    }
 
     <div class="then">
       <a class="legacy" href={`${base}legacy/`} data-cursor="2020">
@@ -135,6 +153,16 @@ const THUMBS = { knives, oculus, musa, hankuk } as const;
     gap: clamp(28px, 4vw, 64px);
     align-items: center;
     margin-top: clamp(48px, 6vw, 88px);
+  }
+  .remaster + .remaster {
+    margin-top: clamp(64px, 8vw, 120px);
+  }
+  /* Every other remaster puts the slider on the right. */
+  .remaster--flip {
+    grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  }
+  .remaster--flip .compare {
+    order: 2;
   }
 
   .compare {
@@ -391,6 +419,9 @@ const THUMBS = { knives, oculus, musa, hankuk } as const;
     .remaster,
     .then {
       grid-template-columns: 1fr;
+    }
+    .remaster--flip .compare {
+      order: 0;
     }
   }
   @media (max-width: 480px) {
