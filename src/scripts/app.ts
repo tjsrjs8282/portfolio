@@ -332,25 +332,27 @@ later(() => {
 
 /* ───────────── archive: before / after ───────────── */
 later(() => {
-  const compare = $("[data-compare]");
-  const range = $<HTMLInputElement>("[data-compare-range]");
-  if (!compare || !range) return;
-  const set = (v: number) => compare.style.setProperty("--pos", `${v}%`);
-  range.addEventListener("input", () => set(Number(range.value)));
-  if (reduce) return;
-  const hint = { v: 50 };
-  ScrollTrigger.create({
-    trigger: compare,
-    start: "top 70%",
-    once: true,
-    onEnter: () => {
-      if (range.matches(":focus")) return;
-      gsap
-        .timeline()
-        .to(hint, { v: 82, duration: 0.9, ease: "power3.inOut", onUpdate: () => set(hint.v) })
-        .to(hint, { v: 50, duration: 1.1, ease: "power3.inOut", onUpdate: () => set(hint.v) });
-    },
-  });
+  // One slider per remaster; each gets its own scroll hint.
+  for (const compare of $$("[data-compare]")) {
+    const range = $<HTMLInputElement>("[data-compare-range]", compare);
+    if (!range) continue;
+    const set = (v: number) => compare.style.setProperty("--pos", `${v}%`);
+    range.addEventListener("input", () => set(Number(range.value)));
+    if (reduce) continue;
+    const hint = { v: 50 };
+    ScrollTrigger.create({
+      trigger: compare,
+      start: "top 70%",
+      once: true,
+      onEnter: () => {
+        if (range.matches(":focus")) return;
+        gsap
+          .timeline()
+          .to(hint, { v: 82, duration: 0.9, ease: "power3.inOut", onUpdate: () => set(hint.v) })
+          .to(hint, { v: 50, duration: 1.1, ease: "power3.inOut", onUpdate: () => set(hint.v) });
+      },
+    });
+  }
 });
 
 /* ───────────── path + footer ───────────── */

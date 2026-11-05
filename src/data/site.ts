@@ -114,6 +114,35 @@ export const TOOLBOX = [
   ["Toss Payments", "Google Play Billing", "Web Push", "Kakao", "Solapi", "Resend", "GA4", "PostHog", "ElevenLabs", "fal.ai", "Typecast", "Remotion"],
 ] as const;
 
+/** Then → Now — 2020년 작업을 2026년에 처음부터 다시 지은 것들. 이미지는 Archive.astro의 IMAGES(src/assets/archive/). */
+export const REMASTERS = [
+  {
+    id: "hk",
+    kicker: "Selected · 대표 개인 작업",
+    title: "Hollow Knight 랜딩 페이지",
+    body: "2020년 jQuery로 만든 첫 개인 작업을, 2026년의 도구로 처음부터 다시 지었습니다. 신성둥지로 내려가는 시네마틱 스크롤, 입장 제스처로 여는 Web Audio 사운드, 실크송까지 반영한 정보 — 그리고 키보드와 스크린 리더로도 끝까지 쓸 수 있게.",
+    stack: ["Astro 7", "TypeScript", "GSAP · Lenis", "Web Audio", "ElevenLabs SFX"],
+    alt: "2026년 리마스터 — 어둠 속 HOLLOW KNIGHT 타이틀과 ‘여정 시작’ 메뉴",
+    links: [
+      { label: "2026 리마스터 코드", href: "https://github.com/tjsrjs8282/HollowKnight/tree/remaster-2026" },
+      { label: "2020 원본 보기", href: "https://tjsrjs8282.github.io/HollowKnight/" },
+    ],
+  },
+  {
+    id: "zini",
+    kicker: "Brand site · 브랜드 사이트",
+    title: "ZINI 캐릭터 콘돔 브랜드 사이트",
+    body: "템플릿 문구와 Lorem ipsum이 그대로 남아 있던 2020년 브랜드 사이트를 디자인부터 다시 지었습니다. 여섯 캐릭터의 패키지 색으로 만든 디자인 시스템, 마우스를 따라오는 눈과 캐릭터 고르기, 10개 페이지 반응형 — 메인 첫 로드 7.3 MB → 161 KB, Lighthouse 모바일 성능 41 → 99.",
+    stack: ["Astro 7", "TypeScript", "CSS Layers", "글꼴 서브셋", "AVIF · WebP"],
+    alt: "2026년 리뉴얼 — 노란 배경에 ‘명랑하게, 안전하게.’ 제목과 ZINI 얼굴, 여섯 캐릭터",
+    links: [
+      { label: "2026 사이트 보기", href: "https://tjsrjs8282.github.io/zini/" },
+      { label: "코드", href: "https://github.com/tjsrjs8282/zini" },
+      { label: "2020 원본 보기", href: "https://tjsrjs8282.github.io/zini/legacy/" },
+    ],
+  },
+] as const;
+
 export const OLD_WORKS = [
   { id: "knives", title: "Knives Out", year: 2020, note: "영화 소개 원페이지 · 플러그인 없이", href: "https://tjsrjs8282.github.io/Knives/index.html" },
   { id: "oculus", title: "Oculus VR", year: 2020, note: "제품 소개 · 판매 사이트", href: "https://tjsrjs8282.github.io/oculus/index.html" },
